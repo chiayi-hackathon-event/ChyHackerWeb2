@@ -385,7 +385,6 @@ aside#info-panel .info-block .info-section .circle-wrapper > span {
     position: absolute;
     top: 60px;
     left: 0;
-    padding-top: 20%;
     -moz-transition: visibility 0s, opacity 0.3s ease-in-out;
     -o-transition: visibility 0s, opacity 0.3s ease-in-out;
     -webkit-transition: visibility 0s, opacity 0.3s ease-in-out;
@@ -393,23 +392,23 @@ aside#info-panel .info-block .info-section .circle-wrapper > span {
     visibility: hidden;
     display: block;
   }
-  /* line 302, ../sass/Site.scss */
+  /* line 301, ../sass/Site.scss */
   .menu-show nav .menu {
     opacity: 1;
     visibility: visible;
   }
-  /* line 306, ../sass/Site.scss */
+  /* line 305, ../sass/Site.scss */
   nav .menu .nav-item {
     width: 100%;
     height: 20%;
     text-align: center;
     z-index: 100;
   }
-  /* line 311, ../sass/Site.scss */
+  /* line 310, ../sass/Site.scss */
   nav .menu .nav-item:active {
     text-decoration: underline;
   }
-  /* line 314, ../sass/Site.scss */
+  /* line 313, ../sass/Site.scss */
   nav .menu .nav-item > span {
     color: white;
     font-size: 1.25rem;
@@ -417,13 +416,13 @@ aside#info-panel .info-block .info-section .circle-wrapper > span {
     vertical-align: middle;
     letter-spacing: 3px;
   }
-  /* line 320, ../sass/Site.scss */
+  /* line 319, ../sass/Site.scss */
   nav .menu .nav-item > span:before {
     content: "\f054";
     margin-right: .313rem;
     font-family: FontAwesome;
   }
-  /* line 326, ../sass/Site.scss */
+  /* line 325, ../sass/Site.scss */
   nav .menu .nav-item:first-child:after {
     content: " ";
     width: 100%;
@@ -435,7 +434,7 @@ aside#info-panel .info-block .info-section .circle-wrapper > span {
     z-index: -1;
   }
 
-  /* line 339, ../sass/Site.scss */
+  /* line 338, ../sass/Site.scss */
   #info-panel {
     width: -webkit-calc(100% - 50px) !important;
     width: -moz-calc(100% - 50px) !important;
@@ -445,16 +444,16 @@ aside#info-panel .info-block .info-section .circle-wrapper > span {
     left: calc(-100% + 50px) !important;
   }
 
-  /* line 344, ../sass/Site.scss */
+  /* line 343, ../sass/Site.scss */
   .panel-show #map {
     transition-property: width;
     width: 50px;
   }
-  /* line 347, ../sass/Site.scss */
+  /* line 346, ../sass/Site.scss */
   .panel-show #map .slider {
     right: -2rem;
   }
-  /* line 351, ../sass/Site.scss */
+  /* line 350, ../sass/Site.scss */
   #map .slider {
     -moz-transition: right 0.15s ease-in-out 0.5s;
     -o-transition: right 0.15s ease-in-out 0.5s;
@@ -465,17 +464,17 @@ aside#info-panel .info-block .info-section .circle-wrapper > span {
     right: 1rem;
   }
 }
-/* line 359, ../sass/Site.scss */
+/* line 358, ../sass/Site.scss */
 .display-none {
   display: none;
 }
 
-/* line 363, ../sass/Site.scss */
+/* line 362, ../sass/Site.scss */
 header:focus {
   outline: 0;
 }
 
-/* line 367, ../sass/Site.scss */
+/* line 366, ../sass/Site.scss */
 select {
   padding: .313rem .5rem;
   -moz-border-radius: 3px;
