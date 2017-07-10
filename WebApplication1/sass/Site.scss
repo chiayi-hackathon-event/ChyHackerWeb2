@@ -295,6 +295,7 @@ aside#info-panel {
             position: absolute;
             top: 60px;
             left: 0;
+            padding-top: 20%;
             @include transition(visibility 0s, opacity .3s ease-in-out);
             visibility: hidden;
             display: block;
