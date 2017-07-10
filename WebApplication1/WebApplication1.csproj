@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21CF7D40-3B3E-4017-9B4F-1DEACC8B8FA4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\FontAwesome\css\font-awesome.min.css" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\BussPt_off.svg" />
+    <Content Include="Content\img\BussPt_on.svg" />
+    <Content Include="Content\img\Buss_off.svg" />
+    <Content Include="Content\img\Buss_on.svg" />
+    <Content Include="Content\img\CmpyPt_off.svg" />
+    <Content Include="Content\img\CmpyPt_on.svg" />
+    <Content Include="Content\img\Cmpy_off.svg" />
+    <Content Include="Content\img\Cmpy_on.svg" />
+    <Content Include="Content\img\FactoryPt_off.svg" />
+    <Content Include="Content\img\FactoryPt_on.svg" />
+    <Content Include="Content\img\Factory_off.svg" />
+    <Content Include="Content\img\Factory_on.svg" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\lib\AjaxAgent.js" />
+    <Content Include="Scripts\lib\bootstrap.js" />
+    <Content Include="Scripts\lib\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\lib\Framework.js" />
+    <Content Include="Scripts\lib\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\lib\jquery-ui.js" />
+    <Content Include="Scripts\lib\jquery-ui.min.js" />
+    <Content Include="Scripts\lib\proj4\dist\proj4-src.js" />
+    <Content Include="Scripts\lib\proj4\dist\proj4.js" />
+    <Content Include="Scripts\lib\proj4\Gruntfile.js" />
+    <Content Include="Scripts\lib\proj4\lib\adjust_axis.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\acosh.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\adjust_lat.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\adjust_lon.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\adjust_zone.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\asinh.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\asinz.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\atanh.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\cosh.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\e0fn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\e1fn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\e2fn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\e3fn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\fL.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\gN.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\imlfn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\inverseNadCvt.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\invlatiso.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\iqsfnz.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\latiso.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\mlfn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\msfnz.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\nadInterBreakout.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\nad_cvt.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\nad_intr.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\phi2z.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\pj_enfn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\pj_inv_mlfn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\pj_mlfn.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\qsfnz.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\sign.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\sinh.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\srat.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\tanh.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\toPoint.js" />
+    <Content Include="Scripts\lib\proj4\lib\common\tsfnz.js" />
+    <Content Include="Scripts\lib\proj4\lib\constants\Datum.js" />
+    <Content Include="Scripts\lib\proj4\lib\constants\Ellipsoid.js" />
+    <Content Include="Scripts\lib\proj4\lib\constants\grids.js" />
+    <Content Include="Scripts\lib\proj4\lib\constants\PrimeMeridian.js" />
+    <Content Include="Scripts\lib\proj4\lib\constants\units.js" />
+    <Content Include="Scripts\lib\proj4\lib\core.js" />
+    <Content Include="Scripts\lib\proj4\lib\datum.js" />
+    <Content Include="Scripts\lib\proj4\lib\datumUtils.js" />
+    <Content Include="Scripts\lib\proj4\lib\datum_transform.js" />
+    <Content Include="Scripts\lib\proj4\lib\defs.js" />
+    <Content Include="Scripts\lib\proj4\lib\deriveConstants.js" />
+    <Content Include="Scripts\lib\proj4\lib\extend.js" />
+    <Content Include="Scripts\lib\proj4\lib\global.js" />
+    <Content Include="Scripts\lib\proj4\lib\includedProjections.js" />
+    <Content Include="Scripts\lib\proj4\lib\index.js" />
+    <Content Include="Scripts\lib\proj4\lib\parseCode.js" />
+    <Content Include="Scripts\lib\proj4\lib\Point.js" />
+    <Content Include="Scripts\lib\proj4\lib\Proj.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\aea.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\aeqd.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\cass.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\cea.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\eqc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\eqdc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\equi.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\gauss.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\gnom.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\gstmerc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\krovak.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\laea.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\lcc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\longlat.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\merc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\mill.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\moll.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\nzmg.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\omerc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\ortho.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\poly.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\sinu.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\somerc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\stere.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\sterea.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\tmerc.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\utm.js" />
+    <Content Include="Scripts\lib\proj4\lib\projections\vandg.js" />
+    <Content Include="Scripts\lib\proj4\lib\projString.js" />
+    <Content Include="Scripts\lib\proj4\lib\transform.js" />
+    <Content Include="Scripts\lib\proj4\lib\version-browser.js" />
+    <Content Include="Scripts\lib\proj4\lib\version.js" />
+    <Content Include="Scripts\lib\proj4\lib\wkt.js" />
+    <Content Include="Scripts\lib\proj4\test\amd.html" />
+    <Content Include="Scripts\lib\proj4\test\opt.html" />
+    <Content Include="Scripts\lib\proj4\test\package.json.js" />
+    <Content Include="Scripts\lib\proj4\test\test.js" />
+    <Content Include="Scripts\lib\proj4\test\testData.js" />
+    <Content Include="Scripts\lib\require.js" />
+    <Content Include="Scripts\lib\SGSArcGISServer3826.js" />
+    <Content Include="Scripts\Main\Func\Common\Common.js" />
+    <Content Include="Scripts\Main\Func\Data\Data_Hackathon.js" />
+    <Content Include="Scripts\Main\Func\Sev\Sev_Hackathon.js" />
+    <Content Include="Scripts\Main\Func\UI\UI_Hackathon.js" />
+    <Content Include="Scripts\Main\MapControl\EsriMap.js" />
+    <Content Include="Scripts\Main\Module\ModuleInitial.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Buss.json" />
+    <Content Include="Cmpy.json" />
+    <Content Include="config.rb" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\FontAwesome\fonts\FontAwesome.otf" />
+    <None Include="Data.json" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\lib\jquery.dataTables.min.js" />
+    <Content Include="sass\Site.scss" />
+    <Content Include="sass\_reset.scss" />
+    <Content Include="Views\Shared\_Lodging.cshtml" />
+    <Content Include="Views\Shared\_Transport.cshtml" />
+    <Content Include="Views\Shared\_Industry.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <Content Include="Factory.json" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\lib\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\lib\proj4\.jshintrc" />
+    <Content Include="Scripts\lib\proj4\.npmignore" />
+    <Content Include="Scripts\lib\proj4\.travis.yml" />
+    <Content Include="Scripts\lib\proj4\AUTHORS" />
+    <Content Include="Scripts\lib\proj4\bower.json" />
+    <Content Include="Scripts\lib\proj4\changelog.md" />
+    <Content Include="Scripts\lib\proj4\component.json" />
+    <Content Include="Scripts\lib\proj4\dist\.npmignore" />
+    <Content Include="Scripts\lib\proj4\LICENSE.md" />
+    <Content Include="Scripts\lib\proj4\package.json" />
+    <Content Include="Scripts\lib\proj4\publish.sh" />
+    <Content Include="Scripts\lib\proj4\PUBLISHING.md" />
+    <Content Include="Scripts\lib\proj4\README.md" />
+    <Content Include="Scripts\lib\proj4\REFERENCES.md" />
+    <None Include="Properties\PublishProfiles\Hackathon.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>13426</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:13426/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 封裝。請啟用 NuGet 封裝還原，以下載該封裝。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

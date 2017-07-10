@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link href="https://js.arcgis.com/3.18/esri/css/esri.css" rel='stylesheet' type='text/css' media='screen'>
+    <link href="~/Content/FontAwesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/lib/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/lib/jquery-ui.min.js"></script>
+    <script src="~/Scripts/lib/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/lib/AjaxAgent.js"></script>
+    <script src="~/Scripts/lib/Framework.js"></script>*@
+     <title>嘉義雷霆少年</title>
+  
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body class="panel-empty">
+    <nav>
+        <header>
+            <img class="img-logo" src="~/Content/img/chiayi.svg" />
+            <h3>雷霆少年</h3>
+            <button id="btn-menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
+            <button id="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </header>
+        <ul class="menu">
+            <li class="nav-item" name="lodging"><span>住宿分析</span></li>
+            <li class="nav-item" name="transport"><span>交通分析</span></li>
+            <li class="nav-item" name="industry"><span>產業分析</span></li>
+        </ul>
+    </nav>
+        @RenderBody()
+    <script>
+        var baseURL = 'http://127.0.0.1/HackathonC';
+        var dojoConfig = {
+            // 需使用絕對路徑
+            paths: {
+                'jquery': baseURL + '/Scripts/lib/jquery-1.10.2.min',
+                'Module': baseURL + '/Scripts/Main/Module',
+                'Common': baseURL + '/Scripts/Main/Func/Common/Common',
+                'proj4': baseURL + '/Scripts/lib/proj4/dist/proj4',
+                'Map': baseURL + '/Scripts/Main/MapControl',
+                'UI': baseURL + '/Scripts/Main/Func/UI',
+                'Sev': baseURL + '/Scripts/Main/Func/Sev',
+                'Data': baseURL + '/Scripts/Main/Func/Data',
+                'DataTable': baseURL + '/Scripts/lib/jquery.dataTables.min',
+                'SGSJS': baseURL + '/Scripts/lib/SGSArcGISServer3826',
+                'AjaxAgent': baseURL + '/Scripts/lib/AjaxAgent',
+                'Framework': baseURL + '/Scripts/lib/Framework',
+            },
+            async: true
+        };
+    </script>
+    <script src="https://js.arcgis.com/3.18/"></script>
+    @*<script src="http://localhost/EGISWeb/ArcGIS_JSAPI/3.18/3.18compact/init.js"></script>*@
+
+    <script  src="http://localhost/HackathonC/Scripts/Main/Module/ModuleInitial.js"></script>
+</body>
+</html>
