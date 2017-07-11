@@ -98,13 +98,15 @@ nav {
         margin-left: 2rem;
         position: absolute;
         right: 5%;
-        .nav-item{
+        li.nav-item{
             color: white;
             cursor: pointer;
             height: 100%;
             vertical-align: middle;
             line-height: 60px;
             position: relative;
+            display: flex;
+            align-items: center;
             i {
                 display: flex;
                 align-items:center;
@@ -304,7 +306,7 @@ aside#info-panel {
             position: absolute;
             top: 60px;
             left: 0;
-            padding-top: 15%;
+            padding-top: 10%;
             @include transition(visibility 0s, opacity .3s ease-in-out);
             visibility: hidden;
             display: block;
@@ -313,12 +315,13 @@ aside#info-panel {
                 opacity: 1;
                 visibility: visible;
             }
-            .nav-item{
+            li.nav-item{
                 width: 100%;
                 height: 20%;
                 text-align: center;
                 z-index: 100;
                 position: static;
+                display: block;
                 i{
                     display: inline-flex;
                 }
