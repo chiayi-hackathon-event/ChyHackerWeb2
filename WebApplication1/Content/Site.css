@@ -147,8 +147,10 @@ nav .menu {
   height: 60px;
   align-items: center;
   margin-left: 2rem;
+  position: absolute;
+  right: 5%;
 }
-/* line 99, ../sass/Site.scss */
+/* line 101, ../sass/Site.scss */
 nav .menu .nav-item {
   color: white;
   cursor: pointer;
@@ -157,8 +159,23 @@ nav .menu .nav-item {
   line-height: 60px;
   position: relative;
 }
-/* line 106, ../sass/Site.scss */
+/* line 108, ../sass/Site.scss */
+nav .menu .nav-item i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  border: 1px solid #ddd;
+  color: #ddd;
+  -moz-border-radius: 50% 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50% 50%;
+}
+/* line 119, ../sass/Site.scss */
 nav .menu .nav-item span {
+  display: none;
   font-size: 1rem;
   padding: .5rem 1.5rem;
   white-space: nowrap;
@@ -167,30 +184,27 @@ nav .menu .nav-item span {
   -webkit-border-radius: 5px;
   border-radius: 5px 5px;
 }
-/* line 113, ../sass/Site.scss */
+/* line 127, ../sass/Site.scss */
 nav .menu .nav-item:hover {
   /*@include linear-gradient(gray, white, .3);*/
 }
-/* line 114, ../sass/Site.scss */
-nav .menu .nav-item:hover span {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-/* line 120, ../sass/Site.scss */
-nav .menu .nav-item.active span {
+/* line 128, ../sass/Site.scss */
+nav .menu .nav-item:hover i {
+  color: white;
   border-color: white;
 }
-/* line 124, ../sass/Site.scss */
+/* line 134, ../sass/Site.scss */
 nav .menu .nav-item + .nav-item {
   margin-left: 1rem;
 }
 
-/* line 131, ../sass/Site.scss */
+/* line 141, ../sass/Site.scss */
 aside#info-panel, #map {
   transition-duration: .5s;
   transition-timing-function: ease-in-out;
 }
 
-/* line 136, ../sass/Site.scss */
+/* line 146, ../sass/Site.scss */
 aside#info-panel {
   position: absolute;
   z-index: 5;
@@ -200,12 +214,12 @@ aside#info-panel {
   background-color: white;
   transition-property: transform;
 }
-/* line 145, ../sass/Site.scss */
+/* line 155, ../sass/Site.scss */
 aside#info-panel .info-block {
   overflow-y: auto;
   height: 100%;
 }
-/* line 148, ../sass/Site.scss */
+/* line 158, ../sass/Site.scss */
 aside#info-panel .info-block header {
   width: 100%;
   height: 45px;
@@ -215,21 +229,21 @@ aside#info-panel .info-block header {
   display: flex;
   align-items: center;
 }
-/* line 157, ../sass/Site.scss */
+/* line 167, ../sass/Site.scss */
 aside#info-panel .info-block .info-section {
   padding: 0 1rem;
 }
-/* line 159, ../sass/Site.scss */
+/* line 169, ../sass/Site.scss */
 aside#info-panel .info-block .info-section > select {
   display: block;
   margin: 1rem 0;
 }
-/* line 167, ../sass/Site.scss */
+/* line 177, ../sass/Site.scss */
 .panel-show aside#info-panel {
   transform: translateX(100%);
 }
 
-/* line 172, ../sass/Site.scss */
+/* line 182, ../sass/Site.scss */
 #btn-slide {
   width: 25px;
   height: 45px;
@@ -254,15 +268,15 @@ aside#info-panel .info-block .info-section > select {
       right: 0;
   }*/
 }
-/* line 189, ../sass/Site.scss */
+/* line 199, ../sass/Site.scss */
 #btn-slide:hover {
   background-color: #EF6461;
 }
-/* line 195, ../sass/Site.scss */
+/* line 205, ../sass/Site.scss */
 .panel-empty #btn-slide {
   display: none !important;
 }
-/* line 198, ../sass/Site.scss */
+/* line 208, ../sass/Site.scss */
 #btn-slide:before {
   content: " ";
   width: 0;
@@ -274,18 +288,18 @@ aside#info-panel .info-block .info-section > select {
   border-style: solid;
   border-color: #C1514F transparent transparent transparent;
 }
-/* line 209, ../sass/Site.scss */
+/* line 219, ../sass/Site.scss */
 #btn-slide:after {
   font-size: 1.25rem;
   font-family: FontAwesome;
   content: '\f0da';
 }
-/* line 213, ../sass/Site.scss */
+/* line 223, ../sass/Site.scss */
 .panel-show #btn-slide:after {
   content: '\f0d9';
 }
 
-/* line 219, ../sass/Site.scss */
+/* line 229, ../sass/Site.scss */
 #map {
   position: fixed;
   right: 0;
@@ -293,14 +307,14 @@ aside#info-panel .info-block .info-section > select {
   width: 100%;
   background: beige;
 }
-/* line 226, ../sass/Site.scss */
+/* line 236, ../sass/Site.scss */
 #map .slider {
   position: fixed;
   right: 1.5rem;
   top: 5rem;
   z-index: 500;
 }
-/* line 231, ../sass/Site.scss */
+/* line 241, ../sass/Site.scss */
 #map .slider > button {
   width: 30px;
   height: 30px;
@@ -312,19 +326,19 @@ aside#info-panel .info-block .info-section > select {
   cursor: pointer;
   display: block;
 }
-/* line 241, ../sass/Site.scss */
+/* line 251, ../sass/Site.scss */
 #map .slider > button + button {
   margin-top: .5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* line 247, ../sass/Site.scss */
+/* line 257, ../sass/Site.scss */
 #map .slider > button > i {
   color: black;
   font-size: 1rem;
 }
-/* line 253, ../sass/Site.scss */
+/* line 263, ../sass/Site.scss */
 .panel-show #map {
   transition-property: width;
   width: -webkit-calc(100% - 400px);
@@ -333,45 +347,46 @@ aside#info-panel .info-block .info-section > select {
 }
 
 @media (max-width: 550px) {
-  /* line 260, ../sass/Site.scss */
+  /* line 270, ../sass/Site.scss */
   nav {
     display: block;
     padding: 0;
   }
-  /* line 263, ../sass/Site.scss */
+  /* line 273, ../sass/Site.scss */
   nav header {
     justify-content: center;
   }
-  /* line 265, ../sass/Site.scss */
+  /* line 275, ../sass/Site.scss */
   nav header .img-logo {
-    position: absolute;
-    left: 5%;
+    height: 60px;
+    margin-left: -1rem;
   }
-  /* line 269, ../sass/Site.scss */
+  /* line 279, ../sass/Site.scss */
   nav header h1 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    margin-left: 0;
   }
-  /* line 272, ../sass/Site.scss */
+  /* line 283, ../sass/Site.scss */
   nav header h3 {
     display: none;
   }
-  /* line 275, ../sass/Site.scss */
+  /* line 286, ../sass/Site.scss */
   nav header #btn-menu {
     display: flex;
   }
-  /* line 277, ../sass/Site.scss */
+  /* line 288, ../sass/Site.scss */
   .menu-show nav header #btn-menu {
     display: none;
   }
-  /* line 281, ../sass/Site.scss */
+  /* line 292, ../sass/Site.scss */
   nav header #btn-close-menu {
     display: none;
   }
-  /* line 283, ../sass/Site.scss */
+  /* line 294, ../sass/Site.scss */
   .menu-show nav header #btn-close-menu {
     display: flex;
   }
-  /* line 288, ../sass/Site.scss */
+  /* line 299, ../sass/Site.scss */
   nav .menu {
     opacity: 0;
     z-index: 700;
@@ -380,7 +395,7 @@ aside#info-panel .info-block .info-section > select {
     position: absolute;
     top: 60px;
     left: 0;
-    padding-top: 20%;
+    padding-top: 15%;
     -moz-transition: visibility 0s, opacity 0.3s ease-in-out;
     -o-transition: visibility 0s, opacity 0.3s ease-in-out;
     -webkit-transition: visibility 0s, opacity 0.3s ease-in-out;
@@ -389,46 +404,43 @@ aside#info-panel .info-block .info-section > select {
     display: block;
     margin-left: 0;
   }
-  /* line 301, ../sass/Site.scss */
+  /* line 312, ../sass/Site.scss */
   .menu-show nav .menu {
     opacity: 1;
     visibility: visible;
   }
-  /* line 305, ../sass/Site.scss */
+  /* line 316, ../sass/Site.scss */
   nav .menu .nav-item {
     width: 100%;
-    height: 15%;
+    height: 20%;
     text-align: center;
     z-index: 100;
     position: static;
   }
-  /* line 311, ../sass/Site.scss */
+  /* line 322, ../sass/Site.scss */
+  nav .menu .nav-item i {
+    display: inline-flex;
+  }
+  /* line 325, ../sass/Site.scss */
   nav .menu .nav-item:active {
     text-decoration: underline;
   }
-  /* line 314, ../sass/Site.scss */
+  /* line 328, ../sass/Site.scss */
   nav .menu .nav-item > span {
     color: white;
     font-size: 1.25rem;
-    line-height: 20%;
-    vertical-align: middle;
     letter-spacing: 3px;
+    display: initial;
   }
-  /* line 320, ../sass/Site.scss */
-  nav .menu .nav-item > span:before {
-    content: "\f054";
-    margin-right: .313rem;
-    font-family: FontAwesome;
-  }
-  /* line 327, ../sass/Site.scss */
+  /* line 335, ../sass/Site.scss */
   nav .menu .nav-item:hover span, nav .menu .nav-item.active span {
     border: none;
   }
-  /* line 331, ../sass/Site.scss */
+  /* line 339, ../sass/Site.scss */
   nav .menu .nav-item + .nav-item {
     margin-left: 0;
   }
-  /* line 334, ../sass/Site.scss */
+  /* line 342, ../sass/Site.scss */
   nav .menu .nav-item:first-child:after {
     content: " ";
     width: 100%;
@@ -440,7 +452,7 @@ aside#info-panel .info-block .info-section > select {
     z-index: -1;
   }
 
-  /* line 347, ../sass/Site.scss */
+  /* line 355, ../sass/Site.scss */
   #info-panel {
     width: -webkit-calc(100% - 50px) !important;
     width: -moz-calc(100% - 50px) !important;
@@ -450,16 +462,16 @@ aside#info-panel .info-block .info-section > select {
     left: calc(-100% + 50px) !important;
   }
 
-  /* line 352, ../sass/Site.scss */
+  /* line 360, ../sass/Site.scss */
   .panel-show #map {
     transition-property: width;
     width: 50px;
   }
-  /* line 355, ../sass/Site.scss */
+  /* line 363, ../sass/Site.scss */
   .panel-show #map .slider {
     right: -2rem;
   }
-  /* line 359, ../sass/Site.scss */
+  /* line 367, ../sass/Site.scss */
   #map .slider {
     -moz-transition: right 0.15s ease-in-out 0.5s;
     -o-transition: right 0.15s ease-in-out 0.5s;
@@ -470,20 +482,60 @@ aside#info-panel .info-block .info-section > select {
     right: 1rem;
   }
 }
-/* line 367, ../sass/Site.scss */
+/* line 375, ../sass/Site.scss */
 .display-none {
   display: none;
 }
 
-/* line 371, ../sass/Site.scss */
+/* line 379, ../sass/Site.scss */
 header:focus {
   outline: 0;
 }
 
-/* line 375, ../sass/Site.scss */
+/* line 383, ../sass/Site.scss */
 select {
   padding: .313rem .5rem;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
+}
+
+/* line 390, ../sass/Site.scss */
+h1 {
+  font-size: 1.75rem;
+}
+
+/* line 393, ../sass/Site.scss */
+.h1 {
+  font-size: 1.75rem !important;
+}
+
+/* line 390, ../sass/Site.scss */
+h2 {
+  font-size: 1.5rem;
+}
+
+/* line 393, ../sass/Site.scss */
+.h2 {
+  font-size: 1.5rem !important;
+}
+
+/* line 390, ../sass/Site.scss */
+h3 {
+  font-size: 1.25rem;
+}
+
+/* line 393, ../sass/Site.scss */
+.h3 {
+  font-size: 1.25rem !important;
+}
+
+/* line 390, ../sass/Site.scss */
+h4 {
+  font-size: 1.1rem;
+}
+
+/* line 393, ../sass/Site.scss */
+.h4 {
+  font-size: 1.1rem !important;
 }

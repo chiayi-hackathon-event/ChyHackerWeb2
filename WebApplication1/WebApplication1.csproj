@@ -379,6 +379,7 @@
     <Content Include="Views\Shared\_Lodging.cshtml" />
     <Content Include="Views\Shared\_Transport.cshtml" />
     <Content Include="Views\Shared\_Industry.cshtml" />
+    <Content Include="Views\Shared\_Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
