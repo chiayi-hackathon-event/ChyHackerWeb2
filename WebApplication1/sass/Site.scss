@@ -42,7 +42,7 @@ nav {
     color: white;
     padding-left: 7%;
     z-index: 100;
-    background-color: black;
+    background-color: #2497da;
     &:focus{
         outline: 0;
     }
@@ -50,7 +50,7 @@ nav {
         display: flex;
         align-items: center;
         .img-logo{
-            height:50px;
+            height:40px;
             margin-right:.25rem;
         }
         h3{
@@ -69,15 +69,15 @@ nav {
             align-items: center;
             justify-content: center;
             @include border-radius(3px 3px);
-            background-color: black;
+            background-color: #2497da;
             border-width: 1px;
-            color: gray;
-            border-color: gray;
+            color: #ddd;
+            border-color: #ddd;
             right: 1rem;
             position: absolute;
             &:hover{
-                border-color: #eee;
-                color: #eee;
+                border-color: white;
+                color: white;
             }
             i{
                 font-size: 20px;
@@ -88,22 +88,34 @@ nav {
         display: flex;
         height: 60px;
         align-items: center;
+        margin-left: 2rem;
         .nav-item{
-            color: #aaa;
+            color: white;
             cursor: pointer;
             height: 100%;
             vertical-align: middle;
             line-height: 60px;
+            position: relative;
             span{
                 font-size: 1rem;
-                line-height: 1.5rem;
-                vertical-align: middle;
-                padding: 0 1.5rem;
+                padding: .5rem 1.5rem;
                 white-space:nowrap;
+                border: 1px solid transparent;
+                @include border-radius(5px 5px);
             }
             &:hover{
-                color: white;
+                span{
+                    background-color: rgba(255, 255, 255, .2);
+                }
                 /*@include linear-gradient(gray, white, .3);*/
+            }
+            &.active{
+                span{
+                    border-color: white;
+                }
+            }
+            + .nav-item{
+                margin-left: 1rem;
             }
         }
     }
@@ -299,6 +311,7 @@ aside#info-panel {
             @include transition(visibility 0s, opacity .3s ease-in-out);
             visibility: hidden;
             display: block;
+            margin-left: 0;
             .menu-show & {
                 opacity: 1;
                 visibility: visible;
@@ -308,9 +321,10 @@ aside#info-panel {
                 height: 20%;
                 text-align: center;
                 z-index: 100;
-                    &:active{
-                        text-decoration: underline;
-                    }
+                position: static;
+                &:active{
+                    text-decoration: underline;
+                }
                 > span{
                     color: white;
                     font-size: 1.25rem;
@@ -321,6 +335,11 @@ aside#info-panel {
                         content: "\f054";
                         margin-right: .313rem;
                         font-family: FontAwesome;
+                    }
+                }
+                &:hover{
+                    span {
+                        border: none;
                     }
                 }
                 &:first-child:after{

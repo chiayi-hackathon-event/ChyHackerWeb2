@@ -30,6 +30,8 @@
         $('.info-block').hide();
         $('.info-block[id=' + $(this).attr('name') + ']').show();
         $('body').addClass('panel-show');
+        $(this).parent().find('.active').removeClass('active');
+        $(this).addClass('active');
     }
 
     var _init = function () {

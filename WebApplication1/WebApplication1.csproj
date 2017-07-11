@@ -224,6 +224,7 @@
     <Content Include="Content\img\BussPt_on.svg" />
     <Content Include="Content\img\Buss_off.svg" />
     <Content Include="Content\img\Buss_on.svg" />
+    <Content Include="Content\img\chiayi1.svg" />
     <Content Include="Content\img\CmpyPt_off.svg" />
     <Content Include="Content\img\CmpyPt_on.svg" />
     <Content Include="Content\img\Cmpy_off.svg" />
