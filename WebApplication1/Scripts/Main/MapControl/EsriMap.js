@@ -21,7 +21,7 @@ define(function (module) {
                 });
                 _Status.map.infoWindow.startup();
                 _Status.map.on('load', function () {
-                    Hackathon.Map.CenterAt(281016, 2770090, 7);
+                    Hackathon.Map.CenterAt(193630, 2597736, 6);
                 });
                 if (_Status.map != undefined) {
                     dtd.resolve();
@@ -175,6 +175,18 @@ define(function (module) {
             }
         });
     };
+    var _RemoveLayer = function (LayerID) {
+        try {
+            if (_Status.layList[LayerID]) {
+                _Status.map.removeLayer(_Status.layList[LayerID]);
+                _Status.layList[LayerID] = undefined;
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+
+    }
     module.GetScreenPoint = function (geometry) {
         return _Status.map.toScreen(geometry);
     };
@@ -217,5 +229,8 @@ define(function (module) {
     module.CenterAt = function (x, y, scale) {
         _CenterAt(x, y, scale);
     };
+    module.RemoveLayer = function (LayerID) {
+        _RemoveLayer(LayerID);
+    }
     return module;
 }(Hackathon.Map))

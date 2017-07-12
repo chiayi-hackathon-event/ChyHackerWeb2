@@ -205,6 +205,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GetPartialViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -347,9 +348,16 @@
     <Content Include="Scripts\lib\SGSArcGISServer3826.js" />
     <Content Include="Scripts\Main\Func\Common\Common.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Hackathon.js" />
+    <Content Include="Scripts\Main\Func\Data\Data_Lodging.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Hackathon.js" />
+    <Content Include="Scripts\Main\Func\Sev\Sev_Lodging.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Hackathon.js" />
+    <Content Include="Scripts\Main\Func\UI\UI_Industry.js" />
+    <Content Include="Scripts\Main\Func\UI\UI_Lodging.js" />
+    <Content Include="Scripts\Main\Func\UI\UI_Main.js" />
+    <Content Include="Scripts\Main\Func\UI\UI_Transport.js" />
     <Content Include="Scripts\Main\MapControl\EsriMap.js" />
+    <Content Include="Scripts\Main\MapControl\Loader\UILoader.js" />
     <Content Include="Scripts\Main\Module\ModuleInitial.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Buss.json" />
@@ -360,6 +368,7 @@
     <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\FontAwesome\fonts\FontAwesome.otf" />
+    <Content Include="ChyPoly.json" />
     <None Include="Data.json" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -36,7 +36,7 @@
     </nav>
         @RenderBody()
     <script>
-        var baseURL = 'http://127.0.0.1/HackathonC';
+        var baseURL = 'http://127.0.0.1/ChyHackathon';
         var dojoConfig = {
             // 需使用絕對路徑
             paths: {
@@ -52,13 +52,15 @@
                 'SGSJS': baseURL + '/Scripts/lib/SGSArcGISServer3826',
                 'AjaxAgent': baseURL + '/Scripts/lib/AjaxAgent',
                 'Framework': baseURL + '/Scripts/lib/Framework',
+                //
+                'Views': baseURL + '/Views/Shared',
+                //******Loader********
+                'UILoader': baseURL + '/Scripts/Main/MapControl/Loader/UILoader',
             },
             async: true
         };
     </script>
     <script src="https://js.arcgis.com/3.18/"></script>
-    @*<script src="http://localhost/EGISWeb/ArcGIS_JSAPI/3.18/3.18compact/init.js"></script>*@
-
-    <script  src="http://localhost/HackathonC/Scripts/Main/Module/ModuleInitial.js"></script>
+    <script src="http://localhost/ChyHackathon/Scripts/Main/Module/ModuleInitial.js"></script>
 </body>
 </html>
