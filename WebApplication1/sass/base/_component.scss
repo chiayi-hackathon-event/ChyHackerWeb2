@@ -1,0 +1,13 @@
+﻿
+button:focus{
+    outline: 0;
+}
+
+header:focus{
+    outline: 0;
+}
+
+select{
+    padding: .313rem .5rem;
+    @include border-radius(3px);
+}

@@ -1,0 +1,106 @@
+﻿
+%panel-transition{
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+}
+
+aside#info-panel {
+    position: absolute;
+    z-index: 5;
+    width: 400px;
+    left: -400px;
+    height: calc(100% - 60px);
+    background-color:white;
+    transition-property: transform;
+    @extend %panel-transition;
+    .info-title{
+        width: 100%;
+        height: 45px;
+        padding: 0 1rem;
+        background-color: $orange;
+        color: white;
+        display: flex; 
+        align-items: center;
+    }
+    .info-block { 
+        overflow-y: auto;
+        height: 100%;
+        .info-section{
+            > h3{
+                width: 100%;
+                text-align: center;
+                padding: .818rem 0;
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+            }
+            content{
+                padding: 1rem 1.5rem;
+                select{
+                    display: block;
+                    margin: auto;
+                    + select {
+                        margin-top: .5rem;
+                    }
+                }
+            }
+            + .info-section{
+                margin-top: 1rem;
+            }
+        }
+    }
+    
+    .panel-show & {
+        transform: translateX(100%);
+    }
+    
+    #btn-slide {
+        width: 25px;
+        height: 45px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        background-color: $orange;
+        color: white;
+        border: 0;
+        @include border-radius(0 3px 3px 0);
+        position: absolute;
+        top: 0;   
+        right: -25px;
+        @include transition(right linear .65s);
+        &:hover{
+            background-color: $red;
+        }
+        .panel-empty &{
+            display: none !important;
+        }
+        &:before{
+            content: " ";
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 45px;
+            left: 0;
+            border-width: 15px 22px 0 0;
+            border-style: solid;
+            border-color: $dark-red transparent transparent transparent;
+        }
+        &:after{
+            font-size: 1.25rem;
+            font-family: FontAwesome;
+            content: '\f0da';
+            .panel-show &{
+                content: '\f0d9'; 
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-sm){
+    #info-panel{
+        @include calc-important("width", "100% - 50px");
+        @include calc-important("left", "-100% + 50px");
+    }
+}
