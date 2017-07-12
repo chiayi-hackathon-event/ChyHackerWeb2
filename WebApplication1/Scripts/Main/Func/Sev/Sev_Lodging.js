@@ -78,6 +78,10 @@
                 // ***  旅館種點  ****
                 var HotelBedCount = _AddPOI('A02', hotellist);
                 BedCount = BabBedCount + HotelBedCount;
+
+
+
+
                debugger
             })
     }
