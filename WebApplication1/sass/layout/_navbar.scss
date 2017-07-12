@@ -92,8 +92,9 @@
                 @include border-radius(5px 5px);
             }
             &.active i, &.active:hover i{
-                color: $yellow;
-                border-color: $yellow;
+                background-color: white;
+                color: $blue;
+                border-color: $blue;
             }
             &:hover{
                 i{
@@ -171,7 +172,16 @@
                     display: inline-flex;
                 }
                 &:active{
-                    text-decoration: underline;
+                    span{
+                        text-decoration: underline;
+                    }
+                }
+                &.active, &.active:hover {
+                    i{
+                        background-color: transparent;
+                        color: white;
+                        border-color: white;
+                    }
                 }
                 > span{
                     font-size: 1.25rem;

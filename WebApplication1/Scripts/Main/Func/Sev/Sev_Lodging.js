@@ -109,7 +109,7 @@
                 TEL: _obj[i].TEL,
             }
             graphicData.Symbol = {
-                Url: window.location.href + 'Content/img/POI/'+_type+'.svg',
+                Url: window.location.href + '/Content/img/POI/'+_type+'.svg',
                 Width: 25,
                 Height: 25,
                 yoffset: 5,

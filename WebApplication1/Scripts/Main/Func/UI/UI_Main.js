@@ -32,10 +32,9 @@
         $('body').removeClass('menu-show');
     }
     var _Event_Click_NavItem = function () {
-     //   $('body').removeClass('menu-show panel-empty');
-       // $('.info-block').hide();
-       // $('.info-block[id=' + $(this).attr('name') + ']').show();
-    //    $('body').addClass('panel-show');
+        $('.nav-item.active').removeClass('active');
+        $(this).addClass('active');
+        $('body').removeClass('menu-show');
     }
     var _Event_Click_Lodging = function () {
         if (Hackathon.UIMain.Lodging) {

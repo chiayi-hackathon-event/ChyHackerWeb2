@@ -245,68 +245,69 @@ nav .menu li.nav-item span {
 }
 /* line 94, ../sass/layout/_navbar.scss */
 nav .menu li.nav-item.active i, nav .menu li.nav-item.active:hover i {
-  color: #fced9e;
-  border-color: #fced9e;
+  background-color: white;
+  color: #2497da;
+  border-color: #2497da;
 }
-/* line 98, ../sass/layout/_navbar.scss */
+/* line 99, ../sass/layout/_navbar.scss */
 nav .menu li.nav-item:hover {
   /*@include linear-gradient(gray, white, .3);*/
 }
-/* line 99, ../sass/layout/_navbar.scss */
+/* line 100, ../sass/layout/_navbar.scss */
 nav .menu li.nav-item:hover i {
   color: white;
   border-color: white;
 }
-/* line 103, ../sass/layout/_navbar.scss */
+/* line 104, ../sass/layout/_navbar.scss */
 nav .menu li.nav-item:hover span {
   color: white;
 }
-/* line 108, ../sass/layout/_navbar.scss */
+/* line 109, ../sass/layout/_navbar.scss */
 nav .menu li.nav-item + .nav-item {
   margin-left: 1rem;
 }
 
 @media (max-width: 550px) {
-  /* line 117, ../sass/layout/_navbar.scss */
+  /* line 118, ../sass/layout/_navbar.scss */
   nav {
     display: block;
     padding: 0;
   }
-  /* line 120, ../sass/layout/_navbar.scss */
+  /* line 121, ../sass/layout/_navbar.scss */
   nav > header {
     justify-content: center;
   }
-  /* line 122, ../sass/layout/_navbar.scss */
+  /* line 123, ../sass/layout/_navbar.scss */
   nav > header .img-logo {
     height: 60px;
     margin-left: -1rem;
   }
-  /* line 126, ../sass/layout/_navbar.scss */
+  /* line 127, ../sass/layout/_navbar.scss */
   nav > header h1 {
     font-size: 1.5rem;
     margin-left: 0;
   }
-  /* line 130, ../sass/layout/_navbar.scss */
+  /* line 131, ../sass/layout/_navbar.scss */
   nav > header h3 {
     display: none;
   }
-  /* line 133, ../sass/layout/_navbar.scss */
+  /* line 134, ../sass/layout/_navbar.scss */
   nav > header #btn-menu {
     display: flex;
   }
-  /* line 135, ../sass/layout/_navbar.scss */
+  /* line 136, ../sass/layout/_navbar.scss */
   .menu-show nav > header #btn-menu {
     display: none;
   }
-  /* line 139, ../sass/layout/_navbar.scss */
+  /* line 140, ../sass/layout/_navbar.scss */
   nav > header #btn-close-menu {
     display: none;
   }
-  /* line 141, ../sass/layout/_navbar.scss */
+  /* line 142, ../sass/layout/_navbar.scss */
   .menu-show nav > header #btn-close-menu {
     display: flex;
   }
-  /* line 146, ../sass/layout/_navbar.scss */
+  /* line 147, ../sass/layout/_navbar.scss */
   nav .menu {
     opacity: 0;
     z-index: 700;
@@ -324,12 +325,12 @@ nav .menu li.nav-item + .nav-item {
     display: block;
     margin-left: 0;
   }
-  /* line 159, ../sass/layout/_navbar.scss */
+  /* line 160, ../sass/layout/_navbar.scss */
   .menu-show nav .menu {
     opacity: 1;
     visibility: visible;
   }
-  /* line 163, ../sass/layout/_navbar.scss */
+  /* line 164, ../sass/layout/_navbar.scss */
   nav .menu li.nav-item {
     width: 100%;
     height: 15%;
@@ -338,25 +339,31 @@ nav .menu li.nav-item + .nav-item {
     position: static;
     display: block;
   }
-  /* line 170, ../sass/layout/_navbar.scss */
+  /* line 171, ../sass/layout/_navbar.scss */
   nav .menu li.nav-item i {
     display: inline-flex;
   }
-  /* line 173, ../sass/layout/_navbar.scss */
-  nav .menu li.nav-item:active {
+  /* line 175, ../sass/layout/_navbar.scss */
+  nav .menu li.nav-item:active span {
     text-decoration: underline;
   }
-  /* line 176, ../sass/layout/_navbar.scss */
+  /* line 180, ../sass/layout/_navbar.scss */
+  nav .menu li.nav-item.active i, nav .menu li.nav-item.active:hover i {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+  }
+  /* line 186, ../sass/layout/_navbar.scss */
   nav .menu li.nav-item > span {
     font-size: 1.25rem;
     letter-spacing: 3px;
     display: initial;
   }
-  /* line 181, ../sass/layout/_navbar.scss */
+  /* line 191, ../sass/layout/_navbar.scss */
   nav .menu li.nav-item + .nav-item {
     margin-left: 0;
   }
-  /* line 184, ../sass/layout/_navbar.scss */
+  /* line 194, ../sass/layout/_navbar.scss */
   nav .menu li.nav-item:first-child:after {
     content: " ";
     width: 100%;
@@ -369,20 +376,20 @@ nav .menu li.nav-item + .nav-item {
   }
 }
 @media (min-width: 550px) and (max-width: 750px) {
-  /* line 201, ../sass/layout/_navbar.scss */
+  /* line 211, ../sass/layout/_navbar.scss */
   nav > header {
     justify-content: center;
   }
-  /* line 203, ../sass/layout/_navbar.scss */
+  /* line 213, ../sass/layout/_navbar.scss */
   nav > header .img-logo {
     height: 60px;
   }
-  /* line 206, ../sass/layout/_navbar.scss */
+  /* line 216, ../sass/layout/_navbar.scss */
   nav > header h1 {
     font-size: 1.6rem;
     margin-left: 0;
   }
-  /* line 210, ../sass/layout/_navbar.scss */
+  /* line 220, ../sass/layout/_navbar.scss */
   nav > header h3 {
     display: none;
   }
