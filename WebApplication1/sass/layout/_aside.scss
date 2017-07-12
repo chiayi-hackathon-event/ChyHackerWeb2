@@ -50,6 +50,9 @@ aside#info-panel {
                 width: 350px;
                 height: 250px;
                 margin: auto;
+                &#nation-chart{
+                    height: 375px;
+                }
             }
             + .info-section{
                 margin-top: 1rem;

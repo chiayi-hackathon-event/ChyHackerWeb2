@@ -8,7 +8,7 @@
         this.credits = { enabled: false };
         this.exporting = { enabled: false };
         this.series = [];
-        this.colors = ['#45CFF0', '#97EC71', '#F9CB62', '#DE9DD6', '#FA6A52', '#7C96FF', '#F76591', '#46C755', '#F79376', '#A35B2E', '#F756D6', '#42BDA0', '#8C90FC'];
+        this.colors = ['#45CFF0', '#A35B2E', '#97EC71', '#F9CB62', '#8C90FC', '#FA6A52', '#7C96FF', '#F76591', '#46C755', '#DE9DD6', '#F79376', '#F756D6', '#42BDA0'];
     };
     // 圓餅圖
     var _PieChart = function () {
@@ -24,15 +24,8 @@
                 allowPointSelect: true,
                 cursor: 'pointer',
                 innerSize: '50%',
-                dataLabels: {
-                    enabled: true,
-                    padding: 0,
-                    allowOverlap: true,
-                    format: '<b>{point.name} ({point.y})<br>{point.percentage:.1f}%</b>',
-                    style: {
-                        fontSize: '14px'
-                    }
-                }
+                dataLabels:{ enabled: false},
+                showInLegend: true
             }
         }
     }
