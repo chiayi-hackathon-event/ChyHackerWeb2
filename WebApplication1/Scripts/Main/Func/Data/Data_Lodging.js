@@ -44,7 +44,10 @@
         var _option = { async: true, dataType: "JSON", type: "GET" };
         var _callback = function (evt) {
             var xmlDoc = evt.Result;
-            return dtd.resolve(xmlDoc);
+            return dtd.resolve({
+                month: _month,
+                data: xmlDoc
+            });
         }
         Hackathon.Common.GetAjaxData(_url, _data, _callback, _option);
         return dtd.promise();
@@ -64,14 +67,26 @@
         GetPassengerData: function (town_id, _year, _smonth, _emonth) {
             var dtd = $.Deferred();
             if (_smonth > _emonth) { return dtd.reject(); }
-            var arrLength = _emonth - _smonth + 1; debugger
-            var res = new Array(arrLength);
+            var respone = []
             for (var i = 0, count = 0; i <= _emonth - _smonth; i++) {
                 $.when(_GetPassengerData(town_id, _year, _smonth + i)).then(function (data) {
-                    res[i] = data;
-                    debugger
-                    if (i == _emonth - _smonth + 1) {
-                        return dtd.resolve(res);
+                    respone.push(data); 
+                    //資料都回來才resolve
+                    if (respone.length == _emonth - _smonth + 1) {
+
+                        // ****** 注意!!目前因為沒資料先做假資料，之後移除這段即可 ************
+                        respone =[]
+                        for (var i = 0; i < 7; i++) {
+                           
+                            respone.push({
+                                month: i + 1,
+                                data: data.data
+                            });
+                        }
+                        // ************************************************************
+
+
+                        return dtd.resolve(respone);
                     }
                 })
             }
