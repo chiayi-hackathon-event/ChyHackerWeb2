@@ -1,35 +1,56 @@
 ﻿@* 住宿 *@
+
+<div class="info-title">
+    <h3>住宿分析</h3>
+</div>
+
 <section id="lodging" class="info-block">
-    <div>
-        <header>
-            <h5>嘉義市西區</h5>
-        </header>
-        <section class="info-section">
-       
-        </section>
-    </div>
-    <div>
-        <header>
-            <h5>基本統計</h5>
-        </header>
-        <section class="info-section">
-            <select><option>這裡裝點什麼</option></select>
-        </section>
-    </div>
-    <div>
-        <header>
-            <h5>房間供需趨勢</h5>
-        </header>
-        <section class="info-section">
-            <select><option>這裡裝點什麼</option></select>
-        </section>
-    </div>
-    <div>
-        <header>
-            <h5>房客國籍比</h5>
-        </header>
-        <section class="info-section">
-            <select><option>這裡裝點什麼</option></select>
-        </section>
-    </div>
+    <section class="info-section">
+        <content>
+            <select class="sel-district">
+                <option>嘉義市 - 西區</option>
+            </select>
+            <select>
+                <option class="sel-lodging-type">旅館</option>
+            </select>
+        </content>
+    </section>
+
+    <section class="info-section">
+        <h3>基本統計</h3>
+        <content>
+            <table class="tbl-lodging-stats">
+                <tr>
+                    <td><img src="~/Content/img/Lodging/hotel.svg" /></td>
+                    <td><img src="~/Content/img/Lodging/room.svg" /></td>
+                    <td><img src="~/Content/img/Lodging/price.svg" /></td>
+                </tr>
+                <tr class="tr-number">
+                    <td name="hotel-count">235</td>
+                    <td name="room-count">2,350</td>
+                    <td name="avg-price">230萬</td>
+                </tr>
+                <tr class="tr-unit">
+                    <td>(家數)</td>
+                    <td>(房間數)</td>
+                    <td>(平均房價)</td>
+                </tr>
+            </table>
+        </content>
+    </section>
+
+    <section class="info-section">
+        <h3>房間供需趨勢</h3>
+        <content>
+            <div id="room-chart" class="chart-container"></div>
+        </content>
+    </section>
+
+    <section class="info-section">
+        <h3>房客國籍比</h3>
+        <content>
+            <div id="guest-chart" class="chart-container"></div>
+        </content>
+    </section>
+
 </section>

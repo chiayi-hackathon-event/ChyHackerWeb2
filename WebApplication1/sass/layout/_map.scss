@@ -1,0 +1,56 @@
+﻿#map {
+    position: fixed;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: beige;
+    @extend %panel-transition;
+    .slider {
+        position: fixed;
+        right: 1.5rem;
+        top: 5rem;
+        z-index: 500;
+        > button {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 1.5rem;
+            border-radius: .313rem;
+            border: 2px solid black;
+            background-color: rgba(255,255,255,0.90);
+            cursor: pointer;
+            display: block;
+            + button{
+                margin-top: .5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            > i{
+                color: black;
+                font-size: 1rem;
+            }
+        }
+    }
+    .panel-show & {
+        transition-property: width;
+        @include calc("width", "100% - 400px");
+    }
+}
+
+@media (max-width: $screen-sm){
+    #map{
+        .panel-show & {
+            transition-property: width;
+            width: 50px;
+            .slider{
+                right: -2rem;
+            }
+        }
+        .slider{
+            @include transition(right ease-in-out .15s .3s);
+            top: 5rem;
+            right: 1rem;
+        }
+    }
+}

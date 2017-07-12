@@ -1,0 +1,31 @@
+﻿#lodging{
+
+    .info-section{
+        content > select{
+            width: 80%;
+        }
+    }
+    
+    .tbl-lodging-stats{
+        margin: auto;
+        width: 90%;
+        .tr-number{
+            font-size: 1.25rem;
+            td{
+                font-weight: bold;
+            }
+        }
+        .tr-unit{
+            font-size: .8rem;
+            td{
+                padding: .5rem 0;
+            }
+        }
+        img {
+            width: 90px;
+        }
+        td{
+            text-align: center;
+        }
+    }
+}
