@@ -66,9 +66,10 @@
         /// 種點 - 加入民宿、旅館點位資料
         /// </summary>
         /// <param name="_townId" type="type"></param>
-        var BedCount = 0;
+        var BedCount = 0; debugger
         $.when(_Data.GetPointData(_townId, 'bablist'), _Data.GetPointData(_townId, 'hotellist'), _Data.GetPassengerData(_townId,'2017', 1, 1)).
             then(function (bablist, hotellist, PassengerData) {
+                debugger
                 var POILayer = Hackathon.Map.GetStatus().layList[_Status.POILayerName];
                 POILayer.clear();
                 // ***  TODO 待整理的髒髒der Code
@@ -86,7 +87,7 @@
         /// </summary>
         /// <param name="_type" type="type"></param>
         /// <param name="_obj" type="type"></param>
-        var BedCount = 0;
+        var BedCount = 0;debugger
         for (let i = 0; i < _obj.length; i++) {
             var _id = 'babPoint_' + i;
             var graphicData = { ID: _id, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
@@ -111,7 +112,7 @@
                 Type: 'PictureMarkerSymbol'
             };
             var _g = Hackathon.Map.AddPoint(_Status.POILayerName, graphicData);
-            BedCount += _obj[i].ROOM_NUM;
+            BedCount += Number(_obj[i].ROOM_NUM);
             //  PtArry.push(_g);
         }
         return BedCount;

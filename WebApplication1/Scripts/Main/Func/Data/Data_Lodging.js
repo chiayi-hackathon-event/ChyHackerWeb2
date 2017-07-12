@@ -64,14 +64,13 @@
         GetPassengerData: function (town_id, _year, _smonth, _emonth) {
             var dtd = $.Deferred();
             if (_smonth > _emonth) { return dtd.reject(); }
-            var arrLength = _emonth - _smonth + 1; debugger
-            var res = new Array(arrLength);
+            var respone = []
             for (var i = 0, count = 0; i <= _emonth - _smonth; i++) {
                 $.when(_GetPassengerData(town_id, _year, _smonth + i)).then(function (data) {
-                    res[i] = data;
-                    debugger
-                    if (i == _emonth - _smonth + 1) {
-                        return dtd.resolve(res);
+                    respone.push(data); 
+                    //資料都回來才resolve
+                    if (respone.length == _emonth - _smonth+1) {
+                        return dtd.resolve(respone);
                     }
                 })
             }
