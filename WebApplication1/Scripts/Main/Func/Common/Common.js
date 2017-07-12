@@ -99,6 +99,9 @@ define(['proj4'], function (Proj4js) {
         return _dtd.promise();
     };
 
+    var _Set_UI = function (_html) {
+        $('#info-panel .Func-panel').empty().append(_html);
+    }
     //////////////////////////////////////////////////////////////////
     var  module = {
        CoordTran : function (x, y, fromCoord, ToCoord) {
@@ -108,7 +111,10 @@ define(['proj4'], function (Proj4js) {
            var dtd = $.Deferred();
            $.when(_GetAjaxData(url, data, callback, option)).then(function (data) { dtd.resolve(data); });
            return dtd.promise();
-       }
+      },
+      Set_UI: function (_html) {
+          _Set_UI(_html);
+      }
     }
     Hackathon.Common = module;
     return module;
