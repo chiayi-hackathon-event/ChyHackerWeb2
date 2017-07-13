@@ -7,11 +7,12 @@
 <section id="lodging" class="info-block">
     <section class="info-section">
         <content>
-            <select class="sel-district">
+            @*<select class="sel-district">
                 <option>嘉義市 - 西區</option>
-            </select>
+            </select>*@
             <select  class="sel-lodging-type">
-                <option>旅館</option>
+                <option value="hotel">旅館</option>
+                <option value="bab">民宿</option>
             </select>
         </content>
     </section>
@@ -26,14 +27,14 @@
                     <td><img src="~/Content/img/Lodging/price.svg" /></td>
                 </tr>
                 <tr class="tr-number">
-                    <td name="hotel-count">235</td>
-                    <td name="room-count">2,350</td>
-                    <td name="avg-price">230萬</td>
+                    <td name="LodgingCount"></td>
+                    <td name="RoomCount"></td>
+                    <td name="AvgPrice"></td>
                 </tr>
                 <tr class="tr-unit">
-                    <td>(家數)</td>
-                    <td>(房間數)</td>
-                    <td>(平均房價)</td>
+                    <td>家數</td>
+                    <td>房間數</td>
+                    <td>平均房價(元)</td>
                 </tr>
             </table>
         </content>

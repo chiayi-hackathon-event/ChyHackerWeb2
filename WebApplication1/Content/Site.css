@@ -467,7 +467,7 @@ aside#info-panel .info-block .info-section .chart-container {
 }
 /* line 54, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section .chart-container#nation-chart {
-  height: 375px;
+  height: 320px;
 }
 /* line 58, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section + .info-section {
