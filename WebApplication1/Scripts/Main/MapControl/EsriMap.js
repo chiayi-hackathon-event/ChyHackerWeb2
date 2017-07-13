@@ -4,6 +4,7 @@ define(function (module) {
         map: undefined,
         layList: {},
     };
+    var toolbar;
     //////////////////////////////////////////////////////////
     var _SetMap = function (HTMLMap) {
         var dtd = $.Deferred();
@@ -19,6 +20,7 @@ define(function (module) {
                     SpatialReference: _Status.SR,
                     slider: false,
                 });
+                toolbar = new Draw(_Status.map);
                 _Status.map.infoWindow.startup();
                 _Status.map.on('load', function () {
                     Hackathon.Map.CenterAt(193630, 2597736, 6);
@@ -29,12 +31,12 @@ define(function (module) {
             });
         return dtd.promise();
     };
-    var _LoadTgosMap = function(){
-        require(['AjaxAgent','Framework','SGSJS'], function () {
-                var _url = "http://api.tgos.tw/Agent/TWD97/Agent_TGOSMAP3826.aspx";
-                var sgsLayer = new SGSTileLayer(_url, "", 0);
-                _Status.map.addLayer(sgsLayer);			//加入圖層
-           });
+    var _LoadTgosMap = function () {
+        require(['AjaxAgent', 'Framework', 'SGSJS'], function () {
+            var _url = "http://api.tgos.tw/Agent/TWD97/Agent_TGOSMAP3826.aspx";
+            var sgsLayer = new SGSTileLayer(_url, "", 0);
+            _Status.map.addLayer(sgsLayer);			//加入圖層
+        });
     }
     var _AddLayer = function (LayerType, LayerURL, LayerOption) {
         if (_Status.map == undefined) {
@@ -75,7 +77,9 @@ define(function (module) {
         }
         return _layer;
     };
-    var _AddPoint = function (LayerName, GraphicData) {
+    var _AddPoint = function (LayerName, GraphicData, SymbolOption) {
+        // **** SymbolOption? : 特別擴充，不一定需要此參數，type :object {symboltype:'SimpleMarkerSymbol',symbolstyle:'STYLE_SOLID'}
+
         GraphicData.Geometry.X = Number(GraphicData.Geometry.X);
         GraphicData.Geometry.Y = Number(GraphicData.Geometry.Y);
         var _Geometry;
@@ -83,8 +87,17 @@ define(function (module) {
             _Geometry = new Point(GraphicData.Geometry.X, GraphicData.Geometry.Y, _Status.SR);
         });
         var _Symbol;
-        require(["esri/symbols/PictureMarkerSymbol"], function (PictureMarkerSymbol) {
-            _Symbol = new PictureMarkerSymbol(GraphicData.Symbol.Url, GraphicData.Symbol.Width, GraphicData.Symbol.Height);
+        require(["esri/symbols/PictureMarkerSymbol", "esri/symbols/TextSymbol", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", "esri/Color"], function (PictureMarkerSymbol, TextSymbol, SimpleMarkerSymbol, SimpleLineSymbol, Color) {
+            switch (GraphicData.Symbol.Type) {
+                case "PictureMarkerSymbol":
+                    _Symbol = new PictureMarkerSymbol(GraphicData.Symbol.Url, GraphicData.Symbol.Width, GraphicData.Symbol.Height);
+                    break;
+                case "SimpleMarkerSymbol":
+                    GraphicData.Symbol.Size = (GraphicData.Symbol.Size) ? GraphicData.Symbol.Size : 10;
+                    var _borderColor = (GraphicData.Symbol.BorderColor) ? GraphicData.Symbol.BorderColor : [0, 0, 0, 0];
+                    _Symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, GraphicData.Symbol.Size, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, _borderColor, 1), new Color(GraphicData.Symbol.Color));
+                    break;
+            }
         });
         var _Attribute = GraphicData.Attribute;
         var _NewGraphic;
@@ -133,7 +146,7 @@ define(function (module) {
         }
 
         //加入Graphic
-        var _graphicInfo = {Graphic: new Object() };
+        var _graphicInfo = { Graphic: new Object() };
         _Status.layList[LayerName].add(_NewGraphic);
         _graphicInfo.Graphic = _NewGraphic;
         return _graphicInfo;
@@ -160,7 +173,6 @@ define(function (module) {
                 _window.resize(_Option.WinWidth, _Option.WinHeight);
                 _window.fixedAnchor = _Option.placement;
                 _window.show(_Option.screenPoint);
-                                   
             });
     };
     var _CenterAt = function (x, y, scale) {
@@ -182,11 +194,31 @@ define(function (module) {
                 _Status.layList[LayerID] = undefined;
             }
         }
-        catch(e){
+        catch (e) {
             console.log(e);
         }
-
     }
+    var _MapDraw = function (callback, IsOn) {
+        require(["esri/toolbars/draw"],
+            function (Draw) {
+                switch (IsOn) {
+                    case 0://關
+                        if (toolbar) {
+                            toolbar.deactivate();
+                        }
+                        break;
+                    case 1://開
+                        toolbar.on("draw-end", callback);
+                        toolbar.activate();
+                        break;
+                    case 3:
+                        toolbar = new Draw(_Status.map);
+                        toolbar.on("draw-end", function (evt) { callback(evt); toolbar.deactivate();});
+                        toolbar.activate(Draw.POLYGON);
+                        break;
+                }
+            });
+    };
     module.GetScreenPoint = function (geometry) {
         return _Status.map.toScreen(geometry);
     };
@@ -195,7 +227,7 @@ define(function (module) {
     module.init = function (HTMLMap) {
         var dtd = $.Deferred();
         $.when(_SetMap(HTMLMap)).then(function () {
-           _LoadTgosMap();
+            _LoadTgosMap();
             return dtd.resolve();
         });
         return dtd.promise();
@@ -231,6 +263,9 @@ define(function (module) {
     };
     module.RemoveLayer = function (LayerID) {
         _RemoveLayer(LayerID);
+    }
+    module.MapDraw = function (callback, IsOn) {
+        _MapDraw(callback, IsOn);
     }
     return module;
 }(Hackathon.Map))
