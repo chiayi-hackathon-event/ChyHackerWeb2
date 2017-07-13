@@ -38,7 +38,7 @@
     }
 }
 
-@media (max-width: $screen-sm){
+@media  (max-width: $screen-sm){
     #map{
         .panel-show & {
             transition-property: width;

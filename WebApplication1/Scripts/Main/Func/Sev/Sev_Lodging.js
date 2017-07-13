@@ -4,6 +4,7 @@
         POILayerName: 'POIGraphicLayer',
         graphics: {},
         ArrayRoom: [],
+        ArrayRoomSupply:[],
         ArrayNation: [],
     };
     var _Clear = function () {
@@ -19,8 +20,7 @@
                 //$('#CardPanel').show();
                 //$(_Status.DataTable.cells('td').nodes()).removeClass('active');
                 //$(_Status.DataTable.cells('#' + evt.graphic.id).nodes()).addClass('active');
-                $('body').removeClass('menu-show panel-empty');
-                $('body').addClass('panel-show');
+                $('body').removeClass('menu-show panel-empty').addClass('panel-show');
                 _ShowData(evt.graphic.id);
             }
         });
@@ -68,7 +68,6 @@
         /// 種點 - 加入民宿、旅館點位資料
         /// </summary>
         /// <param name="_townId" type="type"></param>
-        var BedCount = 0; 
         $.when(_Data.GetPointData(_townId, 'bablist'), _Data.GetPointData(_townId, 'hotellist'), _Data.GetPassengerData(_townId,'2017', 1, 1)).
             then(function (bablist, hotellist, PassengerData) {
                 var POILayer = Hackathon.Map.GetStatus().layList[_Status.POILayerName];
@@ -78,17 +77,13 @@
                 var BabBedCount = _AddPOI('A01', bablist);
                 // ***  旅館種點  ****
                 var HotelBedCount = _AddPOI('A02', hotellist);
-                BedCount = BabBedCount + HotelBedCount;
 
                 // 圖表資料處理
-                var MonthSum = 0,
-                    NationObj = {};
-                _Status['ArrayRoom'] = [],
+                var NationObj = {};
                 _Status['ArrayNation'] = [];
+
                 PassengerData.forEach(function (MonthData) {
-                    MonthSum = 0;
                     MonthData.data.forEach(function (Obj) {
-                        MonthSum += Obj.VALUE;
                         if (_Status['ArrayNation'].filter(function (e) { return Obj.NATIONALITY == e.name; }).length == 0) {
                             _Status['ArrayNation'].push({
                                 name: Obj.NATIONALITY,
@@ -98,11 +93,14 @@
                             _Status['ArrayNation'].filter(function (e) { return Obj.NATIONALITY == e.name; })[0].y += Obj.VALUE;
                         }
                     });
-                    _Status['ArrayRoom'].push(MonthSum);
                 })
-                _DrawChart_Room();
+
                 _DrawChart_Nation();
             })
+        _Status['ArrayRoom'] = [];
+        _Status['ArrayRoomSupply'] = [];
+        //_DrawChart_Room();
+
     }
     var _AddPOI = function (_type, _obj) {
         /// <summary>
@@ -135,21 +133,46 @@
                 Type: 'PictureMarkerSymbol'
             };
             var _g = Hackathon.Map.AddPoint(_Status.POILayerName, graphicData);
-            BedCount += Number(_obj[i].ROOM_NUM);
+            BedCount += Number(_obj[i].CUSTOMER);
             //  PtArry.push(_g);
         }
         return BedCount;
     }
 
-
+    // 住宿供需趨勢圖表
     var _DrawChart_Room = function () {
         var type = 'line',
             id = 'room-chart',
-            data = _Status['ArrayRoom'],
-            custom = {},
-            series = null;
-        _Chart.DrawChartWithData(type, id, data, custom);
+            series = [{
+                name: '需求量',
+                data: _Status['ArrayRoom']
+            }, {
+                name: '供給量',
+                data: _Status['ArrayRoomSupply']
+            }],
+            custom = {
+                xAxis: {
+                    type: 'datetime',
+                    tickInterval: 30 * 24 * 3600 * 1000,
+                    labels: {
+                        formatter: function () {
+                            return Highcharts.dateFormat('%b月', this.value);
+                        }
+                    },
+                },
+                yAxis: {
+                    title: { text: '房間數' }
+                },
+                plotOptions: {
+                    series: {
+                        pointStart: Date.UTC(2017, 0, 1),
+                        pointInterval: 30 * 24 * 3600 * 1000
+                    }
+                }
+            };
+        _Chart.DrawChartWithSeries(type, id, series, custom);
     }
+    // 國籍比圖表
     var _DrawChart_Nation = function () {
         var type = 'pie',
             id = 'nation-chart',

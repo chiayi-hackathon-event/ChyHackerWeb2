@@ -13,7 +13,7 @@
         $(document).on('click', 'nav .nav-item[name="lodging"]', _Event_Click_Lodging);
         $(document).on('click', 'nav .nav-item[name="transport"]', _Event_Click_Transport);
         $(document).on('click', 'nav .nav-item[name="industry"]', _Event_Click_Industry);
-
+        $(document).on('click', 'nav .nav-item[name="summary"]', _Event_Click_Summary);
     }
 
     var _Event_btnZoomIn = function () {
@@ -43,7 +43,6 @@
         }else{
             require(['UI/UI_Lodging'], function (UI_Lodging) {
                 UI_Lodging.Init();
-
             })
         }
     }
@@ -53,7 +52,11 @@
     var _Event_Click_Industry = function () {
 
     }
-
+    var _Event_Click_Summary = function () {
+        require(['UI/UI_Summary'], function (UI_Summary) {
+            UI_Summary.Init();
+        })
+    }
     var _Clear = function () {
         if (Hackathon.UIMain.Lodging) { Hackathon.UIMain.Lodging.Clear(); };
         if (Hackathon.UIMain.Industry) { Hackathon.UIMain.Industry.Clear(); };
