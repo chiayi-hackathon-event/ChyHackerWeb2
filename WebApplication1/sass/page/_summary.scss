@@ -1,9 +1,51 @@
 ﻿#summary{
     .info-section{
-
+        content{
+            display: flex;
+            justify-content: space-around;
+            .sum-item{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                img{
+                    width: 3rem;
+                    margin: auto;
+                }
+                i{
+                    font-size: 3rem;
+                }
+                strong {
+                    padding-top:.25rem;
+                    font-weight: bold;
+                }
+                span{
+                    padding-top:.25rem;
+                }
+            }
+        }
+        
+        &:nth-of-type(2){
+            i{
+                color: rgb(114, 205, 255);
+            }
+        }
+        &:nth-of-type(3){
+            i {
+                color: rgb(255, 187, 0);
+            }
+        }
+        
+        &:nth-of-type(4){
+            i {
+                color: #b180b8;
+            }
+        }
+        &:nth-of-type(5){
+            i{
+                color: rgb(141, 199, 120);
+            }
+        }
     }
-    .tbl-summary{
-        display: table;
-
-    }
+    
 }

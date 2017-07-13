@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 /* line 5, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -648,15 +648,55 @@ aside#info-panel #btn-slide:after {
   text-align: center;
 }
 
-/* line 13, ../sass/Site.scss */
+/* line 3, ../sass/page/_summary.scss */
+#summary .info-section content {
+  display: flex;
+  justify-content: space-around;
+}
+/* line 6, ../sass/page/_summary.scss */
+#summary .info-section content .sum-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+/* line 11, ../sass/page/_summary.scss */
+#summary .info-section content .sum-item img {
+  width: 3rem;
+  margin: auto;
+}
+/* line 15, ../sass/page/_summary.scss */
+#summary .info-section content .sum-item i {
+  font-size: 3rem;
+}
+/* line 18, ../sass/page/_summary.scss */
+#summary .info-section content .sum-item strong {
+  padding-top: .25rem;
+  font-weight: bold;
+}
+/* line 22, ../sass/page/_summary.scss */
+#summary .info-section content .sum-item span {
+  padding-top: .25rem;
+}
+/* line 29, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(2) i {
+  color: #72cdff;
+}
+/* line 34, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(3) i {
+  color: #ffbb00;
+}
+/* line 40, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(4) i {
+  color: #b180b8;
+}
+/* line 45, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(5) i {
+  color: #8dc778;
+}
+
+/* line 14, ../sass/Site.scss */
 body {
   font-family: 'Microsoft JhengHei';
   overflow: hidden;
-}
-.tooltip {
-    position: fixed;
-    left: 368px;
-    top: 332px;
-    display: block;
-    opacity: 1 !important;
 }
