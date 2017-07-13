@@ -67,9 +67,9 @@ dojo.declare("SGSTileLayer", esri.layers.TiledMapServiceLayer,
 	},
 	getTileUrl: function(level, row, col)
 	{
-	    var _APPID ="WusC33Pv0/+wYTKYBg428ilMGimNwPpSbdxJMU0nP+9kiGWs65urIQ==";
-	    var _APIKEY = "cGEErDNy5yN/1fQ0vyTOZrghjE+jIU6u5F5HodqJJs7FjFpqIsobwEacQpW7wA+KFPDY43fjC6EBKjvmVPDZ6uJQ1fkfcicIcs9a6Qwt3/zFpcbFmTffvD7v83O+hrQxI0mnBeHeHo6gcopnzSSCRoe3w+oXEK1n6daG8mbK5s0oGaMW2mR1z+76kzWXLP4RrSk5YIwIsH6EzipiRPCJM08wrg3TR09xIDTZDf8YwSO1Koy9t3yOWEMtcnp321bWBrdB+S0bjK6VQfAHuXHjoyo4WpzluFfuX5Ntj9N5jG/KZNxJW0gaqkKQQ9uZslEYRY7mGjA1TH2blP1/9CFXhw==";
-		var scnt = this.tileInfo.lods.length;
+	    var _APPID = "WusC33Pv0/+wYTKYBg428ilMGimNwPpSbdxJMU0nP+9kiGWs65urIQ==";
+	    var _APIKEY = "cGEErDNy5yN/1fQ0vyTOZrghjE+jIU6u5F5HodqJJs7FjFpqIsobwEacQpW7wA+KFPDY43fjC6EBKjvmVPDZ6uJQ1fkfcicIcs9a6Qwt3/zFpcbFmTffvD7v83O+hrQxI0mnBeHeHo6gcopnzSSCRoe3w+oXEK1n6daG8mbK5s0oGaMW2mR1z+76kzWXLP4RuTTF3bGuBHsD4RFOyWhRtRkrPh/qxHseQ8FkAjFaMkHLB44j1tmBLxFyxvZGJmGcijJbnRkWn5e8TOt3s7X0HQd7PvRg6vXNrAbmhFTd5UdpbyAJyuPhgY8vuq4Kdv2QiiO1Cx7LCmrsj/llYc31l+D+VT9Jr5i5DFctL5hSKexspenXzp6xZsXPeYzu94PegJU4s2hZm2H+FsOS9zXhjQ==";
+	    var scnt = this.tileInfo.lods.length;
 		//var sUrl = this._url + "/GetCacheImage?APPID=" + _APPID + "&APIKEY=" + _APIKEY + "&S=" + level + "&X=" + (col - 1) + "&Y=" + (-row - 1) + "&L=" + this._layer;
 	    var sUrl = this._url + "/GetCacheImage?APPID=" + _APPID + "&APIKEY=" + _APIKEY + "&S=" + level + "&X=" + col + "&Y=" + (-row - 1) + "&L=" + this._layer;
 		return sUrl;
