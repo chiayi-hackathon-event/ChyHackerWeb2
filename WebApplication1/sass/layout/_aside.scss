@@ -64,7 +64,21 @@ aside#info-panel {
     .panel-show & {
         transform: translateX(100%);
     }
-    
+    .no-data{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #888;
+        font-size: 1.5rem;
+        width: 100%;
+        height: 100%;
+        &:before{
+            content: '\f071';
+            margin-right: .5rem;
+            font-family: FontAwesome;
+            color: #888;
+        }
+    }
     #btn-slide {
         width: 25px;
         height: 45px;

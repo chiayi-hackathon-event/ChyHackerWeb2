@@ -8,7 +8,7 @@
         this.credits = { enabled: false };
         this.exporting = { enabled: false };
         this.series = [];
-        this.colors = ['#45CFF0', '#A35B2E', '#97EC71', '#F9CB62', '#8C90FC', '#FA6A52', '#7C96FF', '#F76591', '#46C755', '#DE9DD6', '#F79376', '#F756D6', '#42BDA0'];
+        this.colors = ['#45CFF0', '#A35B2E', '#97EC71', '#F9CB62', '#8C90FC', '#FA6A52', '#7C96FF', '#46C755', '#DE9DD6', '#F79376', '#F756D6', '#42BDA0'];
     };
     // 圓餅圖
     var _PieChart = function () {
@@ -48,16 +48,12 @@
     //#endregion
 
     // 畫圖
-    var _DrawChart = function (type, id, data, custom, series) {
+    var _DrawChart = function (type, id, series, custom) {
         _options = new _Presets();
         _SetOptions(type);
-        _SetContainer(id);
-        if (data != null && data.length != 0) {
-            _SetData(data);
-        } else if (series != null && series.length != 0) {
-            _SetSeries(series);
-        }
-
+        _SetContainer(id); 
+        _SetSeries(series);
+        
         if (custom != null) {
             _MergeObjects(custom);
         }
@@ -69,7 +65,7 @@
     var _SetChartGlobal = function () {
         Highcharts.setOptions({
             lang: {
-                numericSymbols: ['000'],
+                //numericSymbols: ['000'],
                 thousandsSep: ',',
                 shortMonths: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
                 resetZoom: "復原",
@@ -99,11 +95,6 @@
         }
         _MergeObjects(typePresets);
     }
-    // 資料設定(單筆)
-    var _SetData = function (data) {
-        var seriesObj = { data: data };
-        _options.series.push(seriesObj);
-    }
     // 資料設定(多筆)
     var _SetSeries = function (series) {
         $.extend(_options.series, series);
@@ -126,11 +117,6 @@
     }
 
     return {
-        DrawChartWithData : function (type, containerID, data, custom) {
-            _DrawChart(type, containerID, data, custom, null);
-        },
-        DrawChartWithSeries : function (type, containerID, series, custom) {
-            _DrawChart(type, containerID, null, custom, series);
-        } 
+        DrawChart: _DrawChart
     }
 })
