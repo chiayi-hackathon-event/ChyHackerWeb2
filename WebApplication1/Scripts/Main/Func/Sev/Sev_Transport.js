@@ -5,11 +5,11 @@
         graphics: {}
     };
     var PoiCol = [
-        [255, 255, 255],
-        [191, 191, 191],
-        [128, 128, 128],
-        [64, 64, 64],
-        [0, 0, 0]
+        [220, 220, 220],
+        [165, 165, 165],
+        [123, 123, 123],
+        [90, 90, 90],
+        [75, 75, 75]
     ];
     var DistCol = [
          [0, 97, 0],
@@ -50,22 +50,45 @@
                 debugger
                 // *** 加入網格 ***
                 var _rings = data[i].coordinates;
-                    var _id = 'data_' + i;
-                    var arrGraphicData = {
-                        ID: _id,
-                        Ring: _rings,
-                        Symbol: {
-                            'Type': 'SimpleFillSymbol',
-                            'Color': PoiCol[Number(data[i].COLOR_COUNT_POI)],
-                            'BorderColor': [182, 182, 182],
-                            'BorderWeight': 2
-                        },
-                        Attribute: {
-                        }
-                    };
-                    var _graphic = Hackathon.Map.AddPolygon(_Status.LayerName, arrGraphicData);
-                    _Status.graphics[_id] = _graphic;
-                
+                var _id = 'NetPoly_' + i;
+                var arrGraphicData = {
+                    ID: _id,
+                    Ring: _rings,
+                    Symbol: {
+                        'Type': 'SimpleFillSymbol',
+                        'Color': PoiCol[Number(data[i].COLOR_COUNT_POI) - 1],
+                        'BorderColor': [182, 182, 182],
+                        'BorderWeight': 2
+                    },
+                    Attribute: {
+                    }
+                };
+                var _graphic = Hackathon.Map.AddPolygon(_Status.ScoreLayer, arrGraphicData);
+                _Status.graphics[_id] = _graphic;
+
+                // *** 加入小圓 ***
+
+                var _Color, _BorderColor;
+                if (data[i].IS_BusStop === '0') { _Color = [210, 0, 0]; }
+                else { _Color = [0, 116, 253] }
+                var _id = 'babPoint_' + i;
+                var graphicData = { ID: _id, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
+                graphicData.Geometry.X = data[i].X;
+                graphicData.Geometry.Y = data[i].Y;
+                graphicData.Attribute = {
+                }
+                graphicData.Symbol = {
+                    Size: 5,
+                    Color: DistCol[Number(data[i].COLOR_NEAR_DIST) - 1],
+                    BorderColor:[33, 35, 33],// [67, 53, 53],
+                    Type: 'SimpleMarkerSymbol'
+                };
+                var _g = Hackathon.Map.AddPoint(_Status.ScoreLayer, graphicData);
+
+
+
+
+
             }
         })
     }
@@ -117,7 +140,9 @@
                 var _g = Hackathon.Map.AddPoint(_Status.LayerName, graphicData);
             }
             // *** Add Poi Point ***
+            debugger
             for (let i = 0; i < data.length; i++) {
+                debugger
                 var _Color, _BorderColor;
                 if (data[i].IS_BusStop === '0') { _Color = [210, 0, 0]; }
                 else { _Color = [0, 116, 253] }
