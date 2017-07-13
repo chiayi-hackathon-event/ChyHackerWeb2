@@ -234,6 +234,7 @@
     <Content Include="Content\img\Lodging\room.svg" />
     <Content Include="Content\img\POI\A01.svg" />
     <Content Include="Content\img\POI\A02.svg" />
+    <Content Include="Content\img\POI\B01.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
