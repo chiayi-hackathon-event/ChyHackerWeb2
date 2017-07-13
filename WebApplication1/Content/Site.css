@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* line 5, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -652,4 +652,11 @@ aside#info-panel #btn-slide:after {
 body {
   font-family: 'Microsoft JhengHei';
   overflow: hidden;
+}
+.tooltip {
+    position: fixed;
+    left: 368px;
+    top: 332px;
+    display: block;
+    opacity: 1 !important;
 }

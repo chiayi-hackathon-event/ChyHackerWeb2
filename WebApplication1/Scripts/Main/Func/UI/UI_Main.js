@@ -47,7 +47,14 @@
         }
     }
     var _Event_Click_Transport = function () {
-
+        if (Hackathon.UIMain.Transport) {
+            _Clear();
+            Hackathon.UIMain.Transport.Reset();
+        } else {
+            require(['UI/UI_Transport'], function (UI_Transport) {
+                UI_Transport.Init();
+            })
+        }
     }
     var _Event_Click_Industry = function () {
 

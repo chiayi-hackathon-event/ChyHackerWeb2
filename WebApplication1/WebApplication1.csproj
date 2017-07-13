@@ -355,8 +355,10 @@
     <Content Include="Scripts\Main\Func\Common\Common.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Hackathon.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Lodging.js" />
+    <Content Include="Scripts\Main\Func\Data\Data_Transport.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Hackathon.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Lodging.js" />
+    <Content Include="Scripts\Main\Func\Sev\Sev_Transport.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Summary.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Hackathon.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Industry.js" />
@@ -415,6 +417,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Factory.json" />
+    <Content Include="NetInfo.json" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\lib\jquery-1.10.2.min.map" />
     <Content Include="Scripts\lib\proj4\.jshintrc" />
