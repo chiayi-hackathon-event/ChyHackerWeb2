@@ -73,24 +73,14 @@
     _graphic1.setSymbol(_symbol);
   }
   //
-  var _ShowSummaryData = function (_townId) {
+  var _ShowSummaryData = function (_vill_id) {
     /// <summary>
-    /// 種點 - 加入民宿、旅館點位資料
+    /// 取回資料
     /// </summary>
     /// <param name="_townId" type="type"></param>
-    var BedCount = 0; debugger
-    $.when(_Data.GetSummaryData(_townId, 'bablist')).
-      then(function (bablist, hotellist, PassengerData) {
-        debugger
-        var POILayer = Hackathon.Map.GetStatus().layList[_Status.POILayerName];
-        POILayer.clear();
-        // ***  TODO 待整理的髒髒der Code
-        // ***  民宿種點  ****
-        var BabBedCount = _AddPOI('A01', bablist);
-        // ***  旅館種點  ****
-        var HotelBedCount = _AddPOI('A02', hotellist);
-        BedCount = BabBedCount + HotelBedCount;
-      })
+    debugger
+    _Data.GetSummaryData(_vill_id)
+    //$.when().then()
   }
 
   // **** 左邊選單 ****
@@ -118,7 +108,7 @@
     _symbol.color.r = 0;
     _symbol.color.g = 255;
     _symbol.color.b = 255;
-    _symbol.color.a = 0.4;
+    _symbol.color.a = 0.8;
     _graphic.setSymbol(_symbol);
   }
   var _add = function () {
