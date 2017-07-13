@@ -27,6 +27,7 @@ aside#info-panel {
     }
     .info-block { 
         overflow-y: auto;
+        overflow-x: hidden;
         @include calc("height","100% - 45px"); 
         .info-section{
             > h3{
@@ -47,7 +48,7 @@ aside#info-panel {
                 }
             }
             .chart-container{
-                width: 350px;
+                width: 100%;
                 height: 250px;
                 margin: auto;
                 &#nation-chart{
@@ -109,9 +110,15 @@ aside#info-panel {
     }
 }
 
-@media (max-width: $screen-sm){
+@media  (max-width: $screen-sm){
     #info-panel{
         @include calc-important("width", "100% - 50px");
         @include calc-important("left", "-100% + 50px");
     }
 }
+
+/*@media (max-width: $screen-xs){
+    #info-panel{
+        
+    }
+}*/

@@ -235,6 +235,9 @@
     <Content Include="Content\img\POI\A01.svg" />
     <Content Include="Content\img\POI\A02.svg" />
     <Content Include="Content\img\POI\B01.svg" />
+    <Content Include="Content\img\Summary\lame-walk.svg" />
+    <Content Include="Content\img\Summary\no-bus.svg" />
+    <Content Include="Content\img\Summary\no-walk.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -358,11 +361,13 @@
     <Content Include="Scripts\Main\Func\Sev\Sev_Summary.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Lodging.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Transport.js" />
+    <Content Include="Scripts\Main\Func\Sev\Sev_Summary.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Hackathon.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Industry.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Lodging.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Summary.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Main.js" />
+    <Content Include="Scripts\Main\Func\UI\UI_Summary.js" />
     <Content Include="Scripts\Main\Func\UI\UI_Transport.js" />
     <Content Include="Scripts\Main\MapControl\EsriMap.js" />
     <Content Include="Scripts\Main\MapControl\Loader\UILoader.js" />
@@ -405,6 +410,7 @@
     <Content Include="sass\layout\_aside.scss" />
     <Content Include="sass\layout\_map.scss" />
     <Content Include="sass\page\_lodging.scss" />
+    <Content Include="sass\page\_summary.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

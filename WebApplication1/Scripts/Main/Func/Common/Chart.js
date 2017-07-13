@@ -61,8 +61,15 @@
         if (custom != null) {
             _MergeObjects(custom);
         }
+        _SetChartGlobal();
+        var chart = $('#' + id).highcharts(_options);
+        
+    }
+    // 語言設定
+    var _SetChartGlobal = function () {
         Highcharts.setOptions({
             lang: {
+                numericSymbols: ['000'],
                 thousandsSep: ',',
                 shortMonths: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
                 resetZoom: "復原",
@@ -75,7 +82,6 @@
                 noData: "查無資料"
             }
         });
-        var chart = Highcharts.chart(_options);
     }
     // 依照圖表類型作設定
     var _SetOptions = function (type) {
