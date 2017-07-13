@@ -13,6 +13,9 @@ aside#info-panel {
     background-color:white;
     transition-property: transform;
     @extend %panel-transition;
+    .func-panel{
+        height: 100%;
+    }
     .info-title{
         width: 100%;
         height: 45px;
@@ -24,7 +27,7 @@ aside#info-panel {
     }
     .info-block { 
         overflow-y: auto;
-        height: 100%;
+        @include calc("height","100% - 45px"); 
         .info-section{
             > h3{
                 width: 100%;
@@ -41,6 +44,14 @@ aside#info-panel {
                     + select {
                         margin-top: .5rem;
                     }
+                }
+            }
+            .chart-container{
+                width: 350px;
+                height: 250px;
+                margin: auto;
+                &#nation-chart{
+                    height: 375px;
                 }
             }
             + .info-section{

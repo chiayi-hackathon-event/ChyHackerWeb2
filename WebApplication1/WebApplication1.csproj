@@ -234,6 +234,7 @@
     <Content Include="Content\img\Lodging\room.svg" />
     <Content Include="Content\img\POI\A01.svg" />
     <Content Include="Content\img\POI\A02.svg" />
+    <Content Include="Content\img\POI\B01.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -245,6 +246,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\lib\Framework.js" />
+    <Content Include="Scripts\lib\HighCharts\highcharts.js" />
     <Content Include="Scripts\lib\jquery-1.10.2.min.js" />
     <Content Include="Scripts\lib\jquery-ui.js" />
     <Content Include="Scripts\lib\jquery-ui.min.js" />
@@ -346,6 +348,7 @@
     <Content Include="Scripts\lib\proj4\test\testData.js" />
     <Content Include="Scripts\lib\require.js" />
     <Content Include="Scripts\lib\SGSArcGISServer3826.js" />
+    <Content Include="Scripts\Main\Func\Common\Chart.js" />
     <Content Include="Scripts\Main\Func\Common\Common.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Hackathon.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Lodging.js" />

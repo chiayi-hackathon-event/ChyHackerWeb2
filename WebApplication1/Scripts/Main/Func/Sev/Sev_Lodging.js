@@ -1,8 +1,10 @@
-﻿define(['Data/Data_Lodging'], function (_Data) {
+﻿define(['Data/Data_Lodging', 'Chart'], function (_Data, _Chart) {
     var _Status = {
         LayerName: 'GraphicLayer',
         POILayerName: 'POIGraphicLayer',
         graphics: {},
+        ArrayRoom: [],
+        ArrayNation: [],
     };
     var _Clear = function () {
         Hackathon.Map.RemoveLayer(_Status.LayerName);
@@ -66,10 +68,9 @@
         /// 種點 - 加入民宿、旅館點位資料
         /// </summary>
         /// <param name="_townId" type="type"></param>
-        var BedCount = 0; debugger
+        var BedCount = 0; 
         $.when(_Data.GetPointData(_townId, 'bablist'), _Data.GetPointData(_townId, 'hotellist'), _Data.GetPassengerData(_townId,'2017', 1, 1)).
             then(function (bablist, hotellist, PassengerData) {
-                debugger
                 var POILayer = Hackathon.Map.GetStatus().layList[_Status.POILayerName];
                 POILayer.clear();
                 // ***  TODO 待整理的髒髒der Code
@@ -79,10 +80,28 @@
                 var HotelBedCount = _AddPOI('A02', hotellist);
                 BedCount = BabBedCount + HotelBedCount;
 
-
-
-
-               debugger
+                // 圖表資料處理
+                var MonthSum = 0,
+                    NationObj = {};
+                _Status['ArrayRoom'] = [],
+                _Status['ArrayNation'] = [];
+                PassengerData.forEach(function (MonthData) {
+                    MonthSum = 0;
+                    MonthData.data.forEach(function (Obj) {
+                        MonthSum += Obj.VALUE;
+                        if (_Status['ArrayNation'].filter(function (e) { return Obj.NATIONALITY == e.name; }).length == 0) {
+                            _Status['ArrayNation'].push({
+                                name: Obj.NATIONALITY,
+                                y: Obj.VALUE
+                            });
+                        } else {
+                            _Status['ArrayNation'].filter(function (e) { return Obj.NATIONALITY == e.name; })[0].y += Obj.VALUE;
+                        }
+                    });
+                    _Status['ArrayRoom'].push(MonthSum);
+                })
+                _DrawChart_Room();
+                _DrawChart_Nation();
             })
     }
     var _AddPOI = function (_type, _obj) {
@@ -91,7 +110,7 @@
         /// </summary>
         /// <param name="_type" type="type"></param>
         /// <param name="_obj" type="type"></param>
-        var BedCount = 0;debugger
+        var BedCount = 0;
         for (let i = 0; i < _obj.length; i++) {
             var _id = 'babPoint_' + i;
             var graphicData = { ID: _id, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
@@ -109,7 +128,7 @@
                 TEL: _obj[i].TEL,
             }
             graphicData.Symbol = {
-                Url: window.location.href + 'Content/img/POI/'+_type+'.svg',
+                Url: window.location.href + '/Content/img/POI/'+_type+'.svg',
                 Width: 25,
                 Height: 25,
                 yoffset: 5,
@@ -123,15 +142,29 @@
     }
 
 
-    var _DrawChart = function () {
-        $.when(_Data)
-        // **** 左邊選單HightChart ****
-
+    var _DrawChart_Room = function () {
+        var type = 'line',
+            id = 'room-chart',
+            data = _Status['ArrayRoom'],
+            custom = {},
+            series = null;
+        _Chart.DrawChartWithData(type, id, data, custom);
     }
+    var _DrawChart_Nation = function () {
+        var type = 'pie',
+            id = 'nation-chart',
+            custom = {},
+            series = [{
+                name: '房客國籍比',
+                data: _Status['ArrayNation']
+            }];
+        _Chart.DrawChartWithSeries(type, id, series, custom );
+    }
+
     var _ShowData = function (_id) {
         var _g = _Status.graphics[_id].Graphic;
         _AddPoint(_g.attributes.TOWN_ID);
-        _DrawChart();
+        //_DrawChart();
         _ChangeColor(_id);
     }
     var _ChangeColor = function (_id) {

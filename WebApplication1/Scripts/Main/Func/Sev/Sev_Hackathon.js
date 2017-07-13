@@ -140,7 +140,7 @@
                 graphicData.Attribute.type = _type;
                 graphicData.Attribute.name = PtData[i].name;
                 graphicData.Symbol = {
-                    Url: window.location.href + 'Content/img/' + _type + 'Pt_off.svg',
+                    Url: window.location.href + '/Content/img/' + _type + 'Pt_off.svg',
                     Width: 25,
                     Height: 25,
                     yoffset: 5,
@@ -225,11 +225,11 @@
         var _symbol
         if (_Status.tempPt) {
             _symbol = _Status.tempPt.symbol;
-            _symbol.url = window.location.href + 'Content/img/' + _Status.tempPt.attributes.type + 'Pt_off.svg';
+            _symbol.url = window.location.href + '/Content/img/' + _Status.tempPt.attributes.type + 'Pt_off.svg';
             _Status.tempPt.setSymbol(_symbol);
         }
         _symbol = graphic.symbol;
-        _symbol.url = window.location.href + 'Content/img/' + graphic.attributes.type + 'Pt_on.svg';
+        _symbol.url = window.location.href + '/Content/img/' + graphic.attributes.type + 'Pt_on.svg';
         graphic.setSymbol(_symbol);
         _Status.tempPt = graphic;
         Hackathon.Map.SetInfowindow(
@@ -263,7 +263,7 @@
     }
     var _Close = function () {
         var _symbol = _Status.tempPt.symbol;
-        _symbol.url = window.location.href + 'Content/img/' + _Status.tempPt.attributes.type + 'Pt_off.svg';
+        _symbol.url = window.location.href + '/Content/img/' + _Status.tempPt.attributes.type + 'Pt_off.svg';
         _Status.tempPt.setSymbol(_symbol);
         _Status.tempPt = undefined;
     }
