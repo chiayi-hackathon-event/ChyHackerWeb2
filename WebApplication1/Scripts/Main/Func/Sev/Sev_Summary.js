@@ -54,25 +54,32 @@
           }
         };
         var _graphic = Hackathon.Map.AddPolygon(_Status.LayerName, arrGraphicData);
-
-        //var _symbol = _graphic.symbol;
-        //_symbol.color.r = 0;
-        //_symbol.color.g = 255;
-        //_symbol.color.b = 255;
-        //_symbol.color.a = 0.4;
-        //_graphic.setSymbol(_symbol);
-
         _Status.graphics[_id] = _graphic;
+
+        if (res[j].IsShow === 1)
+          _ChangeBaseColor(_id);
       }
     })
   }
-  var _AddPoint = function (_townId) {
+
+  var _ChangeBaseColor = function (_id) {
+    _Status.tempID = _id;
+    var _graphic1 = _Status.graphics[_Status.tempID].Graphic;
+    var _symbol = _graphic1.symbol;
+    _symbol.color.r = 206;
+    _symbol.color.g = 191;
+    _symbol.color.b = 242;
+    _symbol.color.a = 0.4;
+    _graphic1.setSymbol(_symbol);
+  }
+  //
+  var _ShowSummaryData = function (_townId) {
     /// <summary>
     /// 種點 - 加入民宿、旅館點位資料
     /// </summary>
     /// <param name="_townId" type="type"></param>
     var BedCount = 0; debugger
-    $.when(_Data.GetPointData(_townId, 'bablist'), _Data.GetPointData(_townId, 'hotellist'), _Data.GetPassengerData(_townId, '2017', 1, 1)).
+    $.when(_Data.GetSummaryData(_townId, 'bablist')).
       then(function (bablist, hotellist, PassengerData) {
         debugger
         var POILayer = Hackathon.Map.GetStatus().layList[_Status.POILayerName];
@@ -83,25 +90,25 @@
         // ***  旅館種點  ****
         var HotelBedCount = _AddPOI('A02', hotellist);
         BedCount = BabBedCount + HotelBedCount;
-
-        debugger
       })
   }
 
-  var _DrawChart = function () {
-    $.when(_Data)
-    // **** 左邊選單HightChart ****
-  }
+  // **** 左邊選單 ****
+
   var _ShowData = function (_id) {
     var _g = _Status.graphics[_id].Graphic;
+    debugger
+    //Get id
+    var _g = _Status.graphics[_id].Graphic;
+    _ShowSummaryData(_g.attributes.VLG_ID);
 
-    _DrawChart();
     _ChangeColor(_id);
   }
   var _ChangeColor = function (_id) {
     if (_Status.tempID) {
       var _graphic = _Status.graphics[_Status.tempID].Graphic;
       var _symbol = _graphic.symbol;
+
       _symbol.color.a = 0;
       _graphic.setSymbol(_symbol);
     }
