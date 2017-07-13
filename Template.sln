@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{21CF7D40-3B3E-4017-9B4F-1DEACC8B8FA4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{46A0D131-CAB8-4802-91A3-B9513E227AF9}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\641\Downloads\NetInfo.json = C:\Users\641\Downloads\NetInfo.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* line 5, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -411,6 +411,10 @@ aside#info-panel {
   transition-property: transform;
 }
 /* line 16, ../sass/layout/_aside.scss */
+aside#info-panel .func-panel {
+  height: 100%;
+}
+/* line 19, ../sass/layout/_aside.scss */
 aside#info-panel .info-title {
   width: 100%;
   height: 45px;
@@ -420,12 +424,14 @@ aside#info-panel .info-title {
   display: flex;
   align-items: center;
 }
-/* line 25, ../sass/layout/_aside.scss */
+/* line 28, ../sass/layout/_aside.scss */
 aside#info-panel .info-block {
   overflow-y: auto;
-  height: 100%;
+  height: -webkit-calc(100% - 45px);
+  height: -moz-calc(100% - 45px);
+  height: calc(100% - 45px);
 }
-/* line 29, ../sass/layout/_aside.scss */
+/* line 32, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section > h3 {
   width: 100%;
   text-align: center;
@@ -433,28 +439,38 @@ aside#info-panel .info-block .info-section > h3 {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
-/* line 36, ../sass/layout/_aside.scss */
+/* line 39, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section content {
   padding: 1rem 1.5rem;
 }
-/* line 38, ../sass/layout/_aside.scss */
+/* line 41, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section content select {
   display: block;
   margin: auto;
 }
-/* line 41, ../sass/layout/_aside.scss */
+/* line 44, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section content select + select {
   margin-top: .5rem;
 }
-/* line 46, ../sass/layout/_aside.scss */
+/* line 49, ../sass/layout/_aside.scss */
+aside#info-panel .info-block .info-section .chart-container {
+  width: 350px;
+  height: 250px;
+  margin: auto;
+}
+/* line 53, ../sass/layout/_aside.scss */
+aside#info-panel .info-block .info-section .chart-container#nation-chart {
+  height: 375px;
+}
+/* line 57, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section + .info-section {
   margin-top: 1rem;
 }
-/* line 52, ../sass/layout/_aside.scss */
+/* line 63, ../sass/layout/_aside.scss */
 .panel-show aside#info-panel {
   transform: translateX(100%);
 }
-/* line 56, ../sass/layout/_aside.scss */
+/* line 67, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide {
   width: 25px;
   height: 45px;
@@ -476,15 +492,15 @@ aside#info-panel #btn-slide {
   -webkit-transition: right 0.65s linear;
   transition: right 0.65s linear;
 }
-/* line 73, ../sass/layout/_aside.scss */
+/* line 84, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide:hover {
   background-color: #EF6461;
 }
-/* line 76, ../sass/layout/_aside.scss */
+/* line 87, ../sass/layout/_aside.scss */
 .panel-empty aside#info-panel #btn-slide {
   display: none !important;
 }
-/* line 79, ../sass/layout/_aside.scss */
+/* line 90, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide:before {
   content: " ";
   width: 0;
@@ -496,19 +512,19 @@ aside#info-panel #btn-slide:before {
   border-style: solid;
   border-color: #C1514F transparent transparent transparent;
 }
-/* line 90, ../sass/layout/_aside.scss */
+/* line 101, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide:after {
   font-size: 1.25rem;
   font-family: FontAwesome;
   content: '\f0da';
 }
-/* line 94, ../sass/layout/_aside.scss */
+/* line 105, ../sass/layout/_aside.scss */
 .panel-show aside#info-panel #btn-slide:after {
   content: '\f0d9';
 }
 
 @media (max-width: 550px) {
-  /* line 102, ../sass/layout/_aside.scss */
+  /* line 113, ../sass/layout/_aside.scss */
   #info-panel {
     width: -webkit-calc(100% - 50px) !important;
     width: -moz-calc(100% - 50px) !important;
@@ -624,4 +640,11 @@ aside#info-panel #btn-slide:after {
 body {
   font-family: 'Microsoft JhengHei';
   overflow: hidden;
+}
+.tooltip {
+    position: fixed;
+    left: 368px;
+    top: 332px;
+    display: block;
+    opacity: 1 !important;
 }

@@ -100,7 +100,7 @@ define(['proj4'], function (Proj4js) {
     };
 
     var _Set_UI = function (_html) {
-        $('#info-panel .Func-panel').empty().append(_html);
+        $('#info-panel .func-panel').empty().append(_html);
     }
     //////////////////////////////////////////////////////////////////
     var  module = {
