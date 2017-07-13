@@ -55,12 +55,12 @@
         };
         var _graphic = Hackathon.Map.AddPolygon(_Status.LayerName, arrGraphicData);
 
-        var _symbol = _graphic.symbol;
-        _symbol.color.r = 0;
-        _symbol.color.g = 255;
-        _symbol.color.b = 255;
-        _symbol.color.a = 0.4;
-        _graphic.setSymbol(_symbol);
+        //var _symbol = _graphic.symbol;
+        //_symbol.color.r = 0;
+        //_symbol.color.g = 255;
+        //_symbol.color.b = 255;
+        //_symbol.color.a = 0.4;
+        //_graphic.setSymbol(_symbol);
 
         _Status.graphics[_id] = _graphic;
       }
