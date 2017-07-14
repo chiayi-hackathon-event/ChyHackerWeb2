@@ -16,13 +16,12 @@
     Hackathon.Common.GetAjaxData(_url, _data, _callback, _option);
     return dtd.promise();
   }
-  //可能不用
-  var _GetPointData = function (_town_id, _type) {
+  //取得綜合分析
+  var _GetSummaryData = function (_vill_id) {
     var dtd = $.Deferred();
     var _url = window.location.origin + '/ChyHackerAPI/api/SummaryVill';
     var _data = {
-      type: _type,
-      town_id: _town_id
+      vill_id: _vill_id
     };
     var _option = { async: true, dataType: "JSON", type: "GET" };
     var _callback = function (evt) {
@@ -60,9 +59,9 @@
       $.when(_GetData()).then(function (data) { return dtd.resolve(data); })
       return dtd.promise();
     },
-    GetPointData: function (_town_id, _type) {
+    GetSummaryData: function (_town_id) {
       var dtd = $.Deferred();
-      $.when(_GetPointData(_town_id, _type)).then(function (data) { return dtd.resolve(data); })
+      $.when(_GetSummaryData(_town_id)).then(function (data) { return dtd.resolve(data); })
       return dtd.promise();
     },
     GetPassengerData: function (town_id, _year, _smonth, _emonth) {
