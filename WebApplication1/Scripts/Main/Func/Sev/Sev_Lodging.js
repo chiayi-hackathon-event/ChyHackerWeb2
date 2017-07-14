@@ -101,7 +101,7 @@
                 //基本統計
                 var stats = _Status[type + 'Info']['stats'];
                 $('.tbl-lodging-stats .tr-number td').each(function () { $(this).text(stats[$(this).attr('name')]); });
-
+                
                 // 房間供需
                 _Status['ArrayRoomDemand'] = RoomData.map(function (e) { return e.DEMAND; });
                 _Status['ArrayRoomSupply'] = RoomData.map(function (e) { return e.SUPPLY; });
@@ -241,6 +241,9 @@
             return false;
         }
 
+        _Status['ArrayNation'].sort(function (a, b) { return b.y - a.y; })
+                              .map(function (e, idx) { if (idx > 2) { e.visible = false; } });
+        
         var type = 'pie',
             id = 'nation-chart',
             custom = {},
@@ -248,7 +251,9 @@
                 name: '房客國籍比',
                 data: _Status['ArrayNation']
             }];
-        _Chart.DrawChart(type, id, series, custom );
+        
+        var chart = _Chart.DrawChart(type, id, series, custom);
+
     }
 
     var _ShowData = function (_id) {

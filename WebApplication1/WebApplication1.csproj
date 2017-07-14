@@ -17,7 +17,7 @@
     <AssemblyName>WebApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -238,6 +238,8 @@
     <Content Include="Content\img\Summary\lame-walk.svg" />
     <Content Include="Content\img\Summary\no-bus.svg" />
     <Content Include="Content\img\Summary\no-walk.svg" />
+    <Content Include="Content\img\Transport\BusService.svg" />
+    <Content Include="Content\img\Transport\NoBusService.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
