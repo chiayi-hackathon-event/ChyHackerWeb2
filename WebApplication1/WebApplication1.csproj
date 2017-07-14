@@ -413,6 +413,7 @@
     <Content Include="sass\page\_lodging.scss" />
     <Content Include="sass\page\_summary.scss" />
     <Content Include="sass\page\_transport.scss" />
+    <Content Include="sass\layout\_spinner.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
