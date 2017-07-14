@@ -59,7 +59,7 @@
         }
         _SetChartGlobal();
         var chart = $('#' + id).highcharts(_options);
-        
+        return chart;
     }
     // 語言設定
     var _SetChartGlobal = function () {

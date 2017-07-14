@@ -99,6 +99,15 @@ define(['proj4'], function (Proj4js) {
   var _Set_UI = function (_html) {
     $('#info-panel .func-panel').empty().append(_html);
   }
+  var _FormatThousandth = function (num) {
+      num = (typeof (num) != "string") ? num.toString() : num;
+      var arr = num.split(".");
+      var pattern = /(-?\d+)(\d{3})/;
+      while (pattern.test(arr[0])) {
+          arr[0] = arr[0].replace(pattern, "$1,$2");
+      }
+      return (arr[1] == undefined) ? arr[0] : arr[0] + '.' + arr[1];
+  }
   //////////////////////////////////////////////////////////////////
   var module = {
     CoordTran: function (x, y, fromCoord, ToCoord) {
@@ -111,7 +120,8 @@ define(['proj4'], function (Proj4js) {
     },
     Set_UI: function (_html) {
       _Set_UI(_html);
-    }
+    },
+    FormatThousandth: _FormatThousandth
   }
   Hackathon.Common = module;
   return module;

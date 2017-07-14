@@ -6,6 +6,9 @@
         ArrayRoomDemand: [],
         ArrayRoomSupply:[],
         ArrayNation: [],
+        SearchTownID: '',
+        hotelInfo: {},
+        babInfo: {}
     };
     var _Clear = function () {
         Hackathon.Map.RemoveLayer(_Status.LayerName);
@@ -68,26 +71,48 @@
         /// 種點 - 加入民宿、旅館點位資料
         /// </summary>
         /// <param name="_townId" type="type"></param>
-        $.when(_Data.GetPointData(_townId, 'bablist'), _Data.GetPointData(_townId, 'hotellist'), _Data.GetSupplyDemand(_townId, $('select.sel-lodging-type').text().trim()), _Data.GetPassengerData(_townId, '2017', 1, 1)).
-            then(function (bablist, hotellist, RoomData, PassengerData) {
+        _Status['SearchTownID'] = _townId;
+        var $selLodgingType = $('select.sel-lodging-type');
+        $.when(_Data.GetPointData(_townId, 'bablist'),
+            _Data.GetPointData(_townId, 'hotellist'),
+            _Data.GetSupplyDemand(_townId, '旅館'),
+            _Data.GetSupplyDemand(_townId, '民宿'),
+            _Data.GetPassengerData(_townId, '2017', 1, 1)).
+            then(function (bablist, hotellist, HotelData, BabData, PassengerData) {
                 var POILayer = Hackathon.Map.GetStatus().layList[_Status.POILayerName];
                 POILayer.clear();
                 // ***  TODO 待整理的髒髒der Code
-                // ***  民宿種點  ****
-                var BabBedCount = _AddPOI('A01', bablist);
-                // ***  旅館種點  ****
-                var HotelBedCount = _AddPOI('A02', hotellist);
+                var searchList, bedCount, RoomData,
+                    type = $selLodgingType.val();
 
 
+                if (type == 'hotel') {
+                    // ***  旅館種點  ****
+                    _AddPOI('A02', hotellist);
+                    RoomData = HotelData;
+                } else {
+                    // ***  民宿種點  ****
+                    _AddPOI('A01', bablist);
+                    RoomData = BabData;
+                }
+                _SaveData('hotel', bablist, BabData);
+                _SaveData('bab', hotellist, HotelData);
+
+                //基本統計
+                var stats = _Status[type + 'Info']['stats'];
+                $('.tbl-lodging-stats .tr-number td').each(function () { $(this).text(stats[$(this).attr('name')]); });
+                
+                // 房間供需
                 _Status['ArrayRoomDemand'] = RoomData.map(function (e) { return e.DEMAND; });
                 _Status['ArrayRoomSupply'] = RoomData.map(function (e) { return e.SUPPLY; });
                 _DrawChart_Room();
 
-                // 圖表資料處理
+                // 國籍比
                 var NationObj = {};
                 _Status['ArrayNation'] = [];
                 PassengerData.forEach(function (MonthData) {
                     MonthData.data.forEach(function (Obj) {
+                        if (Obj.VALUE == 0) return;
                         if (_Status['ArrayNation'].filter(function (e) { return Obj.NATIONALITY == e.name; }).length == 0) {
                             _Status['ArrayNation'].push({
                                 name: Obj.NATIONALITY,
@@ -121,6 +146,7 @@
                 FAX: _obj[i].FAX,
                 NAME: _obj[i].NAME,
                 ROOM_PRICE: _obj[i].ROOM_PRICE,
+                AVG_ROOM_PRICE: _obj[i].AVG_ROOM_PRICE,
                 ROOM_NUM: _obj[i].ROOM_NUM,
                 STUFF: _obj[i].STUFF,
                 TEL: _obj[i].TEL,
@@ -133,12 +159,42 @@
                 Type: 'PictureMarkerSymbol'
             };
             var _g = Hackathon.Map.AddPoint(_Status.POILayerName, graphicData);
-            BedCount += Number(_obj[i].CUSTOMER);
+            BedCount += Number(_obj[i].ROOM_NUM);
             //  PtArry.push(_g);
         }
         return BedCount;
     }
 
+    var _SaveData = function (type, searchList, RoomData) {
+        _Status[type + 'Info']['searchList'] = searchList;
+        _Status[type + 'Info']['RoomData'] = RoomData;
+        var stats = {
+            LodgingCount: 0,
+            RoomCount: 0,
+            AvgPrice: 0
+        };
+        if (searchList.length > 0) {
+            stats.LodgingCount = searchList.length;
+            stats.RoomCount = searchList.reduce(function (a,b) {
+                return a + Number(b.ROOM_NUM);
+            }, 0);
+            stats.AvgPrice = Hackathon.Common.FormatThousandth(Math.round(searchList.reduce(function (a, b) { return a + Number(b.AVG_ROOM_PRICE); }, 0) / searchList.length));
+        }
+        _Status[type + 'Info']['stats'] = stats;
+    }
+    var _Switch_LodgingType = function () {
+        var type = $(this).val(),
+            icon = (type == 'hotel') ? 'A01' : 'A02',
+            info = _Status[type + 'Info'],
+            stats = info['stats'],
+            RoomData = info['RoomData'];
+        _AddPOI(icon, _Status[type + 'Info']['searchList']);
+        $('.tbl-lodging-stats .tr-number td').each(function () { $(this).text(stats[$(this).attr('name')]); });
+
+        _Status['ArrayRoomDemand'] = RoomData.map(function (e) { return e.DEMAND; });
+        _Status['ArrayRoomSupply'] = RoomData.map(function (e) { return e.SUPPLY; });
+        _DrawChart_Room();
+    }
     // 住宿供需趨勢圖表
     var _DrawChart_Room = function () {
         $('#room-chart').empty();
@@ -149,10 +205,10 @@
         var type = 'line',
             id = 'room-chart',
             series = [{
-                name: '需求量',
+                name: '需求',
                 data: _Status['ArrayRoomDemand']
             }, {
-                name: '供給量',
+                name: '供給',
                 data: _Status['ArrayRoomSupply']
             }],
             custom = {
@@ -185,6 +241,9 @@
             return false;
         }
 
+        _Status['ArrayNation'].sort(function (a, b) { return b.y - a.y; })
+                              .map(function (e, idx) { if (idx > 2) { e.visible = false; } });
+        
         var type = 'pie',
             id = 'nation-chart',
             custom = {},
@@ -192,7 +251,9 @@
                 name: '房客國籍比',
                 data: _Status['ArrayNation']
             }];
-        _Chart.DrawChart(type, id, series, custom );
+        
+        var chart = _Chart.DrawChart(type, id, series, custom);
+
     }
 
     var _ShowData = function (_id) {
@@ -223,6 +284,7 @@
     }
     return {
         Clear: _Clear,
-        _add: _add
+        _add: _add,
+        Switch_LodgingType: _Switch_LodgingType
     }
 })
