@@ -2,14 +2,18 @@
     var _Status = {
         LayerName: 'NetPolyLayer',
         ScoreLayer: 'ScorelLayer',
-        graphics: {}
+        LandmineLayer: 'LandmineLayer',
+        graphics: {},
+        ScoreGraphics: {},
+        tempghp: undefined,
+        IsLandmineMode:false
     };
     var PoiCol = [
         [220, 220, 220],
         [165, 165, 165],
         [123, 123, 123],
-        [90, 90, 90],
-        [75, 75, 75]
+        [100, 100, 100],
+        [80, 80, 80]
     ];
     var DistCol = [
          [0, 97, 0],
@@ -27,8 +31,7 @@
         Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
         var _ScoreLayerOption = { ID: _Status.ScoreLayer, AddEvent: [] };
         _ScoreLayerOption.AddEvent.push({
-            'EventType': 'click', 'CallBack': function (evt) {
-            }
+            'EventType': 'click', 'CallBack': _SetEvent_NetScorePolyLayerClick
         });
         Hackathon.Map.AddLayer('Graphic', '', _ScoreLayerOption);
     }
@@ -47,12 +50,11 @@
         console.log(Geometry);
         $.when(_Data.GetNetInfo(Geometry)).then(function (data) {
             for (var i = 0; i < data.length; i++) {
-                debugger
                 // *** 加入網格 ***
                 var _rings = data[i].coordinates;
-                var _id = 'NetPoly_' + i;
+                var _pid = 'p_' + i;
                 var arrGraphicData = {
-                    ID: _id,
+                    ID: _pid,
                     Ring: _rings,
                     Symbol: {
                         'Type': 'SimpleFillSymbol',
@@ -61,34 +63,34 @@
                         'BorderWeight': 2
                     },
                     Attribute: {
+                        "COUNT_POI": data[i].COUNT_POI,
+                        "NEAR_DIST": data[i].NEAR_DIST,
                     }
                 };
                 var _graphic = Hackathon.Map.AddPolygon(_Status.ScoreLayer, arrGraphicData);
-                _Status.graphics[_id] = _graphic;
+                _Status.ScoreGraphics[_pid] = _graphic;
 
                 // *** 加入小圓 ***
 
                 var _Color, _BorderColor;
                 if (data[i].IS_BusStop === '0') { _Color = [210, 0, 0]; }
                 else { _Color = [0, 116, 253] }
-                var _id = 'babPoint_' + i;
-                var graphicData = { ID: _id, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
+                var _cid = 'c_' + i;
+                var graphicData = { ID: _cid, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
                 graphicData.Geometry.X = data[i].X;
                 graphicData.Geometry.Y = data[i].Y;
                 graphicData.Attribute = {
+                    "COUNT_POI": data[i].COUNT_POI,
+                    "NEAR_DIST": data[i].NEAR_DIST,
                 }
                 graphicData.Symbol = {
-                    Size: 5,
+                    Size: 7,
                     Color: DistCol[Number(data[i].COLOR_NEAR_DIST) - 1],
-                    BorderColor:[33, 35, 33],// [67, 53, 53],
+                    BorderColor: [33, 35, 33],// [67, 53, 53],
                     Type: 'SimpleMarkerSymbol'
                 };
                 var _g = Hackathon.Map.AddPoint(_Status.ScoreLayer, graphicData);
-
-
-
-
-
+                _Status.ScoreGraphics[_cid] = _g;
             }
         })
     }
@@ -140,9 +142,7 @@
                 var _g = Hackathon.Map.AddPoint(_Status.LayerName, graphicData);
             }
             // *** Add Poi Point ***
-            debugger
             for (let i = 0; i < data.length; i++) {
-                debugger
                 var _Color, _BorderColor;
                 if (data[i].IS_BusStop === '0') { _Color = [210, 0, 0]; }
                 else { _Color = [0, 116, 253] }
@@ -162,10 +162,50 @@
             }
         })
     }
-
-    var _DrawScoreCircle = function () {
+    var _SetEvent_NetScorePolyLayerClick = function (evt) {
+        _ChageBorderColor(evt);
+        debugger
+        _ShowPointInfoTemplate(evt);
     }
-
+    var _ChageBorderColor = function (evt) {
+        if (_Status.tempghp) {
+            // *** 如果不是第一個點擊的 Graphic ，則將上一個Graphic 還原
+            var _symbol = _Status.tempghp.Graphic.symbol;
+            _symbol.outline.color.r = 182;
+            _symbol.outline.color.g = 182;
+            _symbol.outline.color.b = 182;
+            _Status.tempghp.Graphic.setSymbol(_symbol);
+        }
+        var _id;
+        if (evt.graphic.geometry.type === 'point') {
+            // *** 利用小圓的ID對應到網格id
+            _id = 'p_' + evt.graphic.id.split('_')[1];
+        }
+        else { _id = evt.graphic.id; }
+        var _g = _Status.ScoreGraphics[_id];
+        var _symbol = _g.Graphic.symbol;
+        _symbol.outline.color.r = 10;
+        _symbol.outline.color.g = 245;
+        _symbol.outline.color.b = 245;
+        _g.Graphic.setSymbol(_symbol);
+        _Status.tempghp = _g;
+    };
+    var _ShowPointInfoTemplate = function (evt) {
+        debugger
+        Hackathon.Map.SetInfowindow(
+          {
+              title: "網格資訊",
+              content: '<ul style="list-style-type:disc;">' +
+                  '<li>距離現有公車站' + evt.graphic.attributes.NEAR_DIST + ' 公尺</li>' +
+                  '<li>若在此處設新公車站可多服務' + evt.graphic.attributes.COUNT_POI + '個無大眾運輸景點</li></ul>'
+          },
+          {
+              WinWidth: 300,
+              WinHeight: 100,
+              screenPoint: evt.screenPoint,
+              placement: 'upperright'
+          });
+    }
     var _Clear = function () {
     }
 
