@@ -11,3 +11,16 @@ select{
     padding: .313rem .5rem;
     @include border-radius(3px);
 }
+
+
+button{
+    cursor: pointer;
+    &.btn-blue{
+        background-color: $blue;
+        color: white;
+        padding: .5rem 2rem;
+        border-color: $blue;
+        border-width: 0;
+        @include border-radius(5px 5px);
+    }
+}

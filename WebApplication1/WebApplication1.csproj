@@ -232,8 +232,8 @@
     <Content Include="Content\img\Lodging\hotel.svg" />
     <Content Include="Content\img\Lodging\price.svg" />
     <Content Include="Content\img\Lodging\room.svg" />
-    <Content Include="Content\img\POI\A01.svg" />
-    <Content Include="Content\img\POI\A02.svg" />
+    <Content Include="Content\img\POI\bab.svg" />
+    <Content Include="Content\img\POI\hotel.svg" />
     <Content Include="Content\img\POI\B01.svg" />
     <Content Include="Content\img\Summary\lame-walk.svg" />
     <Content Include="Content\img\Summary\no-bus.svg" />

@@ -6,7 +6,6 @@
         ArrayRoomDemand: [],
         ArrayRoomSupply:[],
         ArrayNation: [],
-        SearchTownID: '',
         hotelInfo: {},
         babInfo: {}
     };
@@ -71,32 +70,26 @@
         /// 種點 - 加入民宿、旅館點位資料
         /// </summary>
         /// <param name="_townId" type="type"></param>
-        _Status['SearchTownID'] = _townId;
         var $selLodgingType = $('select.sel-lodging-type');
         $.when(_Data.GetPointData(_townId, 'bablist'),
             _Data.GetPointData(_townId, 'hotellist'),
-            _Data.GetSupplyDemand(_townId, '旅館'),
             _Data.GetSupplyDemand(_townId, '民宿'),
+            _Data.GetSupplyDemand(_townId, '旅館'),
             _Data.GetPassengerData(_townId, '2017', 1, 1)).
-            then(function (bablist, hotellist, HotelData, BabData, PassengerData) {
+            then(function (bablist, hotellist, BabData, HotelData, PassengerData) {
                 var POILayer = Hackathon.Map.GetStatus().layList[_Status.POILayerName];
                 POILayer.clear();
                 // ***  TODO 待整理的髒髒der Code
                 var searchList, bedCount, RoomData,
                     type = $selLodgingType.val();
+                
+                RoomData = (type == 'hotel') ? HotelData : BabData;
+                _AddPOI('hotel', hotellist);
+                _AddPOI('bab', bablist);
+                _SwitchPOI(type);
 
-
-                if (type == 'hotel') {
-                    // ***  旅館種點  ****
-                    _AddPOI('A02', hotellist);
-                    RoomData = HotelData;
-                } else {
-                    // ***  民宿種點  ****
-                    _AddPOI('A01', bablist);
-                    RoomData = BabData;
-                }
-                _SaveData('hotel', bablist, BabData);
-                _SaveData('bab', hotellist, HotelData);
+                _SaveData('hotel', hotellist, HotelData);
+                _SaveData('bab', bablist, BabData);
 
                 //基本統計
                 var stats = _Status[type + 'Info']['stats'];
@@ -133,9 +126,10 @@
         /// </summary>
         /// <param name="_type" type="type"></param>
         /// <param name="_obj" type="type"></param>
+        if (!_Status['graphics']['poi']) _Status['graphics']['poi'] = [];
         var BedCount = 0;
         for (let i = 0; i < _obj.length; i++) {
-            var _id = 'babPoint_' + i;
+            var _id = _type + '_' + i;
             var graphicData = { ID: _id, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
             graphicData.Geometry.X = _obj[i].X;
             graphicData.Geometry.Y = _obj[i].Y;
@@ -159,6 +153,7 @@
                 Type: 'PictureMarkerSymbol'
             };
             var _g = Hackathon.Map.AddPoint(_Status.POILayerName, graphicData);
+            _Status['graphics']['poi'].push(_g);
             BedCount += Number(_obj[i].ROOM_NUM);
             //  PtArry.push(_g);
         }
@@ -184,16 +179,27 @@
     }
     var _Switch_LodgingType = function () {
         var type = $(this).val(),
-            icon = (type == 'hotel') ? 'A01' : 'A02',
             info = _Status[type + 'Info'],
             stats = info['stats'],
             RoomData = info['RoomData'];
-        _AddPOI(icon, _Status[type + 'Info']['searchList']);
+        
+        console.log(type);
+        _SwitchPOI(type);
         $('.tbl-lodging-stats .tr-number td').each(function () { $(this).text(stats[$(this).attr('name')]); });
 
         _Status['ArrayRoomDemand'] = RoomData.map(function (e) { return e.DEMAND; });
         _Status['ArrayRoomSupply'] = RoomData.map(function (e) { return e.SUPPLY; });
         _DrawChart_Room();
+    }
+
+    var _SwitchPOI = function (type) {
+        _Status['graphics']['poi'].map(function (e) { 
+            if (e.Graphic.id.startsWith(type)){
+                e.Graphic.show();
+            } else {
+                e.Graphic.hide();
+            }
+        })
     }
     // 住宿供需趨勢圖表
     var _DrawChart_Room = function () {
