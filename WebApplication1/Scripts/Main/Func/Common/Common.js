@@ -1,7 +1,9 @@
 ﻿Hackathon.namespace('Hackathon.Common');
 define(['proj4'], function (Proj4js) {
   //坐標系統定義檔
-
+    var _Status ={
+        AjaxSentCount:0
+    }
   Proj4js.defs([
     ["EPSG:3826", "+title=TWD97 TM2 +proj=tmerc +lat_0=0 +lon_0=121 +k=0.9999 +x_0=250000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"],
     ["EPSG:3857", "+title=Google Mercator +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs"],
@@ -121,7 +123,19 @@ define(['proj4'], function (Proj4js) {
     Set_UI: function (_html) {
       _Set_UI(_html);
     },
-    FormatThousandth: _FormatThousandth
+    FormatThousandth: _FormatThousandth,
+    Init: function () {
+        $(document).on('ajaxSend', function (e, request, options) {
+            _Status.AjaxSentCount++;
+            $('body').addClass('show-loading');
+        });
+        $(document).on('ajaxComplete', function (e, request, options) {
+            _Status.AjaxSentCount--;
+            if (_Status.AjaxSentCount == 0) {
+                $('body').removeClass('show-loading');
+            }
+        });
+    }
   }
   Hackathon.Common = module;
   return module;

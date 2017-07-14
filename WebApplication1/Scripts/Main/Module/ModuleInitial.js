@@ -12,6 +12,7 @@ Hackathon.namespace = function () {
   return o;
 };
 require(['Map/EsriMap', 'Common'], function (EsriMap, Common) {
+    Common.Init();
   //載入map底圖&&MapFunc
   $.when(EsriMap.init('map')).then(function () {
     //Load UI.js
