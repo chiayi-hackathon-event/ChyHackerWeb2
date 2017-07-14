@@ -467,7 +467,7 @@ aside#info-panel .info-block .info-section .chart-container {
 }
 /* line 54, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section .chart-container#nation-chart {
-  height: 375px;
+  height: 320px;
 }
 /* line 58, ../sass/layout/_aside.scss */
 aside#info-panel .info-block .info-section + .info-section {
@@ -477,7 +477,24 @@ aside#info-panel .info-block .info-section + .info-section {
 .panel-show aside#info-panel {
   transform: translateX(100%);
 }
-/* line 68, ../sass/layout/_aside.scss */
+/* line 67, ../sass/layout/_aside.scss */
+aside#info-panel .no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+/* line 75, ../sass/layout/_aside.scss */
+aside#info-panel .no-data:before {
+  content: '\f071';
+  margin-right: .5rem;
+  font-family: FontAwesome;
+  color: #888;
+}
+/* line 82, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide {
   width: 25px;
   height: 45px;
@@ -499,15 +516,15 @@ aside#info-panel #btn-slide {
   -webkit-transition: right 0.65s linear;
   transition: right 0.65s linear;
 }
-/* line 85, ../sass/layout/_aside.scss */
+/* line 99, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide:hover {
   background-color: #EF6461;
 }
-/* line 88, ../sass/layout/_aside.scss */
+/* line 102, ../sass/layout/_aside.scss */
 .panel-empty aside#info-panel #btn-slide {
   display: none !important;
 }
-/* line 91, ../sass/layout/_aside.scss */
+/* line 105, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide:before {
   content: " ";
   width: 0;
@@ -519,19 +536,19 @@ aside#info-panel #btn-slide:before {
   border-style: solid;
   border-color: #C1514F transparent transparent transparent;
 }
-/* line 102, ../sass/layout/_aside.scss */
+/* line 116, ../sass/layout/_aside.scss */
 aside#info-panel #btn-slide:after {
   font-size: 1.25rem;
   font-family: FontAwesome;
   content: '\f0da';
 }
-/* line 106, ../sass/layout/_aside.scss */
+/* line 120, ../sass/layout/_aside.scss */
 .panel-show aside#info-panel #btn-slide:after {
   content: '\f0d9';
 }
 
 @media (max-width: 550px) {
-  /* line 114, ../sass/layout/_aside.scss */
+  /* line 128, ../sass/layout/_aside.scss */
   #info-panel {
     width: -webkit-calc(100% - 50px) !important;
     width: -moz-calc(100% - 50px) !important;
