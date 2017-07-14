@@ -7,15 +7,14 @@
 	<circle fill="#A38A77" stroke="#C30D23" stroke-width="3.5" cx="150" cy="150" r="130"/>
 </g>
 <g id="底">
-	<circle fill="#DB9645" stroke="#FFFFFF" cx="150" cy="150" r="130"/>
+	<circle fill="#5DBA47" stroke="#FFFFFF" cx="150" cy="150" r="130"/>
 </g>
-<g id="txt">
-	<g>
-		<rect x="194.5" y="120.5" fill="#FFFFFF" width="13" height="56"/>
-		<path fill="#FFFFFF" d="M141.5,71.5l-49,40v69c0,17,0,48,0,48h96c0,0,0-31,0-48v-69L141.5,71.5z M134.5,186.5h-24v-24h24V186.5z
-			 M134.5,153.5h-24v-24h24V153.5z M171.5,187.5h-24v-24h24V187.5z M171.5,153.5h-24v-24h24V153.5z"/>
-	</g>
-</g>
+<rect x="198" y="122" fill="#FFFFFF" width="15" height="45"/>
+<path fill="#FFFFFF" d="M87,85v76c0,19,0,54,0,54h103c0,0,0-35,0-54V85H87z"/>
+<rect x="108" y="105" fill="#5DBA47" width="24" height="24"/>
+<rect x="145" y="105" fill="#5DBA47" width="24" height="24"/>
+<rect x="108" y="142" fill="#5DBA47" width="24" height="24"/>
+<rect x="145" y="142" fill="#5DBA47" width="24" height="24"/>
 <g id="icon_1_">
 </g>
 </svg>

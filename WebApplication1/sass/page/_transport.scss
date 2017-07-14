@@ -1,0 +1,35 @@
+﻿#transport{
+    .tbl-service-count{
+        width: 70%;
+        margin: auto;
+        h1{
+            font-size: 3.75rem;
+            font-weight: bold;
+        }
+        img {
+            width: 80px;
+        }
+        tr{
+            td{
+                text-align: left;
+            }
+            &:nth-child(4n+3){
+                td{
+                    padding-top: 2rem;
+                }
+            }
+            &:nth-child(even){
+                td{
+                    padding-top: .5rem;
+                }
+            }
+            &:nth-child(odd){
+                td:nth-child(1){
+                    width: 80px;
+                    text-align: center;
+                    padding-right: 1rem;
+                }
+            }
+        }
+    }
+}

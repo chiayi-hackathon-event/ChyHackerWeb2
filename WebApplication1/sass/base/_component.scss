@@ -16,11 +16,21 @@ select{
 button{
     cursor: pointer;
     &.btn-blue{
+        @extend %button;
         background-color: $blue;
         color: white;
-        padding: .5rem 2rem;
         border-color: $blue;
-        border-width: 0;
-        @include border-radius(5px 5px);
     }
+    &.btn-blue-inverse{
+        @extend %button;
+        background-color: white;
+        color: $blue;
+        border-color: $blue;
+    }
+}
+
+%button{
+    padding: .5rem 2rem;
+    border-width: 2px;
+    @include border-radius(5px 5px);
 }
