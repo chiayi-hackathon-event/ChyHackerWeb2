@@ -6,9 +6,9 @@
 <section id="summary" class="info-block">
     <section class="info-section">
         <content>
-            <select>
-                <option class="sel-town">這裡裝鄉鎮市區</option>
-            </select>
+            <div class="sum-loc">
+                <span>查詢位置：</span><span class="selected-vlg">{{COUN_NA}}{{TOWN_NA}}{{VLG_NA}}</span>
+            </div>
         </content>
     </section>
 
@@ -18,22 +18,22 @@
             <section class="sum-item">
                 <i class="fa fa-globe"></i>
                 <strong>文化</strong>
-                <span name="count-culture"></span>
+                <span>{{POI_Culture | CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-university"></i>
                 <strong>古蹟</strong>
-                <span name="count-monument"></span>
+                <span>{{POI_Monuments| CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-cutlery"></i>
                 <strong>美食</strong>
-                <span name="count-food"></span>
+                <span>{{POI_Food| CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-map-signs"></i>
                 <strong>風景</strong>
-                <span name="count-scenery"></span>
+                <span>{{POI_landscape| CheckValue}}處</span>
             </section>
         </content>
     </section>
@@ -43,22 +43,22 @@
             <section class="sum-item">
                 <i class="fa fa-home"></i>
                 <strong>家數</strong>
-                <span name="count-"></span>
+                <span>家</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-bed"></i>
                 <strong>房間數</strong>
-                <span name="count-"></span>
+                <span>間</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-line-chart"></i>
                 <strong>需求/供給</strong>
-                <span name="count-"></span>
+                <span>%</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-users"></i>
                 <strong>外籍旅客比率</strong>
-                <span name="count-"></span>
+                <span>%</span>
             </section>
         </content>
     </section>
@@ -68,17 +68,17 @@
             <section class="sum-item">
                 <img src="~/Content/img/Summary/no-bus.svg" />
                 <strong>無公車景點</strong>
-                <span name="count-no-bus"></span>
+                <span>{{Transportation_NoBus| CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <img src="~/Content/img/Summary/no-walk.svg" />
                 <strong>無人行道景點</strong>
-                <span name="count-no-walk"></span>
+                <span>{{Transportation_NOsidewalk| CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <img src="~/Content/img/Summary/lame-walk.svg" />
                 <strong>人行道不合格</strong>
-                <span name="count-lame-walk"></span>
+                <span>{{Transportation_NotOKsidewalk| CheckValue}}處</span>
             </section>
         </content>
     </section>
@@ -88,12 +88,12 @@
             <section class="sum-item">
                 <i class="fa fa-camera-retro"></i>
                 <strong>觀光相關產業</strong>
-                <span name="count-"></span>
+                <span>{{Industry_all| CheckValue}}家</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-id-card"></i>
                 <strong>國民旅遊卡</strong>
-                <span name="count-"></span>
+                <span>{{Industry_card| CheckValue}}家</span>
             </section>
         </content>
     </section>

@@ -3,6 +3,8 @@
         LayerName: 'GraphicLayer',
         POILayerName: 'POIGraphicLayer',
         graphics: {},
+        VueData: {},
+        VueObj: {}
     };
     var _Clear = function () {
         Hackathon.Map.RemoveLayer(_Status.LayerName);
@@ -79,16 +81,31 @@
         /// </summary>
         /// <param name="_townId" type="type"></param>
         $.when(_Data.GetSummaryData(_vill_id)).then(function (data) {
-            console.log(data);
-            debugger
+            _Status['VueData'] = data[0];
+            _CreateVue();
         })
     }
 
     // **** 左邊選單 ****
-
+    var _CreateVue = function () {
+        _Status['VueObj'] = new Vue({
+            el: '#summary',
+            data: _Status['VueData'],
+            computed: {
+                Industry_all: function () {
+                    if (this.Industry_Nocard >= 0 && this.Industry_card >= 0)
+                        return this.Industry_Nocard + this.Industry_card;
+                    else return 0;
+                }
+            },
+            filters: {
+                CheckValue: function (val) {
+                    return (val == null) ? 0 : val;
+                }
+            }
+        });
+    }
     var _ShowData = function (_id) {
-        var _g = _Status.graphics[_id].Graphic;
-        debugger
         //Get id
         var _g = _Status.graphics[_id].Graphic;
         _ShowSummaryData(_g.attributes.VLG_ID);
@@ -118,6 +135,6 @@
     }
     return {
         Clear: _Clear,
-        _add: _add
+        _add: _add,
     }
 })
