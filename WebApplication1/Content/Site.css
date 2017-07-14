@@ -109,6 +109,12 @@ h4 {
   display: none;
 }
 
+/* line 18, ../sass/base/_base.scss */
+.tooltip {
+  opacity: 1;
+  display: block;
+}
+
 /* line 2, ../sass/base/_component.scss */
 button:focus {
   outline: 0;
