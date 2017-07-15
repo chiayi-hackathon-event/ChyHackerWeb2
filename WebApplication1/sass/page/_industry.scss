@@ -1,3 +1,17 @@
 ﻿#industry{
-
+    .tbl-poi-info, .tbl-industry-info{
+        width: 90%;
+        margin: auto;
+        border-collapse: collapse;
+        tr{
+            td{
+                border-bottom: 1px solid #ccc;
+                padding: .5rem;
+            }
+            td:first-child{
+                font-weight: bold;
+                width: 4rem;
+            }   
+        }
+    }
 }
