@@ -940,6 +940,23 @@ aside#info-panel #btn-slide:after {
   text-align: center;
 }
 
+/* line 2, ../sass/page/_industry.scss */
+#industry .tbl-poi-info, #industry .tbl-industry-info {
+  width: 90%;
+  margin: auto;
+  border-collapse: collapse;
+}
+/* line 7, ../sass/page/_industry.scss */
+#industry .tbl-poi-info tr td, #industry .tbl-industry-info tr td {
+  border-bottom: 1px solid #ccc;
+  padding: .5rem;
+}
+/* line 11, ../sass/page/_industry.scss */
+#industry .tbl-poi-info tr td:first-child, #industry .tbl-industry-info tr td:first-child {
+  font-weight: bold;
+  width: 4rem;
+}
+
 /* line 2, ../sass/page/_transport.scss */
 #transport .tbl-service-count {
   width: 70%;
@@ -1053,33 +1070,35 @@ aside#info-panel #btn-slide:after {
 /* line 32, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item strong {
   padding-top: .25rem;
+  font-size: .85rem;
 }
-/* line 35, ../sass/page/_summary.scss */
+/* line 36, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item span {
   padding-top: .25rem;
+  font-size: 1.5rem;
 }
-/* line 38, ../sass/page/_summary.scss */
+/* line 40, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item.inactive {
   background-color: #bebebe;
 }
-/* line 45, ../sass/page/_summary.scss */
+/* line 47, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(2) .sum-item {
   background-color: #72cdff;
 }
-/* line 50, ../sass/page/_summary.scss */
+/* line 52, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(3) .sum-item {
   background-color: #ffbb00;
 }
-/* line 56, ../sass/page/_summary.scss */
+/* line 58, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(4) .sum-item {
   background-color: #b180b8;
 }
-/* line 61, ../sass/page/_summary.scss */
+/* line 63, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(5) .sum-item {
   background-color: #8dc778;
 }
 
-/* line 16, ../sass/Site.scss */
+/* line 17, ../sass/Site.scss */
 body {
   font-family: 'Microsoft JhengHei';
   overflow: hidden;
