@@ -153,7 +153,7 @@ button.btn-blue-inverse {
 /* line 32, ../sass/base/_component.scss */
 button.btn-blue, button.btn-blue-inverse {
   padding: .5rem 2rem;
-  border-width: 2px;
+  border-width: 1px;
   -moz-border-radius: 5px 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px 5px;
@@ -965,6 +965,44 @@ aside#info-panel #btn-slide:after {
   width: 80px;
   text-align: center;
   padding-right: 1rem;
+}
+/* line 35, ../sass/page/_transport.scss */
+#transport .tbl-no-service-poi {
+  margin: auto;
+  width: 90%;
+}
+/* line 38, ../sass/page/_transport.scss */
+#transport .tbl-no-service-poi thead th {
+  text-align: center;
+  color: white;
+  background-color: #F79494;
+}
+/* line 43, ../sass/page/_transport.scss */
+#transport .tbl-no-service-poi th, #transport .tbl-no-service-poi td {
+  border-bottom: 1px solid #ccc;
+  padding: .5rem;
+}
+/* line 47, ../sass/page/_transport.scss */
+#transport .tbl-no-service-poi tr th:first-child {
+  white-space: nowrap;
+  text-align: center;
+}
+/* line 51, ../sass/page/_transport.scss */
+#transport .tbl-no-service-poi tbody tr td:nth-child(2) {
+  width: 6.5rem;
+}
+/* line 55, ../sass/page/_transport.scss */
+#transport .dataTables_paginate {
+  text-align: center;
+  margin-top: .313rem;
+}
+/* line 58, ../sass/page/_transport.scss */
+#transport .dataTables_paginate a {
+  cursor: pointer;
+}
+/* line 60, ../sass/page/_transport.scss */
+#transport .dataTables_paginate a + a {
+  margin-left: .25rem;
 }
 
 /* line 3, ../sass/page/_summary.scss */

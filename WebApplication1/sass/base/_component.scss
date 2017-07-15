@@ -31,6 +31,6 @@ button{
 
 %button{
     padding: .5rem 2rem;
-    border-width: 2px;
+    border-width: 1px;
     @include border-radius(5px 5px);
 }

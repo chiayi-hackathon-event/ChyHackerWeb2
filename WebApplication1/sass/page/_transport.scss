@@ -32,4 +32,35 @@
             }
         }
     }
+    .tbl-no-service-poi{
+        margin: auto;
+        width: 90%;
+        thead th{
+            text-align: center;
+            color: white;
+            background-color: #F79494;
+        }
+        th, td{
+            border-bottom: 1px solid #ccc;
+            padding: .5rem;
+        }
+        tr th:first-child{
+            white-space: nowrap;
+            text-align: center;
+        }
+        tbody tr td:nth-child(2){
+            width: 6.5rem;
+        }
+    }
+    .dataTables_paginate{
+        text-align: center;
+        margin-top: .313rem;
+        a {
+            cursor: pointer;
+            + a{
+                margin-left: .25rem;
+            }
+        }
+    }
+
 }
