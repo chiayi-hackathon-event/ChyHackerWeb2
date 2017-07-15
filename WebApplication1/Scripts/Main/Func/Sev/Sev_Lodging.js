@@ -170,9 +170,9 @@
         };
         if (searchList.length > 0) {
             stats.LodgingCount = searchList.length;
-            stats.RoomCount = searchList.reduce(function (a,b) {
+            stats.RoomCount = Hackathon.Common.FormatThousandth(searchList.reduce(function (a, b) {
                 return a + Number(b.ROOM_NUM);
-            }, 0);
+            }, 0));
             stats.AvgPrice = Hackathon.Common.FormatThousandth(Math.round(searchList.reduce(function (a, b) { return a + Number(b.AVG_ROOM_PRICE); }, 0) / searchList.length));
         }
         _Status[type + 'Info']['stats'] = stats;
@@ -248,7 +248,7 @@
         }
 
         _Status['ArrayNation'].sort(function (a, b) { return b.y - a.y; })
-                              .map(function (e, idx) { if (idx > 2) { e.visible = false; } });
+                              .map(function (e, idx) { console.log(e); if (idx > 4) { e.visible = false; } });
         
         var type = 'pie',
             id = 'nation-chart',

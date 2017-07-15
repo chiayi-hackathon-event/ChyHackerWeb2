@@ -152,7 +152,7 @@ button.btn-blue-inverse {
 
 /* line 32, ../sass/base/_component.scss */
 button.btn-blue, button.btn-blue-inverse {
-  padding: .5rem 2rem;
+  padding: .5rem 1rem;
   border-width: 1px;
   -moz-border-radius: 5px 5px;
   -webkit-border-radius: 5px;
@@ -901,35 +901,41 @@ aside#info-panel #btn-slide:after {
   }
 }
 /* line 4, ../sass/page/_lodging.scss */
-#lodging .info-section content > select {
-  width: 80%;
+#lodging .info-section:first-child content {
+  display: flex;
+  align-items: center;
 }
-/* line 9, ../sass/page/_lodging.scss */
+/* line 8, ../sass/page/_lodging.scss */
+#lodging .info-section:first-child content > select {
+  width: 60%;
+  margin-left: 1rem;
+}
+/* line 15, ../sass/page/_lodging.scss */
 #lodging .tbl-lodging-stats {
   margin: auto;
   width: 90%;
 }
-/* line 12, ../sass/page/_lodging.scss */
+/* line 18, ../sass/page/_lodging.scss */
 #lodging .tbl-lodging-stats .tr-number {
   font-size: 1.25rem;
 }
-/* line 14, ../sass/page/_lodging.scss */
+/* line 20, ../sass/page/_lodging.scss */
 #lodging .tbl-lodging-stats .tr-number td {
   font-weight: bold;
 }
-/* line 18, ../sass/page/_lodging.scss */
+/* line 24, ../sass/page/_lodging.scss */
 #lodging .tbl-lodging-stats .tr-unit {
   font-size: .8rem;
 }
-/* line 20, ../sass/page/_lodging.scss */
+/* line 26, ../sass/page/_lodging.scss */
 #lodging .tbl-lodging-stats .tr-unit td {
   padding: .5rem 0;
 }
-/* line 24, ../sass/page/_lodging.scss */
+/* line 30, ../sass/page/_lodging.scss */
 #lodging .tbl-lodging-stats img {
   width: 80%;
 }
-/* line 27, ../sass/page/_lodging.scss */
+/* line 33, ../sass/page/_lodging.scss */
 #lodging .tbl-lodging-stats td {
   text-align: center;
 }

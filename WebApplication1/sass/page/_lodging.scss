@@ -1,8 +1,14 @@
 ﻿#lodging{
 
-    .info-section{
-        content > select{
-            width: 80%;
+    .info-section:first-child{
+        content {
+            display: flex;
+            align-items: center;
+
+            > select{
+                width: 60%;
+                margin-left: 1rem;
+            }
         }
     }
     
