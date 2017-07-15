@@ -188,14 +188,17 @@
     var _DrawDataTable = function (_PoiList) {
         var _html;
         for (var i = 0; i < _PoiList.length; i++) {
-            _html += '<tr><th>' + i + '.</th><td>' + _PoiList[i].Graphic.attributes.Name + '</td><td>' + _PoiList[i].Graphic.attributes.Description + '</td></tr>';
+            _html += '<tr><th>' + (i+1) + '.</th><td>' + _PoiList[i].Graphic.attributes.Name + '</td><td>' + _PoiList[i].Graphic.attributes.Description + '</td></tr>';
+        }
+        if (_Status.DataTable) {
+            _Status.DataTable.destroy();
         }
         $('.tbl-no-service-poi tbody').empty().append(_html);
         $('#tb tbody').append(_html);
         _Status.DataTable = $('.tbl-no-service-poi').DataTable({
             "paging": true,
             "bLengthChange": false,
-            "iDisplayLength": 8,
+            "iDisplayLength": 10,
             "pagingType": "simple_numbers",
             "ordering": false,
             "info": false,
@@ -284,8 +287,11 @@
                 _Status.NoServiceList.splice(i, 1);
             }
         }
+        debugger
+        _DrawDataTable(_Status.NoServiceList);
         // *** 介面事件 ****
         _DigitalAnimation(_Status.NoServiceList.length);
+
     }
     var _DigitalAnimation = function (NoServiceCount) {
         var _hasServiceCount = _Status.PoiCount - NoServiceCount;
