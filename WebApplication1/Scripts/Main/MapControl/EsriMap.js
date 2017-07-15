@@ -25,9 +25,7 @@ define(function (module) {
               _Status.map.on('load', function () {
                   Hackathon.Map.CenterAt(193630, 2597736, 6);
               });
-              if (_Status.map !== undefined) {
                   dtd.resolve();
-              }
           });
         return dtd.promise();
     };
@@ -223,6 +221,13 @@ define(function (module) {
         var _layer = _Status.layList[layerName];
         _layer.clear();
     };
+    var  _RemoveGraphic = function(layerName, Graphic){
+        var _layer = _Status.layList[layerName];
+        _layer.remove(Graphic.Graphic);
+    }
+
+
+
     module.GetScreenPoint = function (geometry) {
         return _Status.map.toScreen(geometry);
     };
@@ -273,6 +278,9 @@ define(function (module) {
     }
     module.ClearLayer = function (layerName) {
         _ClearLayer(layerName);
+    };
+    module.RemoveGraphic = function (layerName, Graphic) {
+        _RemoveGraphic(layerName, Graphic);
     };
     return module;
 }(Hackathon.Map))
