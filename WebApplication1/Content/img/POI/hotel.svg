@@ -7,7 +7,7 @@
 	<circle fill="#A38A77" stroke="#C30D23" stroke-width="3.5" cx="150" cy="150" r="130"/>
 </g>
 <g id="底">
-	<circle fill="#F9AE06" stroke="#FFFFFF" cx="150" cy="150" r="130"/>
+	<circle fill="#F9AE06" stroke="#FFFFFF" stroke-width="12" cx="150" cy="150" r="130"/>
 </g>
 <path fill="#FFFFFF" d="M98,90v76c0,19,0,54,0,54h103c0,0,0-35,0-54V90H98z M143,171h-24v-24h24V171z M143,134h-24v-24h24V134z
 	 M180,171h-24v-24h24V171z M180,134h-24v-24h24V134z"/>

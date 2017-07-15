@@ -7,7 +7,7 @@
 	<circle fill="#A38A77" stroke="#C30D23" stroke-width="3.5" cx="150" cy="150" r="130"/>
 </g>
 <g id="底">
-	<circle fill="#43DD43" stroke="#FFFFFF" cx="150" cy="150" r="130"/>
+	<circle fill="#43DD43" stroke="#FFFFFF" stroke-width="12" cx="150" cy="150" r="130"/>
 </g>
 <rect x="108" y="105" fill="#43DD43" width="24" height="24"/>
 <rect x="145" y="105" fill="#43DD43" width="24" height="24"/>

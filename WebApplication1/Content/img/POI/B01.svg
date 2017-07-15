@@ -7,7 +7,7 @@
 	<circle fill="#A38A77" stroke="#C30D23" stroke-width="3.5" cx="150" cy="150" r="130"/>
 </g>
 <g id="底">
-	<circle fill="#5561F2" stroke="#FFFFFF" cx="150" cy="150" r="130"/>
+	<circle fill="#5561F2" stroke="#FFFFFF" stroke-width="12" cx="150" cy="150" r="130"/>
 </g>
 <g id="txt">
 	<g id="f27ANs_9_">
