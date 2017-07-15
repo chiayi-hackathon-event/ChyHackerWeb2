@@ -57,6 +57,14 @@
     }
   }
   var _Event_Click_Industry = function () {
+      _Clear();
+      if (Hackathon.UIMain.Industry) {
+          Hackathon.UIMain.Industry.Reset();
+      } else {
+          require(['UI/UI_Industry'], function (UI_Industry) {
+              UI_Industry.Init();
+          })
+      }
   }
   var _Event_Click_Summary = function () {
       _Clear();
