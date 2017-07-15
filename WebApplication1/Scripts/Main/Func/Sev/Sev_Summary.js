@@ -3,7 +3,22 @@
         LayerName: 'GraphicLayer',
         POILayerName: 'POIGraphicLayer',
         graphics: {},
-        VueData: {},
+        VueData: {
+            COUN_NA: '',
+            Industry_Nocard: 0,
+            Industry_card: 0,
+            POI_Culture: 0,
+            POI_Food: 0,
+            POI_Monuments: 0,
+            POI_landscape: 0,
+            POLY: 0,
+            TOWN_NA: '',
+            Transportation_NOsidewalk: 0,
+            Transportation_NoBus: 0,
+            Transportation_NotOKsidewalk: 0,
+            VLG_ID: '',
+            VLG_NA: ''
+        },
         VueObj: {}
     };
     var _Clear = function () {
@@ -81,8 +96,16 @@
         /// </summary>
         /// <param name="_townId" type="type"></param>
         $.when(_Data.GetSummaryData(_vill_id)).then(function (data) {
-            _Status['VueData'] = data[0];
-            _CreateVue();
+            var newObj = data[0];
+            if ($.isEmptyObject(_Status['VueObj'])) {
+                _Status['VueData'] = newObj;
+            } else {
+                for (var key in newObj) {
+                    if (newObj.hasOwnProperty(key)) {
+                        _Status['VueData'][key] = newObj[key];
+                    }
+                }
+            }
         })
     }
 
@@ -90,11 +113,13 @@
     var _CreateVue = function () {
         _Status['VueObj'] = new Vue({
             el: '#summary',
-            data: _Status['VueData'],
+            data: {
+                sum: _Status['VueData']
+            },
             computed: {
                 Industry_all: function () {
-                    if (this.Industry_Nocard >= 0 && this.Industry_card >= 0)
-                        return this.Industry_Nocard + this.Industry_card;
+                    if (this.sum.Industry_Nocard >= 0 && this.sum.Industry_card >= 0)
+                        return this.sum.Industry_Nocard + this.sum.Industry_card;
                     else return 0;
                 }
             },
@@ -136,5 +161,7 @@
     return {
         Clear: _Clear,
         _add: _add,
+        CreateVue: _CreateVue
+            
     }
 })

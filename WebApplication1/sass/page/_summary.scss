@@ -2,7 +2,7 @@
     .info-section{
         content{
             display: flex;
-            justify-content: space-around;
+            flex-wrap: wrap;
             .sum-loc{
                 span{
                     font-size: 1.2rem;
@@ -16,42 +16,50 @@
                 flex-direction: column;
                 justify-content: center;
                 text-align: center;
+                @include calc("width", "45% - 1rem");
+                color: white;
+                margin: 1rem;
+                padding: 1rem 0;
+                @include border-radius(5px 5px);
                 img{
                     width: 3rem;
                     margin: auto;
                 }
                 i{
+                    color: white;
                     font-size: 3rem;
                 }
                 strong {
                     padding-top:.25rem;
-                    font-weight: bold;
                 }
                 span{
                     padding-top:.25rem;
+                }
+                &.inactive{
+                    background-color: #bebebe;
                 }
             }
         }
         
         &:nth-of-type(2){
-            i{
-                color: rgb(114, 205, 255);
+            .sum-item{
+                background-color: rgb(114, 205, 255);
             }
         }
         &:nth-of-type(3){
-            i {
-                color: rgb(255, 187, 0);
+            .sum-item {
+                background-color: rgb(255, 187, 0);
             }
         }
         
         &:nth-of-type(4){
-            i {
-                color: #b180b8;
+            .sum-item {
+                background-color: #b180b8;
             }
         }
         &:nth-of-type(5){
-            i{
-                color: rgb(141, 199, 120);
+            .sum-item{
+                background-color: rgb(141, 199, 120);
             }
         }
     }

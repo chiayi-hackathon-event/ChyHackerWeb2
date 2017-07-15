@@ -7,7 +7,7 @@
     <section class="info-section">
         <content>
             <div class="sum-loc">
-                <span>查詢位置：</span><span class="selected-vlg">{{COUN_NA}}{{TOWN_NA}}{{VLG_NA}}</span>
+                <span>查詢位置：</span><span class="selected-vlg">{{sum.COUN_NA}}{{sum.TOWN_NA}}{{sum.VLG_NA}}</span>
             </div>
         </content>
     </section>
@@ -18,22 +18,22 @@
             <section class="sum-item">
                 <i class="fa fa-globe"></i>
                 <strong>文化</strong>
-                <span>{{POI_Culture | CheckValue}}處</span>
+                <span>{{sum.POI_Culture | CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-university"></i>
                 <strong>古蹟</strong>
-                <span>{{POI_Monuments| CheckValue}}處</span>
+                <span>{{sum.POI_Monuments | CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-cutlery"></i>
                 <strong>美食</strong>
-                <span>{{POI_Food| CheckValue}}處</span>
+                <span>{{sum.POI_Food | CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-map-signs"></i>
                 <strong>風景</strong>
-                <span>{{POI_landscape| CheckValue}}處</span>
+                <span>{{sum.POI_landscape | CheckValue}}處</span>
             </section>
         </content>
     </section>
@@ -68,17 +68,17 @@
             <section class="sum-item">
                 <img src="~/Content/img/Summary/no-bus.svg" />
                 <strong>無公車景點</strong>
-                <span>{{Transportation_NoBus| CheckValue}}處</span>
+                <span>{{sum.Transportation_NoBus | CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <img src="~/Content/img/Summary/no-walk.svg" />
                 <strong>無人行道景點</strong>
-                <span>{{Transportation_NOsidewalk| CheckValue}}處</span>
+                <span>{{sum.Transportation_NOsidewalk | CheckValue}}處</span>
             </section>
             <section class="sum-item">
                 <img src="~/Content/img/Summary/lame-walk.svg" />
                 <strong>人行道不合格</strong>
-                <span>{{Transportation_NotOKsidewalk| CheckValue}}處</span>
+                <span>{{sum.Transportation_NotOKsidewalk | CheckValue}}處</span>
             </section>
         </content>
     </section>
@@ -88,12 +88,12 @@
             <section class="sum-item">
                 <i class="fa fa-camera-retro"></i>
                 <strong>觀光相關產業</strong>
-                <span>{{Industry_all| CheckValue}}家</span>
+                <span>{{sum.Industry_all | CheckValue}}家</span>
             </section>
             <section class="sum-item">
                 <i class="fa fa-id-card"></i>
                 <strong>國民旅遊卡</strong>
-                <span>{{Industry_card| CheckValue}}家</span>
+                <span>{{sum.Industry_card | CheckValue}}家</span>
             </section>
         </content>
     </section>

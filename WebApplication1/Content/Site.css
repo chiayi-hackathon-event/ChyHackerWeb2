@@ -970,7 +970,7 @@ aside#info-panel #btn-slide:after {
 /* line 3, ../sass/page/_summary.scss */
 #summary .info-section content {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 /* line 7, ../sass/page/_summary.scss */
 #summary .info-section content .sum-loc span {
@@ -986,40 +986,53 @@ aside#info-panel #btn-slide:after {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  width: -webkit-calc(45% - 1rem);
+  width: -moz-calc(45% - 1rem);
+  width: calc(45% - 1rem);
+  color: white;
+  margin: 1rem;
+  padding: 1rem 0;
+  -moz-border-radius: 5px 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px 5px;
 }
-/* line 19, ../sass/page/_summary.scss */
+/* line 24, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item img {
   width: 3rem;
   margin: auto;
 }
-/* line 23, ../sass/page/_summary.scss */
+/* line 28, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item i {
+  color: white;
   font-size: 3rem;
 }
-/* line 26, ../sass/page/_summary.scss */
+/* line 32, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item strong {
   padding-top: .25rem;
-  font-weight: bold;
 }
-/* line 30, ../sass/page/_summary.scss */
+/* line 35, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item span {
   padding-top: .25rem;
 }
-/* line 37, ../sass/page/_summary.scss */
-#summary .info-section:nth-of-type(2) i {
-  color: #72cdff;
+/* line 38, ../sass/page/_summary.scss */
+#summary .info-section content .sum-item.inactive {
+  background-color: #bebebe;
 }
-/* line 42, ../sass/page/_summary.scss */
-#summary .info-section:nth-of-type(3) i {
-  color: #ffbb00;
+/* line 45, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(2) .sum-item {
+  background-color: #72cdff;
 }
-/* line 48, ../sass/page/_summary.scss */
-#summary .info-section:nth-of-type(4) i {
-  color: #b180b8;
+/* line 50, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(3) .sum-item {
+  background-color: #ffbb00;
 }
-/* line 53, ../sass/page/_summary.scss */
-#summary .info-section:nth-of-type(5) i {
-  color: #8dc778;
+/* line 56, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(4) .sum-item {
+  background-color: #b180b8;
+}
+/* line 61, ../sass/page/_summary.scss */
+#summary .info-section:nth-of-type(5) .sum-item {
+  background-color: #8dc778;
 }
 
 /* line 16, ../sass/Site.scss */
