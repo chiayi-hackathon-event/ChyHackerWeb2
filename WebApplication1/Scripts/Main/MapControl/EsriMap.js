@@ -196,9 +196,12 @@ define(function (module) {
             console.log(e);
         }
     }
-    var _MapDraw = function (callback, IsOn) {
+    var _MapDraw = function (callback, IsOn,_type) {
         require(["esri/toolbars/draw"],
           function (Draw) {
+              debugger
+              var _drawType = (_type) ? Draw[_type] : Draw.POLYGON;
+              
               switch (IsOn) {
                   case 0://關
                       if (toolbar) {
@@ -212,7 +215,7 @@ define(function (module) {
                   case 3:
                       //toolbar = new Draw(_Status.map);
                       toolbar.on("draw-end", function (evt) { debugger; toolbar.deactivate(); callback(evt); });
-                      toolbar.activate(Draw.POLYGON);
+                      toolbar.activate(_drawType);
                       break;
               }
           });
@@ -273,8 +276,8 @@ define(function (module) {
     module.RemoveLayer = function (LayerID) {
         _RemoveLayer(LayerID);
     }
-    module.MapDraw = function (callback, IsOn) {
-        _MapDraw(callback, IsOn);
+    module.MapDraw = function (callback, IsOn, _type) {
+        _MapDraw(callback, IsOn, _type);
     }
     module.ClearLayer = function (layerName) {
         _ClearLayer(layerName);
