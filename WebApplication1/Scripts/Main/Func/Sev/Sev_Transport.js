@@ -1,4 +1,4 @@
-﻿define(['Data/Data_Transport'], function (_Data) {
+﻿define(['Data/Data_Transport', 'DataTable'], function (_Data) {
     var _Status = {
         LayerName: 'NetPolyLayer',
         ScoreLayer: 'ScorelLayer',
@@ -59,6 +59,7 @@
         /// </summary>
         /// <param name="Geometry" type="type"></param>
         $.when(_Data.GetNetInfo(Geometry)).then(function (data) {
+            _Status.ScoreGraphics = {};
             for (var i = 0; i < data.length; i++) {
                 // *** 加入網格 ***
                 var _rings = data[i].coordinates;
@@ -161,7 +162,9 @@
                 graphicData.Geometry.X = data[i].X;
                 graphicData.Geometry.Y = data[i].Y;
                 graphicData.Attribute = {
-                    'hasServicenoService': false
+                    'hasServicenoService': false,
+                    'Description': data[i].Description,
+                    'Name': data[i].Name,
                 }
                 graphicData.Symbol = {
                     Size: 4,
@@ -169,17 +172,46 @@
                     BorderColor: [67, 53, 53],
                     Type: 'SimpleMarkerSymbol'
                 };
-                var _g = Hackathon.Map.AddPoint(_Status.LayerName, graphicData); debugger
+                var _g = Hackathon.Map.AddPoint(_Status.LayerName, graphicData);
                 if (data[i].IS_BusStop === '0') {
-                 _Status.graphics.push(_g);
-                _Status.NoServiceList.push(_g);
+                    _Status.graphics.push(_g);
+                    _Status.NoServiceList = _Status.graphics.slice();
                 }
             }
             $('body').removeClass('menu-show panel-empty');
             $('body').addClass('panel-show');
             _Status.PoiCount = data.length;
+            _DrawDataTable(_Status.graphics);
             _DigitalAnimation(_Status.NoServiceList.length);
         })
+    }
+    var _DrawDataTable = function (_PoiList) {
+        var _html;
+        for (var i = 0; i < _PoiList.length; i++) {
+            _html += '<tr><th>' + (i+1) + '.</th><td>' + _PoiList[i].Graphic.attributes.Name + '</td><td>' + _PoiList[i].Graphic.attributes.Description + '</td></tr>';
+        }
+        if (_Status.DataTable) {
+            _Status.DataTable.destroy();
+        }
+        $('.tbl-no-service-poi tbody').empty().append(_html);
+        $('#tb tbody').append(_html);
+        _Status.DataTable = $('.tbl-no-service-poi').DataTable({
+            "paging": true,
+            "bLengthChange": false,
+            "iDisplayLength": 10,
+            "pagingType": "simple_numbers",
+            "ordering": false,
+            "info": false,
+            "searching": false,
+            "oLanguage": {
+                "oPaginate": {
+                    "sFirst": "首頁",
+                    "sPrevious": "上頁",
+                    "sNext": "下頁",
+                    "sLast": "末頁"
+                }
+            }
+        });
     }
     var _SetEvent_NetScorePolyLayerClick = function (evt) {
         _AddLandmine(evt);
@@ -191,7 +223,10 @@
         // 邏輯非1即2
         // 邏輯1 : 傳入的如果是Point => 直接找9宮格 => 找9宮格對應的網格
         // 邏輯2 : 傳入的如果是Polygon =>先找對應的中心點 => 找9宮格 => 找9宮格對應的網格
-
+        if (!_Status.IsLandmineMode) {
+            return;
+        }
+        Hackathon.Map.GetStatus().map.infoWindow.hide();
         var _arr = [], cx, cy;
         // *** 邏輯1 ***
         if (evt.graphic.geometry.type === 'point') {
@@ -221,7 +256,7 @@
                 Ring: _rings,
                 Symbol: {
                     'Type': 'SimpleFillSymbol',
-                    'Color': [197, 220, 245],
+                    'Color': [197, 220, 245, 0.75],
                     'BorderColor': [197, 220, 245],
                     'BorderWeight': 1
                 },
@@ -252,6 +287,8 @@
                 _Status.NoServiceList.splice(i, 1);
             }
         }
+        debugger
+        _DrawDataTable(_Status.NoServiceList);
         // *** 介面事件 ****
         _DigitalAnimation(_Status.NoServiceList.length);
 
@@ -267,7 +304,7 @@
                 countNum: countTo
             },
               {
-                  duration: 500,
+                  duration: 300,
                   easing: 'linear',
                   step: function () {
                       $this.text(Math.floor(this.countNum));
@@ -279,14 +316,31 @@
         });
     }
     var _ChageBorderColor = function (evt) {
+        //if (_Status.tempghp) {
+        //    // *** 如果不是第一個點擊的 Graphic ，則將上一個Graphic 還原
+        //    var _symbol = _Status.tempghp.Graphic.symbol;
+        //    _symbol.outline.color.r = 182;
+        //    _symbol.outline.color.g = 182;
+        //    _symbol.outline.color.b = 182;
+        //    _Status.tempghp.Graphic.setSymbol(_symbol);
+        //}
+        //var _id;
+        //if (evt.graphic.geometry.type === 'point') {
+        //    // *** 利用小圓的ID對應到網格id
+        //    _id = 'p_' + evt.graphic.id.split('_')[1];
+        //}
+        //else { _id = evt.graphic.id; }
+
+        //var _g = _Status.ScoreGraphics[_id];
+        //var _symbol = _g.Graphic.symbol;
+        //_symbol.outline.color.r = 10;
+        //_symbol.outline.color.g = 245;
+        //_symbol.outline.color.b = 245;
+        //_g.Graphic.setSymbol(_symbol);
+        //_Status.tempghp = _g;
         if (_Status.tempghp) {
-            // *** 如果不是第一個點擊的 Graphic ，則將上一個Graphic 還原
-            var _symbol = _Status.tempghp.Graphic.symbol;
-            _symbol.outline.color.r = 182;
-            _symbol.outline.color.g = 182;
-            _symbol.outline.color.b = 182;
-            _Status.tempghp.Graphic.setSymbol(_symbol);
-        }
+            Hackathon.Map.RemoveGraphic(_Status.ScoreLayer, _Status.tempghp);
+        };
         var _id;
         if (evt.graphic.geometry.type === 'point') {
             // *** 利用小圓的ID對應到網格id
@@ -294,14 +348,24 @@
         }
         else { _id = evt.graphic.id; }
         var _g = _Status.ScoreGraphics[_id];
-        var _symbol = _g.Graphic.symbol;
-        _symbol.outline.color.r = 10;
-        _symbol.outline.color.g = 245;
-        _symbol.outline.color.b = 245;
-        _g.Graphic.setSymbol(_symbol);
-        _Status.tempghp = _g;
+        var arrGraphicData = {
+            ID: 'line_1',
+            Ring: _g.Graphic.geometry.rings[0],
+            Symbol: {
+                'Type': 'SimpleFillSymbol',
+                'Color': [255, 190, 190, 0],
+                'BorderWeight': 1,
+                'BorderColor': 'red'
+            },
+            Attribute: {
+            }
+        };
+        _Status.tempghp = Hackathon.Map.AddPolygon(_Status.ScoreLayer, arrGraphicData);
     };
     var _ShowPointInfoTemplate = function (evt) {
+        if (_Status.IsLandmineMode) {
+            return;
+        }
         Hackathon.Map.SetInfowindow(
           {
               title: "網格資訊",
@@ -316,6 +380,9 @@
               placement: 'upperright'
           });
     }
+    var _SetLandmineMode = function (_IsOn) {
+        _Status.IsLandmineMode = _IsOn;
+    }
     var _Reset = function () {
         // 還原UI
         _DigitalAnimation(_Status.graphics.length);
@@ -324,7 +391,9 @@
         Hackathon.Map.ClearLayer(_Status.LandmineLayer);
         Hackathon.Map.ClearLayer(_Status.BusLandmineLayer);
         Hackathon.Map.GetStatus().map.infoWindow.hide();
+        _Status.NoServiceList = _Status.graphics.slice();
     }
+
     var _Clear = function () {
     }
 
@@ -337,7 +406,8 @@
         Clear: _Clear,
         Add: _Add,
         DrawPoly: _DrawPoly,
-        Reset: _Reset
+        Reset: _Reset,
+        SetLandmineMode: _SetLandmineMode
         // AddNetPoly: _AddNetPoly
     }
 })
