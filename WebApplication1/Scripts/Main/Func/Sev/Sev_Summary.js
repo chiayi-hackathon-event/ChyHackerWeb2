@@ -4,7 +4,11 @@
     POILayerName: 'POIGraphicLayer',
     graphics: {},
     VueData: {
-      COUN_NA: '',
+    COUN_NA: '',
+      HOTEL_COUNT: 0,
+      HOTEL_COSTUMER: 0,
+      HOTEL_OCCUPANCY: 0,
+      HOTEL_FOREIGNER: 0,
       Industry_Nocard: 0,
       Industry_card: 0,
       POI_Culture: 0,
@@ -126,6 +130,9 @@
       filters: {
         CheckValue: function (val) {
           return (val == null) ? 0 : val;
+        },
+        ConvertPercentage: function (val) {
+            return (val == null) ? 0 : (val * 100).toFixed(1);
         }
       }
     });
