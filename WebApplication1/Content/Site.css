@@ -972,44 +972,52 @@ aside#info-panel #btn-slide:after {
   display: flex;
   justify-content: space-around;
 }
-/* line 6, ../sass/page/_summary.scss */
+/* line 7, ../sass/page/_summary.scss */
+#summary .info-section content .sum-loc span {
+  font-size: 1.2rem;
+}
+/* line 10, ../sass/page/_summary.scss */
+#summary .info-section content .sum-loc .selected-vlg {
+  font-weight: bold;
+}
+/* line 14, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
-/* line 11, ../sass/page/_summary.scss */
+/* line 19, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item img {
   width: 3rem;
   margin: auto;
 }
-/* line 15, ../sass/page/_summary.scss */
+/* line 23, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item i {
   font-size: 3rem;
 }
-/* line 18, ../sass/page/_summary.scss */
+/* line 26, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item strong {
   padding-top: .25rem;
   font-weight: bold;
 }
-/* line 22, ../sass/page/_summary.scss */
+/* line 30, ../sass/page/_summary.scss */
 #summary .info-section content .sum-item span {
   padding-top: .25rem;
 }
-/* line 29, ../sass/page/_summary.scss */
+/* line 37, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(2) i {
   color: #72cdff;
 }
-/* line 34, ../sass/page/_summary.scss */
+/* line 42, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(3) i {
   color: #ffbb00;
 }
-/* line 40, ../sass/page/_summary.scss */
+/* line 48, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(4) i {
   color: #b180b8;
 }
-/* line 45, ../sass/page/_summary.scss */
+/* line 53, ../sass/page/_summary.scss */
 #summary .info-section:nth-of-type(5) i {
   color: #8dc778;
 }

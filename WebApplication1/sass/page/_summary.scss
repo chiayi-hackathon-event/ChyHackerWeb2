@@ -3,6 +3,14 @@
         content{
             display: flex;
             justify-content: space-around;
+            .sum-loc{
+                span{
+                    font-size: 1.2rem;
+                }
+                .selected-vlg{
+                    font-weight: bold;
+                }
+            }
             .sum-item{
                 display: flex;
                 flex-direction: column;

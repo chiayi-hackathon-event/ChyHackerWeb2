@@ -5,7 +5,7 @@
     _Sev.Clear();
   }
   var _Init = function () {
-    _Sev._add();
+      _Sev._add();
     Hackathon.Common.Set_UI(_html);
   }
   var _Reset = function () {
