@@ -37,9 +37,9 @@
     $('body').removeClass('menu-show');
   }
   var _Event_Click_Lodging = function () {
-    if (Hackathon.UIMain.Lodging) {
       _Clear();
-      Hackathon.UIMain.Lodging.Reset();
+    if (Hackathon.UIMain.Lodging) {
+      Hackathon.UIMain.Lodging.Init();
     } else {
       require(['UI/UI_Lodging'], function (UI_Lodging) {
         UI_Lodging.Init();
@@ -47,9 +47,9 @@
     }
   }
   var _Event_Click_Transport = function () {
-    if (Hackathon.UIMain.Transport) {
       _Clear();
-      Hackathon.UIMain.Transport.Reset();
+    if (Hackathon.UIMain.Transport) {
+        Hackathon.UIMain.Transport.Reset();
     } else {
       require(['UI/UI_Transport'], function (UI_Transport) {
         UI_Transport.Init();
@@ -59,8 +59,9 @@
   var _Event_Click_Industry = function () {
   }
   var _Event_Click_Summary = function () {
-    if (Hackathon.UIMain.Summary) {
       _Clear();
+    if (Hackathon.UIMain.Summary) {
+  
       Hackathon.UIMain.Summary.Reset();
     } else {
       require(['UI/UI_Summary'], function (UI_Summary) {

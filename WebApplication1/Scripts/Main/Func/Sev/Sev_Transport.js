@@ -1,4 +1,4 @@
-﻿define(['Data/Data_Transport', 'DataTable'], function (_Data) {
+﻿define(['Data/Data_Transport'], function (_Data) {
     var _Status = {
         LayerName: 'NetPolyLayer',
         ScoreLayer: 'ScorelLayer',
@@ -103,10 +103,12 @@
                 var _g = Hackathon.Map.AddPoint(_Status.ScoreLayer, graphicData);
                 _Status.ScoreGraphics[_cid] = _g;
             }
+            $('#Fun_Legend').draggable({ opacity: 0.75 }).show();
+
         })
     }
     var _AddNetPoly = function () {
-        $.when(_Data.GetNetPolyData()).then(function (PolyData) {
+        $.when(_Data.GetNetPolyData()).then(function (PolyData) {debugger
             for (var i = 0; i < PolyData.length; i++) {
                 var multiPoly = PolyData[i].XY.split(';');
                 for (var j = 0; j < multiPoly.length; j++) {
@@ -392,9 +394,22 @@
         Hackathon.Map.ClearLayer(_Status.BusLandmineLayer);
         Hackathon.Map.GetStatus().map.infoWindow.hide();
         _Status.NoServiceList = _Status.graphics.slice();
+        $('#Fun_Legend').hide();
     }
 
     var _Clear = function () {
+        // 清除圖層
+        Hackathon.Map.RemoveLayer(_Status.LayerName);
+        Hackathon.Map.RemoveLayer(_Status.ScoreLayer);
+        Hackathon.Map.RemoveLayer(_Status.LandmineLayer);
+        Hackathon.Map.RemoveLayer(_Status.BusLandmineLayer);
+        Hackathon.Map.GetStatus().map.infoWindow.hide();
+        _Status.graphics =[];
+        ScoreGraphics={};
+        tempghp= undefined;
+        NoServiceList = [];
+        _Status.IsLandmineMode = false;
+        $('#Fun_Legend').hide();
     }
 
     var _Add = function () {

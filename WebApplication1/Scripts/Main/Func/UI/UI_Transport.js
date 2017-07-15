@@ -30,6 +30,7 @@
         Hackathon.Common.Set_UI(_html);
         _Set_Event();
         _Sev.Add();
+        
     }
     var _Reset = function () {
         _Clear();

@@ -210,8 +210,8 @@ define(function (module) {
                       toolbar.activate();
                       break;
                   case 3:
-                      toolbar = new Draw(_Status.map);
-                      toolbar.on("draw-end", function (evt) { callback(evt); toolbar.deactivate(); });
+                      //toolbar = new Draw(_Status.map);
+                      toolbar.on("draw-end", function (evt) { debugger; toolbar.deactivate(); callback(evt); });
                       toolbar.activate(Draw.POLYGON);
                       break;
               }

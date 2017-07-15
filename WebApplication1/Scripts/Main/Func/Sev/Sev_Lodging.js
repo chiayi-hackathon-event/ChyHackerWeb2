@@ -4,13 +4,15 @@
         POILayerName: 'POIGraphicLayer',
         graphics: {},
         ArrayRoomDemand: [],
-        ArrayRoomSupply:[],
+        ArrayRoomSupply: [],
         ArrayNation: [],
         hotelInfo: {},
         babInfo: {}
     };
     var _Clear = function () {
         Hackathon.Map.RemoveLayer(_Status.LayerName);
+        Hackathon.Map.RemoveLayer(_Status.POILayerName);
+        Hackathon.Map.GetStatus().map.infoWindow.hide();
         _Status.graphics = {};
     }
     var _AddLayer = function () {
@@ -18,10 +20,7 @@
 
         _LayerOption.AddEvent.push({
             'EventType': 'click', 'CallBack': function (evt) {
-                //$('#info-panel').addClass('CommonShow');
-                //$('#CardPanel').show();
-                //$(_Status.DataTable.cells('td').nodes()).removeClass('active');
-                //$(_Status.DataTable.cells('#' + evt.graphic.id).nodes()).addClass('active');
+                Hackathon.Map.GetStatus().map.infoWindow.hide();
                 $('body').removeClass('menu-show panel-empty').addClass('panel-show');
                 _ShowData(evt.graphic.id);
             }
@@ -31,7 +30,7 @@
         var _POILayerOption = { ID: _Status.POILayerName, AddEvent: [] };
         _POILayerOption.AddEvent.push({
             'EventType': 'click', 'CallBack': function (evt) {
-                //ShowPointInfoTemplate(evt.graphic, evt.screenPoint);
+                _ShowPointInfoTemplate(evt.graphic, evt.screenPoint);
             }
         });
         Hackathon.Map.AddLayer('Graphic', '', _POILayerOption);
@@ -82,7 +81,7 @@
                 // ***  TODO 待整理的髒髒der Code
                 var searchList, bedCount, RoomData,
                     type = $selLodgingType.val();
-                
+
                 RoomData = (type == 'hotel') ? HotelData : BabData;
                 _AddPOI('hotel', hotellist);
                 _AddPOI('bab', bablist);
@@ -94,7 +93,7 @@
                 //基本統計
                 var stats = _Status[type + 'Info']['stats'];
                 $('.tbl-lodging-stats .tr-number td').each(function () { $(this).text(stats[$(this).attr('name')]); });
-                
+
                 // 房間供需
                 _Status['ArrayRoomDemand'] = RoomData.map(function (e) { return e.DEMAND; });
                 _Status['ArrayRoomSupply'] = RoomData.map(function (e) { return e.SUPPLY; });
@@ -118,7 +117,6 @@
                 })
                 _DrawChart_Nation();
             })
-
     }
     var _AddPOI = function (_type, _obj) {
         /// <summary>
@@ -146,7 +144,7 @@
                 TEL: _obj[i].TEL,
             }
             graphicData.Symbol = {
-                Url: window.location.href + '/Content/img/POI/'+_type+'.svg',
+                Url: window.location.href + '/Content/img/POI/' + _type + '.svg',
                 Width: 25,
                 Height: 25,
                 yoffset: 5,
@@ -170,7 +168,7 @@
         };
         if (searchList.length > 0) {
             stats.LodgingCount = searchList.length;
-            stats.RoomCount = searchList.reduce(function (a,b) {
+            stats.RoomCount = searchList.reduce(function (a, b) {
                 return a + Number(b.ROOM_NUM);
             }, 0);
             stats.AvgPrice = Hackathon.Common.FormatThousandth(Math.round(searchList.reduce(function (a, b) { return a + Number(b.AVG_ROOM_PRICE); }, 0) / searchList.length));
@@ -182,7 +180,7 @@
             info = _Status[type + 'Info'],
             stats = info['stats'],
             RoomData = info['RoomData'];
-        
+
         console.log(type);
         _SwitchPOI(type);
         $('.tbl-lodging-stats .tr-number td').each(function () { $(this).text(stats[$(this).attr('name')]); });
@@ -191,10 +189,29 @@
         _Status['ArrayRoomSupply'] = RoomData.map(function (e) { return e.SUPPLY; });
         _DrawChart_Room();
     }
+    var _ShowPointInfoTemplate = function (graphic, screenPoint) {
+        debugger
+        Hackathon.Map.SetInfowindow(
+       {
+           title: "旅館資訊",
+           content: '<ul style="list-style-type:disc;">' +
+               '<li>旅館名稱 :' + graphic.attributes.NAME + '</li>' +
+               '<li>地址 :' + graphic.attributes.NAME + '</li>' +
+               '<li>房間數 :' + graphic.attributes.ROOM_NUM + '</li>' +
+               '<li>參考房價 :' + graphic.attributes.ROOM_PRICE + '</li>' +
+               '<li>床位數 :' + graphic.attributes.CUSTOMER + '</li>' + '</ul>'
+       },
+       {
+           WinWidth: 250,
+           WinHeight: 120,
+           screenPoint:screenPoint,
+           placement: 'upperright'
+       });
+    }
 
     var _SwitchPOI = function (type) {
-        _Status['graphics']['poi'].map(function (e) { 
-            if (e.Graphic.id.startsWith(type)){
+        _Status['graphics']['poi'].map(function (e) {
+            if (e.Graphic.id.startsWith(type)) {
                 e.Graphic.show();
             } else {
                 e.Graphic.hide();
@@ -249,7 +266,7 @@
 
         _Status['ArrayNation'].sort(function (a, b) { return b.y - a.y; })
                               .map(function (e, idx) { if (idx > 2) { e.visible = false; } });
-        
+
         var type = 'pie',
             id = 'nation-chart',
             custom = {},
@@ -257,9 +274,8 @@
                 name: '房客國籍比',
                 data: _Status['ArrayNation']
             }];
-        
-        var chart = _Chart.DrawChart(type, id, series, custom);
 
+        var chart = _Chart.DrawChart(type, id, series, custom);
     }
 
     var _ShowData = function (_id) {
