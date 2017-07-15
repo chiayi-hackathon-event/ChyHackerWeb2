@@ -9,12 +9,13 @@
 <g id="底">
 	<circle fill="#43DD43" stroke="#FFFFFF" cx="150" cy="150" r="130"/>
 </g>
-<rect x="198" y="122" fill="#FFFFFF" width="15" height="45"/>
-<path fill="#FFFFFF" d="M87,85v76c0,19,0,54,0,54h103c0,0,0-35,0-54V85H87z"/>
 <rect x="108" y="105" fill="#43DD43" width="24" height="24"/>
 <rect x="145" y="105" fill="#43DD43" width="24" height="24"/>
 <rect x="108" y="142" fill="#43DD43" width="24" height="24"/>
 <rect x="145" y="142" fill="#43DD43" width="24" height="24"/>
 <g id="icon_1_">
 </g>
+<polygon fill="#FFFFFF" points="83.949,118 149,75.5 214.052,118 "/>
+<path fill="#FFFFFF" d="M201.5,213.75c0-8.729,0-17.807,0-24.75v-76h-103v76c0,6.943,0,16.021,0,24.75H201.5z M156.5,133h24v24h-24
+	V133z M156.5,170h24v24h-24V170z M119.5,133h24v24h-24V133z M119.5,170h24v24h-24V170z"/>
 </svg>
