@@ -9,6 +9,7 @@
     <link href="https://js.arcgis.com/3.18/esri/css/esri.css" rel='stylesheet' type='text/css' media='screen'>
     <link href="~/Content/FontAwesome/css/font-awesome.min.css" rel="stylesheet" />
     <script src="~/Scripts/lib/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/lib/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/lib/jquery-ui.min.js"></script>
     <script src="~/Scripts/lib/VueJS/vue.js"></script>
         @*<script src="~/Scripts/lib/AjaxAgent.js"></script>
@@ -50,6 +51,9 @@
         <div class="sk-circle12 sk-circle"></div>
     </div>
     <div class="loading-mask"></div>
+    <div id="Fun_Legend" style="position:fixed;right: 50px;bottom: 50px;z-index: 100;display:none">
+        <img src="~/Content/img/Legend/Legend.png" style="height:320px;width:280px;" />
+    </div>
     <script>
         var baseURL = 'http://localhost/ChyHackathon';
         var dojoConfig = {
@@ -69,6 +73,7 @@
                 'AjaxAgent': baseURL + '/Scripts/lib/AjaxAgent',
                 'Framework': baseURL + '/Scripts/lib/Framework',
                 'HighCharts': baseURL + '/Scripts/lib/HighCharts',
+                'Lib': baseURL + '/Scripts/lib',
                 //
                 'Views': baseURL + '/Views/Shared',
                 //******Loader********
