@@ -7,17 +7,19 @@
         _Sev.Clear();
     }
     var _Init = function () {
-
         Hackathon.Common.Set_UI(_html);
         _Clear();
         _Sev.Add();
     }
     var _Reset = function () {
-      
+        _Clear();
+        _Init();
     }
+
     Hackathon.UIMain.Industry = {
         Init: _Init,
-    
+        Clear: _Clear,
+        Reset:_Reset
     }
     return Hackathon.UIMain.Industry;
 })

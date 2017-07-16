@@ -69,7 +69,6 @@
   var _Event_Click_Summary = function () {
       _Clear();
     if (Hackathon.UIMain.Summary) {
-  
       Hackathon.UIMain.Summary.Reset();
     } else {
       require(['UI/UI_Summary'], function (UI_Summary) {
@@ -81,6 +80,7 @@
     if (Hackathon.UIMain.Lodging) { Hackathon.UIMain.Lodging.Clear(); };
     if (Hackathon.UIMain.Industry) { Hackathon.UIMain.Industry.Clear(); };
     if (Hackathon.UIMain.Transport) { Hackathon.UIMain.Transport.Clear(); };
+    if (Hackathon.UIMain.Summary) { Hackathon.UIMain.Summary.Clear(); };
     //$('body').addClass('panel-empty').removeClass('menu-show panel-show');
     //   $('body').removeClass('panel-show');
   }

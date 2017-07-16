@@ -228,6 +228,11 @@
     <Content Include="Content\img\chiayi4.svg" />
     <Content Include="Content\img\chiayi5.svg" />
     <Content Include="Content\img\chiayi6.svg" />
+    <Content Include="Content\img\Industry\Factory.svg" />
+    <Content Include="Content\img\Industry\HaoXing.svg" />
+    <Content Include="Content\img\Industry\JieWen.svg" />
+    <Content Include="Content\img\Industry\POI.svg" />
+    <Content Include="Content\img\Legend\Legend.png" />
     <Content Include="Content\img\Lodging\bed.svg" />
     <Content Include="Content\img\Lodging\hotel.svg" />
     <Content Include="Content\img\Lodging\price.svg" />
@@ -357,10 +362,12 @@
     <Content Include="Scripts\Main\Func\Common\Chart.js" />
     <Content Include="Scripts\Main\Func\Common\Common.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Hackathon.js" />
+    <Content Include="Scripts\Main\Func\Data\Data_Industry.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Summary.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Lodging.js" />
     <Content Include="Scripts\Main\Func\Data\Data_Transport.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Hackathon.js" />
+    <Content Include="Scripts\Main\Func\Sev\Sev_Industry.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Lodging.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Summary.js" />
     <Content Include="Scripts\Main\Func\Sev\Sev_Transport.js" />

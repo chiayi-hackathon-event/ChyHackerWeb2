@@ -1,7 +1,7 @@
 ﻿define(['Data/Data_Summary'], function (_Data) {
   var _Status = {
-    LayerName: 'GraphicLayer',
-    POILayerName: 'POIGraphicLayer',
+    LayerName: 'SummaryLayer',
+    POILayerName: 'SummaryPOILayer',
     graphics: {},
     VueData: {
     COUN_NA: '',
@@ -26,7 +26,8 @@
     VueObj: {}
   };
   var _Clear = function () {
-    Hackathon.Map.RemoveLayer(_Status.LayerName);
+      Hackathon.Map.RemoveLayer(_Status.LayerName);
+      Hackathon.Map.RemoveLayer(_Status.POILayerName);
     _Status.graphics = {};
   }
   var _AddLayer = function () {

@@ -4,12 +4,12 @@ define(function (module) {
         map: undefined,
         layList: {},
     };
-    var toolbar;
+    var editToolbar,toolbar;
     //////////////////////////////////////////////////////////
     var _SetMap = function (HTMLMap) {
         var dtd = $.Deferred();
-        require(["esri/map", "esri/geometry/Extent", "esri/SpatialReference", "esri/toolbars/draw", "esri/dijit/InfoWindowLite", "dojo/dom-construct", "dojo/domReady!"],
-          function (Map, Extent, SpatialReference, Draw, InfoWindowLite, domConstruct) {
+        require(["esri/map", "esri/geometry/Extent", "esri/SpatialReference", "esri/toolbars/edit", "esri/toolbars/draw", "esri/dijit/InfoWindowLite", "dojo/dom-construct", "dojo/domReady!"],
+          function (Map, Extent, SpatialReference, Edit, Draw, InfoWindowLite, domConstruct) {
               _Status.SR = new SpatialReference({ wkid: 3826 });
               var _info = new InfoWindowLite({}, domConstruct.create("div"));
               _Status.map = new Map(HTMLMap, {
@@ -20,12 +20,13 @@ define(function (module) {
                   SpatialReference: _Status.SR,
                   slider: false,
               });
+              editToolbar = new Edit(_Status.map);
               toolbar = new Draw(_Status.map);
               _Status.map.infoWindow.startup();
               _Status.map.on('load', function () {
                   Hackathon.Map.CenterAt(193630, 2597736, 6);
               });
-                  dtd.resolve();
+              dtd.resolve();
           });
         return dtd.promise();
     };
@@ -196,12 +197,11 @@ define(function (module) {
             console.log(e);
         }
     }
-    var _MapDraw = function (callback, IsOn,_type) {
+    var _MapDraw = function (callback, IsOn, _type) {
         require(["esri/toolbars/draw"],
           function (Draw) {
-              debugger
               var _drawType = (_type) ? Draw[_type] : Draw.POLYGON;
-              
+
               switch (IsOn) {
                   case 0://關
                       if (toolbar) {
@@ -214,7 +214,7 @@ define(function (module) {
                       break;
                   case 3:
                       //toolbar = new Draw(_Status.map);
-                      toolbar.on("draw-end", function (evt) { debugger; toolbar.deactivate(); callback(evt); });
+                      toolbar.on("draw-end", function (evt) { toolbar.deactivate(); callback(evt); });
                       toolbar.activate(_drawType);
                       break;
               }
@@ -224,12 +224,69 @@ define(function (module) {
         var _layer = _Status.layList[layerName];
         _layer.clear();
     };
-    var  _RemoveGraphic = function(layerName, Graphic){
+    var _RemoveGraphic = function (layerName, Graphic) {
         var _layer = _Status.layList[layerName];
         _layer.remove(Graphic.Graphic);
     }
+    var _ReDrawGraphic = function (_point) {
+        require(["esri/symbols/PictureMarkerSymbol", "esri/symbols/SimpleFillSymbol", "esri/geometry/Circle", "esri/geometry/Point", "esri/graphic"], function (PictureMarkerSymbol, SimpleFillSymbol, Circle, Point, Graphic) {
+            var _Geometry;
+            var _Symbol;
+            var a = _point;
+            
+            var _Center = new Point(a.x, a.y, _Status.SR);
+            
+            _Geometry = new Circle({ center: _Center, radius: 500, geodesic: false });
+            _Symbol = new SimpleFillSymbol().setColor(new esri.Color([178, 196, 208, 0.25]));
+            _Symbol.outline.setColor(new esri.Color([74, 107, 147, 1]));
+            var _g = new Graphic(_Geometry, _Symbol, {});
+            _g.isMouseDown = true;
+            debugger
+            return _g;
+            
+        })
+    }
+    var _DrawCircle = function (layerName, GraphicData, IsDrag, CallBack) {
+        require(["esri/symbols/PictureMarkerSymbol", "esri/symbols/SimpleFillSymbol", "esri/geometry/Circle", "esri/geometry/Point", "esri/graphic"], function (PictureMarkerSymbol, SimpleFillSymbol, Circle, Point, Graphic) {
+            var _Geometry;
+            var _Symbol;
+            GraphicData.Geometry.SpatialReference = _Status.SR;
+            var _Center = new Point(GraphicData.Geometry.X, GraphicData.Geometry.Y, GraphicData.Geometry.SpatialReference);
+            _Geometry = new Circle({ center: _Center, radius: GraphicData.Attributes.Radius, geodesic: false });
 
+            _Symbol = new SimpleFillSymbol().setColor(new esri.Color([178, 196, 208, 0.25]));
+            _Symbol.outline.setColor(new esri.Color([74, 107, 147, 1]));
 
+            var _Attribute = GraphicData.Attribute;
+            var _NewGraphic = new Graphic(_Geometry, _Symbol, _Attribute);
+            var _graphicInfo = { Graphic: new Object() };
+            _Status.layList[layerName].add(_NewGraphic);
+            _graphicInfo.Graphic = _NewGraphic;
+            //if (IsDrag && typeof (CallBack) === 'function') {
+            
+            //    _Status.layList[layerName].on("mouse-down", function (evt) {
+            //        console.log("graphicslayer:mouse-down");
+            //        _NewGraphic.isMouseDown = true;
+            //        _Status.map.disableMapNavigation();
+            //    });
+            //    _Status.map.on("mouse-drag", function (evt) {
+            //        console.log("map:mouse-drag");
+            //        if (_NewGraphic.isMouseDown) {debugger
+            //            //_NewGraphic.setGeometry(evt.mapPoint);
+            //            _NewGraphic = _ReDrawGraphic(evt.mapPoint);
+            //            debugger
+            //          //  _NewGraphic.geometry.center=evt.mapPoint;
+            //        }
+            //    });
+            //    _Status.map.on("mouse-up", function (evt) {
+            //        console.log("map:mouse-up");
+            //        _Status.map.enableMapNavigation();
+            //        _NewGraphic.isMouseDown = false;
+            //    });
+            //}
+            return _graphicInfo;
+        });
+    }
 
     module.GetScreenPoint = function (geometry) {
         return _Status.map.toScreen(geometry);
@@ -285,5 +342,8 @@ define(function (module) {
     module.RemoveGraphic = function (layerName, Graphic) {
         _RemoveGraphic(layerName, Graphic);
     };
+    module.DrawCircle = function (layerName, Graphic, IsDrag, CallBack) {
+        _DrawCircle(layerName, Graphic, IsDrag, CallBack);
+    }
     return module;
 }(Hackathon.Map))
