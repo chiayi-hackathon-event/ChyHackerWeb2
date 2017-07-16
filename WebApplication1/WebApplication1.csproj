@@ -422,6 +422,7 @@
     <Content Include="sass\page\_transport.scss" />
     <Content Include="sass\layout\_spinner.scss" />
     <Content Include="sass\page\_industry.scss" />
+    <Content Include="sass\layout\_Dialog.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

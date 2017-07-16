@@ -14,8 +14,38 @@
     $(document).on('click', 'nav .nav-item[name="transport"]', _Event_Click_Transport);
     $(document).on('click', 'nav .nav-item[name="industry"]', _Event_Click_Industry);
     $(document).on('click', 'nav .nav-item[name="summary"]', _Event_Click_Summary);
+    $(document).on('click', '#btn-about', _Event_Click_About);
+    $(document).on('click', '#btn-system', _Event_Click_System);
+  }
+  var _Event_Click_About = function () {
+      $('#about').dialog({
+          closeText: 'Close',
+          dialogClass: 'map-dialog',
+          width: 400,
+          closeText: "",
+          open: function () {
+              $('.ui-widget-overlay').show();
+          },
+          close: function () {
+              $('.ui-widget-overlay').hide();
+          }
+      });
   }
 
+  var _Event_Click_System = function () {
+      $('#system').dialog({
+          closeText: 'Close',
+          dialogClass: 'map-dialog',
+          width: 400,
+          closeText: "",
+          open: function () {
+              $('.ui-widget-overlay').show();
+          },
+          close: function () {
+              $('.ui-widget-overlay').hide();
+          }
+      });
+  }
   var _Event_btnZoomIn = function () {
     Hackathon.Map.ZoomIn();
   }

@@ -1,0 +1,148 @@
+﻿/**********jQuery UI Dialog**********/
+.map-dialog{
+    outline: 0;
+    position: absolute;
+    z-index: 400;
+    //background-color: rgba(249, 249, 249, 0.9);
+    width: 400px;
+    height: 400px;
+    > ul{
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    &:focus {
+        z-index: 450;
+    }
+        
+    .ui-widget-header {
+        border: 0;
+        color: #fff;
+        font-weight: normal;
+        
+    }
+    
+    .ui-dialog-titlebar{
+        height: 2.5rem;    
+        line-height: 2.5rem;
+        box-sizing: border-box;
+        background: $orange;
+        padding: 0 1rem;
+        cursor: move;
+        button{ 
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            float: right;
+            margin-top: .3rem;
+            padding: .188rem .5rem;
+            background-color: transparent;
+            border: 0;
+            @include border-radius(.188rem);
+            span{
+                color:white;
+                display: none;
+            }
+            &:hover{
+                border: 1px solid #bbb;
+                background-color: rgba(0,0,0,0.1);
+            }
+            + button{
+                margin-right: 0.313rem;
+            }
+            &.ui-dialog-titlebar-close{
+                color:white;
+                .ui-icon-closethick{
+                    background:white;
+                    width:1px;
+                    height:1.2rem;
+                    position: relative;
+                    border-radius:.066rem;
+                    padding: 0;
+                    @include calc('left', '50% - 1px');
+                    @include transform(rotate(45deg));
+                    &:before{
+                        background:white;
+                        content:"";
+                        width:1.2rem;
+                        height:1px;
+                        position:absolute;
+                        @include calc('top', '.5rem + 1px');
+                        left:-9px;
+                    } 
+                }
+            }
+            &[title=Minimize]{
+                .minus{
+                    background:white;
+                    width:1rem;
+                    height:1px;
+                    position: relative;
+                    border-radius:.066rem;
+                    padding: 0;
+                }
+            }
+            &[title=Maximize]{
+                .plus{
+                    background:white;
+                    width:1px;
+                    height:1rem;
+                    position: relative;
+                    border-radius:.066rem;
+                    padding: 0;
+                    @include calc('left', '50% - 1px');
+                    &:before{
+                        background:white;
+                        content:"";
+                        width:1rem;
+                        height:1px;
+                        position:absolute;
+                        @include calc('top', '.5rem - .5px');
+                        left:-.5rem;
+                    } 
+                }
+            }
+        }
+    }
+
+    .ui-widget-content {
+        color: #222222;
+    }
+
+    .ui-dialog {
+        left: 0;
+        outline: 0 none;
+        position: absolute;
+        top: 0;
+    }
+
+    .ui-dialog-content{
+        padding: 1rem;
+        border: 1px solid #bbb;
+        background-color: rgba(249, 249, 249, 0.9);
+        max-height: 400px !important;
+        overflow-y: auto;
+    }
+
+    .ui-corner-all{
+        border-radius: 0;
+    }
+    .ui-button-text{
+        display: none;
+    }
+    .ui-button-icon-only .ui-icon{
+        top: 0 !important;
+        display: block;
+    }
+}
+
+.ui-widget-overlay{
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    display: none;
+}

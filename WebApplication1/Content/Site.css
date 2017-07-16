@@ -64,55 +64,104 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 5, ../sass/base/_base.scss */
+/* line 6, ../sass/base/_base.scss */
 h1 {
   font-size: 1.75rem;
 }
 
-/* line 8, ../sass/base/_base.scss */
+/* line 9, ../sass/base/_base.scss */
 .h1 {
   font-size: 1.75rem !important;
 }
 
-/* line 5, ../sass/base/_base.scss */
+/* line 6, ../sass/base/_base.scss */
 h2 {
   font-size: 1.5rem;
 }
 
-/* line 8, ../sass/base/_base.scss */
+/* line 9, ../sass/base/_base.scss */
 .h2 {
   font-size: 1.5rem !important;
 }
 
-/* line 5, ../sass/base/_base.scss */
+/* line 6, ../sass/base/_base.scss */
 h3 {
   font-size: 1.25rem;
 }
 
-/* line 8, ../sass/base/_base.scss */
+/* line 9, ../sass/base/_base.scss */
 .h3 {
   font-size: 1.25rem !important;
 }
 
-/* line 5, ../sass/base/_base.scss */
+/* line 6, ../sass/base/_base.scss */
 h4 {
   font-size: 1.1rem;
 }
 
-/* line 8, ../sass/base/_base.scss */
+/* line 9, ../sass/base/_base.scss */
 .h4 {
   font-size: 1.1rem !important;
 }
 
-/* line 14, ../sass/base/_base.scss */
+/* line 15, ../sass/base/_base.scss */
 .display-none {
   display: none;
 }
 
-/* line 18, ../sass/base/_base.scss */
+/* line 19, ../sass/base/_base.scss */
 .tooltip {
   opacity: 1;
   display: block;
+}
+
+/* line 24, ../sass/base/_base.scss */
+.intro-wrapper {
+  position: absolute;
+  top: 200px;
+  right: 0;
+}
+/* line 28, ../sass/base/_base.scss */
+.intro-wrapper #btn-about, .intro-wrapper #btn-system {
+  cursor: pointer;
+  width: 2.5rem;
+  height: 5rem;
+  background-color: #F4845F;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  border: 1px solid #F4845F;
+  -moz-border-radius: 3px 0 0 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px 0 0 3px;
+}
+/* line 43, ../sass/base/_base.scss */
+.intro-wrapper .side-button + .side-button {
+  margin-top: .5rem;
+}
+
+/* line 49, ../sass/base/_base.scss */
+#about, #system {
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 1.25rem;
+  max-height: 400px;
+}
+/* line 54, ../sass/base/_base.scss */
+#about h5, #system h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: .5rem 0;
+}
+
+/* line 61, ../sass/base/_base.scss */
+aside#info-panel, #map {
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
 }
 
 /* line 2, ../sass/base/_component.scss */
@@ -900,6 +949,177 @@ aside#info-panel #btn-slide:after {
     opacity: 1;
   }
 }
+/**********jQuery UI Dialog**********/
+/* line 2, ../sass/layout/_Dialog.scss */
+.map-dialog {
+  outline: 0;
+  position: absolute;
+  z-index: 400;
+  width: 400px;
+  height: 400px;
+}
+/* line 9, ../sass/layout/_Dialog.scss */
+.map-dialog > ul {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+/* line 14, ../sass/layout/_Dialog.scss */
+.map-dialog:focus {
+  z-index: 450;
+}
+/* line 18, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-widget-header {
+  border: 0;
+  color: #fff;
+  font-weight: normal;
+}
+/* line 25, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  box-sizing: border-box;
+  background: #F4845F;
+  padding: 0 1rem;
+  cursor: move;
+}
+/* line 32, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  float: right;
+  margin-top: .3rem;
+  padding: .188rem .5rem;
+  background-color: transparent;
+  border: 0;
+  -moz-border-radius: 0.188rem;
+  -webkit-border-radius: 0.188rem;
+  border-radius: 0.188rem;
+}
+/* line 42, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button span {
+  color: white;
+  display: none;
+}
+/* line 46, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button:hover {
+  border: 1px solid #bbb;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* line 50, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button + button {
+  margin-right: 0.313rem;
+}
+/* line 53, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button.ui-dialog-titlebar-close {
+  color: white;
+}
+/* line 55, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button.ui-dialog-titlebar-close .ui-icon-closethick {
+  background: white;
+  width: 1px;
+  height: 1.2rem;
+  position: relative;
+  border-radius: .066rem;
+  padding: 0;
+  left: -webkit-calc(50% - 1px);
+  left: -moz-calc(50% - 1px);
+  left: calc(50% - 1px);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 64, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button.ui-dialog-titlebar-close .ui-icon-closethick:before {
+  background: white;
+  content: "";
+  width: 1.2rem;
+  height: 1px;
+  position: absolute;
+  top: -webkit-calc(.5rem + 1px);
+  top: -moz-calc(.5rem + 1px);
+  top: calc(.5rem + 1px);
+  left: -9px;
+}
+/* line 76, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button[title=Minimize] .minus {
+  background: white;
+  width: 1rem;
+  height: 1px;
+  position: relative;
+  border-radius: .066rem;
+  padding: 0;
+}
+/* line 86, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button[title=Maximize] .plus {
+  background: white;
+  width: 1px;
+  height: 1rem;
+  position: relative;
+  border-radius: .066rem;
+  padding: 0;
+  left: -webkit-calc(50% - 1px);
+  left: -moz-calc(50% - 1px);
+  left: calc(50% - 1px);
+}
+/* line 94, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-titlebar button[title=Maximize] .plus:before {
+  background: white;
+  content: "";
+  width: 1rem;
+  height: 1px;
+  position: absolute;
+  top: -webkit-calc(.5rem - .5px);
+  top: -moz-calc(.5rem - .5px);
+  top: calc(.5rem - .5px);
+  left: -.5rem;
+}
+/* line 108, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-widget-content {
+  color: #222222;
+}
+/* line 112, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog {
+  left: 0;
+  outline: 0 none;
+  position: absolute;
+  top: 0;
+}
+/* line 119, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-dialog-content {
+  padding: 1rem;
+  border: 1px solid #bbb;
+  background-color: rgba(249, 249, 249, 0.9);
+  max-height: 400px !important;
+  overflow-y: auto;
+}
+/* line 127, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-corner-all {
+  border-radius: 0;
+}
+/* line 130, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-button-text {
+  display: none;
+}
+/* line 133, ../sass/layout/_Dialog.scss */
+.map-dialog .ui-button-icon-only .ui-icon {
+  top: 0 !important;
+  display: block;
+}
+
+/* line 139, ../sass/layout/_Dialog.scss */
+.ui-widget-overlay {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  display: none;
+}
+
 /* line 4, ../sass/page/_lodging.scss */
 #lodging .info-section:first-child content {
   display: flex;
