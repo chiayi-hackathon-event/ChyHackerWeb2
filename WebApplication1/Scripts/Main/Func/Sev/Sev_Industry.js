@@ -86,8 +86,8 @@
             }
             for (let i = 0; i < BUSMData.length; i++) {
                 var graphicData = { ID: 'B_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
-                graphicData.Geometry.X = BUSMData[i].X97;
-                graphicData.Geometry.Y = BUSMData[i].Y97;
+                graphicData.Geometry.X = BUSMData[i].X;
+                graphicData.Geometry.Y = BUSMData[i].Y;
                 graphicData.Attribute = {
                     //名稱
                     name: BUSMData[i].LandMark,
