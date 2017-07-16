@@ -171,14 +171,14 @@
             data: {
                 sum: _Status['VueData']
             },
-            //computed: {
-            //    showImg: function () {
-            //        return (this.sum.img == null);
-            //    },
-            //    showWeb: function () {
-            //        return (this.sum.web == null);
-            //    }
-            //},
+            computed: {
+                showImg: function () {
+                    return (this.sum.img == null);
+                },
+                showWeb: function () {
+                    return (this.sum.web == null);
+                }
+            },
             //filters: {
             //    CheckValue: function (val) {
             //        return (val == null) ? 0 : val;

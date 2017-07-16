@@ -24,6 +24,10 @@
                     <td>電話</td>
                     <td>{{sum.tel}}</td>
                 </tr>
+                <tr>
+                    <td>網站</td>
+                    <td v-bind:class="{'display-none': showWeb}">{{sum.web}}</td>
+                </tr>
             </table>
         </content>
     </section>
