@@ -18,6 +18,8 @@
 *智慧觀光型(產業分析、綜合分析)
 台灣好行與台灣觀巴士是目前觀光局首推的旅遊路線，結合空間資訊的概念，可以大大透過這些地點，
 增加旅客的數量，也可以讓在地的廠商進駐在這些重要的景點
+<簡報連結>
+https://drive.google.com/file/d/0B6neqhMN7cYnQzVqUWlMTnZRZEk/view
 
 <使用資料集>
 
@@ -33,5 +35,3 @@
 台灣好行資料集	http://admin.taiwan.net.tw/public/public.aspx?no=381
 台灣借問站資料集	http://admin.taiwan.net.tw/public/public.aspx?no=381
 工廠名錄	http://dmz9.moea.gov.tw/gmweb/investigate/InvestigateFactory.aspx
-<簡報連結>
-https://drive.google.com/file/d/0B6neqhMN7cYnQzVqUWlMTnZRZEk/view
