@@ -26,6 +26,14 @@
             }
         });
         Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
+        // *** Layer 2 ***
+        _LayerOption = { ID: _Status.IndustryFactoryLayer, AddEvent: [] };
+        _LayerOption.AddEvent.push({
+            'EventType': 'click', 'CallBack': function (evt) {
+               
+            }
+        });
+        Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
     }
     var _BindUI = function (_attr) {
         debugger
@@ -133,7 +141,7 @@
                     yoffset: 5,
                     Type: 'PictureMarkerSymbol'
                 };
-                var _g = Hackathon.Map.AddPoint(_Status.LayerName, graphicData);
+                var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
             }
             for (let i = 0; i < Poi.length; i++) {
                 var graphicData = { ID: 'POI_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
