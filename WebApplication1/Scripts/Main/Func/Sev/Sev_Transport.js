@@ -108,7 +108,7 @@
         })
     }
     var _AddNetPoly = function () {
-        $.when(_Data.GetNetPolyData()).then(function (PolyData) {debugger
+        $.when(_Data.GetNetPolyData()).then(function (PolyData) {
             for (var i = 0; i < PolyData.length; i++) {
                 var multiPoly = PolyData[i].XY.split(';');
                 for (var j = 0; j < multiPoly.length; j++) {
@@ -289,7 +289,6 @@
                 _Status.NoServiceList.splice(i, 1);
             }
         }
-        debugger
         _DrawDataTable(_Status.NoServiceList);
         // *** 介面事件 ****
         _DigitalAnimation(_Status.NoServiceList.length);

@@ -241,7 +241,6 @@ define(function (module) {
             _Symbol.outline.setColor(new esri.Color([74, 107, 147, 1]));
             var _g = new Graphic(_Geometry, _Symbol, {});
             _g.isMouseDown = true;
-            debugger
             return _g;
             
         })

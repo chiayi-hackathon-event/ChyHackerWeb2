@@ -190,7 +190,6 @@
         _DrawChart_Room();
     }
     var _ShowPointInfoTemplate = function (graphic, screenPoint) {
-        debugger
         Hackathon.Map.SetInfowindow(
        {
            title: "旅館資訊",

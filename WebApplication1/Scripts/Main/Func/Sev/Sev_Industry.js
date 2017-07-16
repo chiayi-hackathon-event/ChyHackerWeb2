@@ -27,16 +27,19 @@
         _LayerOption.AddEvent.push({
             'EventType': 'click', 'CallBack': function (evt) {
                 // *** 目前規劃Poi才開圓
-                if (evt.graphic.attributes.type === 'Poi') {
-                    _DrawCircle(evt.graphic.geometry.x, evt.graphic.geometry.y);
-                    _AddFactPoint(evt.graphic.geometry.x, evt.graphic.geometry.y);
-                }
+                ///   if (evt.graphic.attributes.type === 'Poi') {
+                _DrawCircle(evt.graphic.geometry.x, evt.graphic.geometry.y);
+                _AddFactPoint(evt.graphic.geometry.x, evt.graphic.geometry.y);
+                _BindUI(evt.graphic.attributes);
+                ///    }
             }
         });
         Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
     }
-    var _DrawCircle = function (_x, _y) {
+    var _BindUI = function (_attr) {
         debugger
+    }
+    var _DrawCircle = function (_x, _y) {
         Hackathon.Map.ClearLayer(_Status.IndustryGraphicLayer);
         var GraphicData = { Geometry: {}, Symbol: {}, Attribute: {}, Attributes: {} };
         GraphicData.Geometry.X = _x;
@@ -52,12 +55,24 @@
     }
     var _AddPoint = function () {
         $.when(_Data.GetAllPoiData(), _Data.GetTaiwanAskData(), _Data.GetTaiwanIsGoodData()).then(function (Poi, TaiwanAsk, TaiwanIsGood) {
+            debugger
             for (let i = 0; i < TaiwanAsk.length; i++) {
                 var graphicData = { ID: 'TA_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
                 graphicData.Geometry.X = TaiwanAsk[i].X97;
                 graphicData.Geometry.Y = TaiwanAsk[i].Y97;
                 graphicData.Attribute = {
-                    type: 'TaiwanAsk'
+                    type: 'TaiwanAsk',
+                    //名稱
+                    name: TaiwanAsk[i].name,
+                    //景點類別
+                    class: '-',
+                    //地址
+                    description: TaiwanAsk[i].address,
+                    //電話
+                    tel: TaiwanAsk[i].tel,
+                    //網站
+                    web: TaiwanAsk[i].website == '無' ? null : TaiwanAsk[i].website,
+                    img: TaiwanAsk[i].image
                 }
                 graphicData.Symbol = {
                     Url: window.location.href + '/Content/img/Industry/JieWen.svg',
@@ -73,7 +88,18 @@
                 graphicData.Geometry.X = TaiwanIsGood[i].X97;
                 graphicData.Geometry.Y = TaiwanIsGood[i].Y97;
                 graphicData.Attribute = {
-                    type: 'TaiwanIsGood'
+                    type: 'TaiwanIsGood',
+                    //名稱
+                    name: TaiwanIsGood[i].SITENAME,
+                    //景點類別
+                    class: '-',
+                    //地址
+                    description: TaiwanIsGood[i].ROADLINENAME,
+                    //電話
+                    tel: '-',
+                    //網站
+                    web: null,
+                    img: null
                 }
                 graphicData.Symbol = {
                     Url: window.location.href + '/Content/img/Industry/HaoXing.svg',
@@ -89,7 +115,20 @@
                 graphicData.Geometry.X = Poi[i].X;
                 graphicData.Geometry.Y = Poi[i].Y;
                 graphicData.Attribute = {
-                    type: 'Poi'
+                    type: 'Poi',
+                    //名稱
+                    name: Poi[i].Name,
+                    //景點類別
+                    class: Poi[i].Class,
+                    ////縣市
+                    //coun: Poi[i].COUN_NA + Poi[i].TOWN_NA,
+                    //地址
+                    description: Poi[i].Description,
+                    //電話
+                    tel: Poi[i].TEL,
+                    //網站
+                    web: Poi[i].Web,
+                    img: Poi[i].Pic
                 }
                 graphicData.Symbol = {
                     Url: window.location.href + '/Content/img/Industry/POI.svg',
