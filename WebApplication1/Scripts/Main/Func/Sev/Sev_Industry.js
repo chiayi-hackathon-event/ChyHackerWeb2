@@ -66,7 +66,7 @@
     }
     var _AddFactPoint = function (_x, _y) {
         $.when(_Data.GetFactoryData(_x, _y), _Data.GetBUSMData(_x, _y)).then(function (FactoryData, BUSMData) {
-            debugger
+            Hackathon.Map.ClearLayer(_Status.IndustryFactoryLayer);
             for (let i = 0; i < FactoryData.length; i++) {
                 var graphicData = { ID: 'F_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
                 graphicData.Geometry.X = FactoryData[i].X;
