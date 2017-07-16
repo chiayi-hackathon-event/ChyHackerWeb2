@@ -49,6 +49,7 @@
     }
     var _ShowInfoWindow = function (_attr) {
         debugger
+
     }
     var _BindUI = function (_attr) {
         for (var key in _attr) {
@@ -115,8 +116,8 @@
                     yoffset: 5,
                     Type: 'PictureMarkerSymbol'
                 };
-                var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
-                if (BUSMData[i].card === '0') {
+                var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);debugger
+                if (BUSMData[i].CARD === '0') {
                     _NoSpCard++;
                 }
             }
@@ -181,7 +182,7 @@
                     yoffset: 5,
                     Type: 'PictureMarkerSymbol'
                 };
-                var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
+                var _g = Hackathon.Map.AddPoint(_Status.LayerName, graphicData);
             }
             for (let i = 0; i < Poi.length; i++) {
                 var graphicData = { ID: 'POI_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
