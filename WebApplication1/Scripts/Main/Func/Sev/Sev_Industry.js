@@ -11,7 +11,7 @@
             tel: '-',
             web: null,
             img: null
-        }
+        },
     };
     var _AddLayer = function () {
         // *** Layer 1 ***
@@ -42,13 +42,15 @@
         _LayerOption = { ID: _Status.IndustryFactoryLayer, AddEvent: [] };
         _LayerOption.AddEvent.push({
             'EventType': 'click', 'CallBack': function (evt) {
-               
+                _ShowInfoWindow(evt.graphic.attributes);
             }
         });
         Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
     }
-    var _BindUI = function (_attr) {
+    var _ShowInfoWindow = function (_attr) {
         debugger
+    }
+    var _BindUI = function (_attr) {
         for (var key in _attr) {
             if (_attr.hasOwnProperty(key)) {
                 _Status['VueData'][key] = _attr[key];
@@ -65,8 +67,8 @@
         Hackathon.Map.DrawCircle(_Status.IndustryGraphicLayer, GraphicData);
     }
     var _AddFactPoint = function (_x, _y) {
+        Hackathon.Map.ClearLayer(_Status.IndustryFactoryLayer);
         $.when(_Data.GetFactoryData(_x, _y), _Data.GetBUSMData(_x, _y)).then(function (FactoryData, BUSMData) {
-            Hackathon.Map.ClearLayer(_Status.IndustryFactoryLayer);
             for (let i = 0; i < FactoryData.length; i++) {
                 var graphicData = { ID: 'F_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
                 graphicData.Geometry.X = FactoryData[i].X;
@@ -76,7 +78,7 @@
                     name: FactoryData[i].LandMark,
                 }
                 graphicData.Symbol = {
-                    Url: window.location.href + '/Content/img/Industry/HaoXing.svg',
+                    Url: window.location.href + '/Content/img/Industry/Factory.svg',
                     Width: 20,
                     Height: 20,
                     yoffset: 5,
@@ -84,6 +86,8 @@
                 };
                 var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
             }
+            var _SpCard = 0,
+                _NoSpCard = 0;
             for (let i = 0; i < BUSMData.length; i++) {
                 var graphicData = { ID: 'B_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
                 graphicData.Geometry.X = BUSMData[i].X;
@@ -100,12 +104,19 @@
                     Type: 'PictureMarkerSymbol'
                 };
                 var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
+                if (BUSMData[i].card === '0') {
+                    _NoSpCard++;
+                }
             }
+            _SpCard = BUSMData.length - _NoSpCard;
+            _ShowCardInfo(_SpCard, _NoSpCard);
         })
     }
+    var _ShowCardInfo = function (_SpCard, _NoSpCard) {
+
+    };
     var _AddPoint = function () {
         $.when(_Data.GetAllPoiData(), _Data.GetTaiwanAskData(), _Data.GetTaiwanIsGoodData()).then(function (Poi, TaiwanAsk, TaiwanIsGood) {
-            debugger
             for (let i = 0; i < TaiwanAsk.length; i++) {
                 var graphicData = { ID: 'TA_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
                 graphicData.Geometry.X = TaiwanAsk[i].X97;
