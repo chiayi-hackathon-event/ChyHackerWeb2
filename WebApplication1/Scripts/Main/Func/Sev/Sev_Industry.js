@@ -2,7 +2,16 @@
     var _Status = {
         LayerName: 'IndustryPoiLayer',
         IndustryGraphicLayer: 'IndustryGraphicLayer',
-        IndustryFactoryLayer: 'IndustryFactoryLayer'
+        IndustryFactoryLayer: 'IndustryFactoryLayer',
+        VueObj: {},
+        VueData: {
+            name: '',
+            class: '-',
+            description: '-',
+            tel: '-',
+            web: null,
+            img: null
+        }
     };
     var _AddLayer = function () {
         // *** Layer 1 ***
@@ -21,6 +30,9 @@
                 ///   if (evt.graphic.attributes.type === 'Poi') {
                 _DrawCircle(evt.graphic.geometry.x, evt.graphic.geometry.y);
                 _AddFactPoint(evt.graphic.geometry.x, evt.graphic.geometry.y);
+
+                $('body').removeClass('menu-show panel-empty');
+                $('body').addClass('panel-show');
                 _BindUI(evt.graphic.attributes);
                 ///    }
             }
@@ -37,6 +49,11 @@
     }
     var _BindUI = function (_attr) {
         debugger
+        for (var key in _attr) {
+            if (_attr.hasOwnProperty(key)) {
+                _Status['VueData'][key] = _attr[key];
+            }
+        }
     }
     var _DrawCircle = function (_x, _y) {
         Hackathon.Map.ClearLayer(_Status.IndustryGraphicLayer);
@@ -156,7 +173,7 @@
                     ////縣市
                     //coun: Poi[i].COUN_NA + Poi[i].TOWN_NA,
                     //地址
-                    description: (Poi[i].ADD).indexOf('嘉義') == -1 ? Poi[i].Description : Poi[i].ADD,
+                    description: (Poi[i].ADD && (Poi[i].ADD).indexOf('嘉義') == -1 )? Poi[i].Description : Poi[i].ADD,
                     //電話
                     tel: Poi[i].TEL,
                     //網站
@@ -189,8 +206,32 @@
         Hackathon.Map.RemoveLayer(_Status.IndustryGraphicLayer);
         Hackathon.Map.RemoveLayer(_Status.IndustryFactoryLayer);
     }
+    // **** 左邊選單 ****
+    var _CreateVue = function () {
+        _Status['VueObj'] = new Vue({
+            el: '#industry',
+            data: {
+                sum: _Status['VueData']
+            },
+            computed: {
+                showImg: function () {
+                    return (this.sum.img == null);
+                },
+                showWeb: function () {
+                    return (this.sum.web == null);
+                }
+            },
+            //filters: {
+            //    CheckValue: function (val) {
+            //        return (val == null) ? 0 : val;
+            //    }
+            //}
+        });
+    }
+
     return {
         Add: _Add,
-        Clear: _Clear
+        Clear: _Clear,
+        CreateVue: _CreateVue
     }
 })

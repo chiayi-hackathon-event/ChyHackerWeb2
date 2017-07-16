@@ -10,48 +10,25 @@
             <table class="tbl-poi-info">
                 <tr>
                     <td>名稱</td>
-                    <td>{{LandMark}}</td>
+                    <td>{{sum.name}}</td>
                 </tr>
                 <tr>
                     <td>景點類別</td>
-                    <td>{{Class}}</td>
-                </tr>
-                <tr>
-                    <td>縣市</td>
-                    <td>{{COUN_NA}}{{TOWN_NA}}</td>
+                    <td>{{sum.class}}</td>
                 </tr>
                 <tr>
                     <td>地址</td>
-                    <td>{{Description}}</td>
+                    <td>{{sum.description}}</td>
                 </tr>
                 <tr>
                     <td>電話</td>
-                    <td>{{TEL}}</td>
+                    <td>{{sum.tel}}</td>
                 </tr>
                 <tr>
                     <td>網站</td>
-                    <td>{{Web}}</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><img v-bind:class="{display-none: showImg}" v-bind:src="Pic"/></td>
+                    <td v-bind:class="{'display-none': showWeb}">{{sum.web}}</td>
                 </tr>
             </table>
         </content>
     </section>
-
-    @*<section class="info-section">
-        <h3>產業資訊</h3>
-        <content>
-            <table class="tbl-industry-info">
-                <tr>
-                    <td>國民旅遊卡店家</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>可輔導店家</td>
-                    <td></td>
-                </tr>
-            </table>
-        </content>
-    </section>*@
 </section>
