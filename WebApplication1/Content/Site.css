@@ -954,10 +954,10 @@ aside#info-panel #btn-slide:after {
 /* line 11, ../sass/page/_industry.scss */
 #industry .tbl-poi-info tr td:first-child, #industry .tbl-industry-info tr td:first-child {
   font-weight: bold;
-  width: 5rem;
+  width: 6rem;
 }
 /* line 15, ../sass/page/_industry.scss */
-#industry .tbl-poi-info tr:last-child td, #industry .tbl-industry-info tr:last-child td {
+#industry .tbl-poi-info tr:first-child td, #industry .tbl-industry-info tr:first-child td {
   border-bottom-width: 0;
   text-align: center;
 }

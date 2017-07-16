@@ -10,9 +10,9 @@
             }
             td:first-child{
                 font-weight: bold;
-                width: 5rem;
+                width: 6rem;
             }
-            &:last-child td{
+            &:first-child td{
                 border-bottom-width: 0;
                 text-align: center;
             } 

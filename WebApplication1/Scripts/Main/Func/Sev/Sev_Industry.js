@@ -10,7 +10,9 @@
             description: '-',
             tel: '-',
             web: null,
-            img: null
+            img: null,
+            card: 0,
+            nocard: 0
         },
     };
     var _AddLayer = function () {
@@ -126,7 +128,8 @@
         })
     }
     var _ShowCardInfo = function (_SpCard, _NoSpCard) {
-
+        _Status['VueData']['card'] = _SpCard;
+        _Status['VueData']['nocard'] = _NoSpCard
     };
     var _AddPoint = function () {
         $.when(_Data.GetAllPoiData(), _Data.GetTaiwanAskData(), _Data.GetTaiwanIsGoodData()).then(function (Poi, TaiwanAsk, TaiwanIsGood) {
