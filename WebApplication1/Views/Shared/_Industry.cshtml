@@ -24,12 +24,14 @@
                     <td>電話</td>
                     <td>{{sum.tel}}</td>
                 </tr>
-                <tr v-if="showWeb">
+                <tr>
                     <td>網站</td>
-                    <td><a v-bind:href="sum.web">{{sum.name}}</a></td>
+                    <td><a id="web-link">{{sum.name}}</a></td>
                 </tr>
-                <tr v-if="showImg">
-                    <td colspan="2"><img v-bind:src="sum.img"/></td>
+                <tr>
+                    <td colspan="2">
+                        <img id="img-link" />
+                    </td>
                 </tr>
             </table>
         </content>

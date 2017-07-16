@@ -11,7 +11,15 @@
             td:first-child{
                 font-weight: bold;
                 width: 5rem;
-            }   
+            }
+            &:last-child td{
+                border-bottom-width: 0;
+                text-align: center;
+            } 
+            img{
+                width: 80%;
+                margin: auto;
+            }
         }
     }
 }
