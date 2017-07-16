@@ -69,11 +69,11 @@
             }
             for (let i = 0; i < BUSMData.length; i++) {
                 var graphicData = { ID: 'B_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
-                graphicData.Geometry.X = TaiwanIsGood[i].X97;
-                graphicData.Geometry.Y = TaiwanIsGood[i].Y97;
+                graphicData.Geometry.X = BUSMData[i].X97;
+                graphicData.Geometry.Y = BUSMData[i].Y97;
                 graphicData.Attribute = {
                     //名稱
-                    name: FactoryData[i].LandMark,
+                    name: BUSMData[i].LandMark,
                 }
                 graphicData.Symbol = {
                     Url: window.location.href + '/Content/img/Industry/HaoXing.svg',
