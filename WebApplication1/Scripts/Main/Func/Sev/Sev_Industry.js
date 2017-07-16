@@ -48,7 +48,7 @@
         Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
     }
     var _BindUI = function (_attr) {
-        debugger
+        console.log(_attr);
         for (var key in _attr) {
             if (_attr.hasOwnProperty(key)) {
                 _Status['VueData'][key] = _attr[key];

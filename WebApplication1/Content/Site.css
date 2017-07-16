@@ -954,7 +954,7 @@ aside#info-panel #btn-slide:after {
 /* line 11, ../sass/page/_industry.scss */
 #industry .tbl-poi-info tr td:first-child, #industry .tbl-industry-info tr td:first-child {
   font-weight: bold;
-  width: 4rem;
+  width: 5rem;
 }
 
 /* line 2, ../sass/page/_transport.scss */
