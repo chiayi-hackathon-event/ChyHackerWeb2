@@ -10,30 +10,26 @@
             <table class="tbl-poi-info">
                 <tr>
                     <td>名稱</td>
-                    <td>{{LandMark}}</td>
+                    <td>{{sum.name}}</td>
                 </tr>
                 <tr>
                     <td>景點類別</td>
-                    <td>{{Class}}</td>
-                </tr>
-                <tr>
-                    <td>縣市</td>
-                    <td>{{COUN_NA}}{{TOWN_NA}}</td>
+                    <td>{{sum.class}}</td>
                 </tr>
                 <tr>
                     <td>地址</td>
-                    <td>{{Description}}</td>
+                    <td>{{sum.description}}</td>
                 </tr>
                 <tr>
                     <td>電話</td>
-                    <td>{{TEL}}</td>
+                    <td>{{sum.tel}}</td>
                 </tr>
                 <tr>
                     <td>網站</td>
-                    <td>{{Web}}</td>
+                    <td v-bind:class="{display-none: showWeb}">{{sum.web}}</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><img v-bind:class="{display-none: showImg}" v-bind:src="Pic"/></td>
+                    <td colspan="2"><img v-bind:class="{display-none: showImg}" v-bind:src="sum.img"/></td>
                 </tr>
             </table>
         </content>

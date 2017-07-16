@@ -2,7 +2,16 @@
     var _Status = {
         LayerName: 'IndustryPoiLayer',
         IndustryGraphicLayer: 'IndustryGraphicLayer',
-        IndustryFactoryLayer: 'IndustryFactoryLayer'
+        IndustryFactoryLayer: 'IndustryFactoryLayer',
+        VueObj: {},
+        VueData: {
+            name: '',
+            class: '-',
+            description: '-',
+            tel: '-',
+            web: null,
+            img: null
+        }
     };
     var _AddLayer = function () {
         // *** Layer 1 ***
@@ -38,7 +47,7 @@
     }
     var _AddFactPoint = function (_x, _y) {
         $.when(_Data.GetFactoryData(_x, _y)).then(function (FactoryData) {
-            debugger
+            
         })
     }
     var _AddPoint = function () {
@@ -108,8 +117,32 @@
         Hackathon.Map.RemoveLayer(_Status.IndustryGraphicLayer);
         Hackathon.Map.RemoveLayer(_Status.IndustryFactoryLayer);
     }
+    // **** 左邊選單 ****
+    var _CreateVue = function () {
+        _Status['VueObj'] = new Vue({
+            el: '#industry',
+            data: {
+                sum: _Status['VueData']
+            },
+            computed: {
+                showImg: function () {
+                    return (sum.img == null);
+                },
+                showWeb: function () {
+                    return (sum.web == null);
+                }
+            },
+            filters: {
+                CheckValue: function (val) {
+                    return (val == null) ? 0 : val;
+                }
+            }
+        });
+    }
+
     return {
         Add: _Add,
-        Clear: _Clear
+        Clear: _Clear,
+        CreateVue: _CreateVue
     }
 })
