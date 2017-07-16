@@ -21,6 +21,12 @@
 台灣好行與台灣觀巴士是目前觀光局首推的旅遊路線，結合空間資訊的概念，可以大大透過這些地點，
 增加旅客的數量，也可以讓在地的廠商進駐在這些重要的景點
 
+<使用技術>
+
+JAVASCRIPT、HTML、C#、SQL
+
+<技術內涵>
+GIS、RWD、ARCGIS MAP
 <簡報連結>
 
 https://drive.google.com/file/d/0B6neqhMN7cYnQzVqUWlMTnZRZEk/view
