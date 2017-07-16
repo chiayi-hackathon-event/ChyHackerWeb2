@@ -56,6 +56,18 @@
                 _Status['VueData'][key] = _attr[key];
             }
         }
+        $('#web-link').attr('href', _attr['web']);
+        if (_attr['web'] == null) {
+            $('#web-link').parents('tr').addClass('display-none');
+        } else {
+            $('#web-link').parents('tr').removeClass('display-none');
+        }
+        $('#img-link').attr('src', _attr['img']);
+        if (_attr['img'] == null) {
+            $('#img-link').parents('tr').addClass('display-none');
+        } else {
+            $('#img-link').parents('tr').removeClass('display-none');
+        }
     }
     var _DrawCircle = function (_x, _y) {
         Hackathon.Map.ClearLayer(_Status.IndustryGraphicLayer);
@@ -222,7 +234,7 @@
         _Status['VueObj'] = new Vue({
             el: '#industry',
             data: {
-                sum: _Status['VueData']
+                sum: _Status['VueData'],
             },
             computed: {
                 showImg: function () {

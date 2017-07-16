@@ -26,7 +26,12 @@
                 </tr>
                 <tr>
                     <td>網站</td>
-                    <td v-bind:class="{'display-none': showWeb}">{{sum.web}}</td>
+                    <td><a id="web-link">{{sum.name}}</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <img id="img-link" />
+                    </td>
                 </tr>
             </table>
         </content>
