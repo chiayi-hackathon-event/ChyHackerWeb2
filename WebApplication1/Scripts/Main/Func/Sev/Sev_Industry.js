@@ -40,8 +40,42 @@
         Hackathon.Map.DrawCircle(_Status.IndustryGraphicLayer, GraphicData);
     }
     var _AddFactPoint = function (_x, _y) {
-        $.when(_Data.GetFactoryData(_x, _y)).then(function (FactoryData) {
+        $.when(_Data.GetFactoryData(_x, _y), _Data.GetBUSMData(_x, _y)).then(function (FactoryData, BUSMData) {
             debugger
+            for (let i = 0; i < FactoryData.length; i++) {
+                var graphicData = { ID: 'F_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
+                graphicData.Geometry.X = FactoryData[i].X;
+                graphicData.Geometry.Y = FactoryData[i].Y;
+                graphicData.Attribute = {
+                    //名稱
+                    name: FactoryData[i].LandMark,
+                }
+                graphicData.Symbol = {
+                    Url: window.location.href + '/Content/img/Industry/HaoXing.svg',
+                    Width: 20,
+                    Height: 20,
+                    yoffset: 5,
+                    Type: 'PictureMarkerSymbol'
+                };
+                var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
+            }
+            for (let i = 0; i < BUSMData.length; i++) {
+                var graphicData = { ID: 'B_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
+                graphicData.Geometry.X = TaiwanIsGood[i].X97;
+                graphicData.Geometry.Y = TaiwanIsGood[i].Y97;
+                graphicData.Attribute = {
+                    //名稱
+                    name: FactoryData[i].LandMark,
+                }
+                graphicData.Symbol = {
+                    Url: window.location.href + '/Content/img/Industry/HaoXing.svg',
+                    Width: 20,
+                    Height: 20,
+                    yoffset: 5,
+                    Type: 'PictureMarkerSymbol'
+                };
+                var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
+            }
         })
     }
     var _AddPoint = function () {
@@ -114,7 +148,7 @@
                     ////縣市
                     //coun: Poi[i].COUN_NA + Poi[i].TOWN_NA,
                     //地址
-                    description: Poi[i].Description,
+                    description: (Poi[i].ADD).indexOf('嘉義') == -1 ? Poi[i].Description : Poi[i].ADD,
                     //電話
                     tel: Poi[i].TEL,
                     //網站
