@@ -49,7 +49,7 @@
         });
         Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
     }
-    var _ShowInfoWindow = function (evt) {debugger
+    var _ShowInfoWindow = function (evt) {
         Hackathon.Map.SetInfowindow(
          {
              title: evt.graphic.attributes.name,
