@@ -30,6 +30,9 @@
                 ///   if (evt.graphic.attributes.type === 'Poi') {
                 _DrawCircle(evt.graphic.geometry.x, evt.graphic.geometry.y);
                 _AddFactPoint(evt.graphic.geometry.x, evt.graphic.geometry.y);
+
+                $('body').removeClass('menu-show panel-empty');
+                $('body').addClass('panel-show');
                 _BindUI(evt.graphic.attributes);
                 ///    }
             }
@@ -38,6 +41,11 @@
     }
     var _BindUI = function (_attr) {
         debugger
+        for (var key in _attr) {
+            if (_attr.hasOwnProperty(key)) {
+                _Status['VueData'][key] = _attr[key];
+            }
+        }
     }
     var _DrawCircle = function (_x, _y) {
         Hackathon.Map.ClearLayer(_Status.IndustryGraphicLayer);
@@ -163,19 +171,19 @@
             data: {
                 sum: _Status['VueData']
             },
-            computed: {
-                showImg: function () {
-                    return (sum.img == null);
-                },
-                showWeb: function () {
-                    return (sum.web == null);
-                }
-            },
-            filters: {
-                CheckValue: function (val) {
-                    return (val == null) ? 0 : val;
-                }
-            }
+            //computed: {
+            //    showImg: function () {
+            //        return (this.sum.img == null);
+            //    },
+            //    showWeb: function () {
+            //        return (this.sum.web == null);
+            //    }
+            //},
+            //filters: {
+            //    CheckValue: function (val) {
+            //        return (val == null) ? 0 : val;
+            //    }
+            //}
         });
     }
 

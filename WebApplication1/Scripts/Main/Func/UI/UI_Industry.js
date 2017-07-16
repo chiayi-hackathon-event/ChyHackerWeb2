@@ -7,6 +7,7 @@
         _Sev.Clear();
     }
     var _Init = function () {
+        debugger
         Hackathon.Common.Set_UI(_html);
         _Clear();
         _Sev.Add();
