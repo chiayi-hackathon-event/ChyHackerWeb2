@@ -18,20 +18,33 @@
 *智慧觀光型(產業分析、綜合分析)
 台灣好行與台灣觀巴士是目前觀光局首推的旅遊路線，結合空間資訊的概念，可以大大透過這些地點，
 增加旅客的數量，也可以讓在地的廠商進駐在這些重要的景點
+
 <簡報連結>
 https://drive.google.com/file/d/0B6neqhMN7cYnQzVqUWlMTnZRZEk/view
 
 <使用資料集>
 
 交通部觀光局 - 觀光資訊資料庫	http://data.gov.tw/node/7777
+
 瘋嘉義景點資料庫	http://fun.chiayi.gov.tw/cy2012/
+
 交通部觀光局-台灣旅宿網	http://taiwanstay.net.tw/
+
 交通部觀光局-旅館點位	http://admin.taiwan.net.tw/public/public.aspx?no=381
+
 交通部觀光局-民宿點位	http://admin.taiwan.net.tw/public/public.aspx?no=381
+
 國民旅遊卡網站	http://travel.nccc.com.tw/NASApp/NTC/servlet/com.du.mvc.EntryServlet?Action=RetailerInquiry&Type=GetFull
+
 交通部地理倉儲--嘉義縣市人行道	https://gist.motc.gov.tw/#
+
 交通部地理倉儲--嘉義縣市公車站	https://gist.motc.gov.tw/#
+
 商工登記資料庫--飲料、小吃	http://data.gcis.nat.gov.tw/main/index;jsessionid=164667E3D566E97849D630F3FA1F01AC
+
 台灣好行資料集	http://admin.taiwan.net.tw/public/public.aspx?no=381
+
 台灣借問站資料集	http://admin.taiwan.net.tw/public/public.aspx?no=381
+
 工廠名錄	http://dmz9.moea.gov.tw/gmweb/investigate/InvestigateFactory.aspx
+
