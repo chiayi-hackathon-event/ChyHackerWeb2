@@ -270,10 +270,10 @@ define(function (module) {
             //    });
             //    _Status.map.on("mouse-drag", function (evt) {
             //        console.log("map:mouse-drag");
-            //        if (_NewGraphic.isMouseDown) {debugger
+            //        if (_NewGraphic.isMouseDown) {
             //            //_NewGraphic.setGeometry(evt.mapPoint);
             //            _NewGraphic = _ReDrawGraphic(evt.mapPoint);
-            //            debugger
+            //            
             //          //  _NewGraphic.geometry.center=evt.mapPoint;
             //        }
             //    });

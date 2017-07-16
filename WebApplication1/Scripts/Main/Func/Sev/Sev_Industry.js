@@ -44,13 +44,23 @@
         _LayerOption = { ID: _Status.IndustryFactoryLayer, AddEvent: [] };
         _LayerOption.AddEvent.push({
             'EventType': 'click', 'CallBack': function (evt) {
-                _ShowInfoWindow(evt.graphic.attributes);
+                _ShowInfoWindow(evt);
             }
         });
         Hackathon.Map.AddLayer('Graphic', '', _LayerOption);
     }
-    var _ShowInfoWindow = function (_attr) {
-        
+    var _ShowInfoWindow = function (evt) {
+        Hackathon.Map.SetInfowindow(
+         {
+             title: evt.graphic.attributes.name,
+             content: ''
+         },
+         {
+             WinWidth: 250,
+             WinHeight: 30,
+             screenPoint: evt.screenPoint,
+             placement: 'upperright'
+         });
     }
     var _BindUI = function (_attr) {
         for (var key in _attr) {
@@ -72,6 +82,7 @@
         }
     }
     var _DrawCircle = function (_x, _y) {
+        Hackathon.Map.GetStatus().map.infoWindow.hide();
         Hackathon.Map.ClearLayer(_Status.IndustryGraphicLayer);
         var GraphicData = { Geometry: {}, Symbol: {}, Attribute: {}, Attributes: {} };
         GraphicData.Geometry.X = _x;
@@ -108,7 +119,7 @@
                 graphicData.Geometry.Y = BUSMData[i].Y;
                 graphicData.Attribute = {
                     //名稱
-                    name: BUSMData[i].LandMark,
+                    name: BUSMData[i].NAME,
                 }
                 graphicData.Symbol = {
                     Url: window.location.href + '/Content/img/Industry/HaoXing.svg',
@@ -118,7 +129,7 @@
                     Type: 'PictureMarkerSymbol'
                 };
                 var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
-                if (BUSMData[i].card === '0') {
+                if (BUSMData[i].CARD === '0') {
                     _NoSpCard++;
                 }
             }
@@ -184,7 +195,7 @@
                     yoffset: 5,
                     Type: 'PictureMarkerSymbol'
                 };
-                var _g = Hackathon.Map.AddPoint(_Status.IndustryFactoryLayer, graphicData);
+                var _g = Hackathon.Map.AddPoint(_Status.LayerName, graphicData);
             }
             for (let i = 0; i < Poi.length; i++) {
                 var graphicData = { ID: 'POI_' + i, Geometry: {}, Symbol: {}, Attribute: {}, AddEvent: [] };
@@ -199,7 +210,7 @@
                     ////縣市
                     //coun: Poi[i].COUN_NA + Poi[i].TOWN_NA,
                     //地址
-                    description: (Poi[i].ADD && (Poi[i].ADD).indexOf('嘉義') == -1 )? Poi[i].Description : Poi[i].ADD,
+                    description: (Poi[i].ADD&&((Poi[i].ADD).length > (Poi[i].Description).length)) ? Poi[i].Description : Poi[i].ADD,//(Poi[i].ADD && (Poi[i].ADD).indexOf('嘉義') == -1) ? Poi[i].Description : Poi[i].ADD,
                     //電話
                     tel: Poi[i].TEL,
                     //網站
@@ -223,7 +234,7 @@
         // *** 加入Draw Tool事件
         //Hackathon.Map.MapDraw(function (evt) {
         //    // *** CallBack Function ***
-        //    debugger
+        //    
         //}, 3, 'POINT');
     }
 
@@ -231,6 +242,7 @@
         Hackathon.Map.RemoveLayer(_Status.LayerName);
         Hackathon.Map.RemoveLayer(_Status.IndustryGraphicLayer);
         Hackathon.Map.RemoveLayer(_Status.IndustryFactoryLayer);
+        Hackathon.Map.GetStatus().map.infoWindow.hide();
     }
     // **** 左邊選單 ****
     var _CreateVue = function () {
