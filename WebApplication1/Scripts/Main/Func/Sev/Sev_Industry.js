@@ -165,7 +165,7 @@
                     ////縣市
                     //coun: Poi[i].COUN_NA + Poi[i].TOWN_NA,
                     //地址
-                    description: (Poi[i].ADD).indexOf('嘉義') == -1 ? Poi[i].Description : Poi[i].ADD,
+                    description: (Poi[i].ADD && (Poi[i].ADD).indexOf('嘉義') == -1 )? Poi[i].Description : Poi[i].ADD,
                     //電話
                     tel: Poi[i].TEL,
                     //網站
